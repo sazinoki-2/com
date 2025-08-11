@@ -330,7 +330,7 @@
         /* 雪音りうDAOセクション - フルスクリーンオーバーレイ */
         .dao-section {
             padding: 0;
-            background: #000;
+            background: transparent;
         }
 
         .dao-image-container {
@@ -354,9 +354,15 @@
 
 
 
+        .dao-header {
+            padding: 60px 60px 0 60px;
+            text-align: center;
+            background: transparent;
+        }
+        
         .dao-text-content {
-            padding: 80px 60px;
-            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            padding: 0 60px 80px 60px;
+            background: transparent;
             text-align: center;
             opacity: 0;
             transform: translateY(50px);
@@ -400,7 +406,6 @@
         .dao-description {
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 16px;
             padding: 40px;
             line-height: 1.8;
@@ -787,6 +792,12 @@
 
         <!-- 雪音りうDAOセクション -->
         <section id="dao" class="dao-section">
+            <!-- タイトルを画像の上に -->
+            <div class="dao-header">
+                <div class="dao-main-title">雪音りう</div>
+                <div class="dao-subtitle">自由な創作エコシステム</div>
+            </div>
+            
             <!-- フルスクリーン画像 -->
             <div class="dao-image-container">
                 <img src="images/yuki-riu.png" alt="雪音りう" class="riu-fullscreen-artwork">
@@ -794,9 +805,6 @@
             
             <!-- 画像下のテキスト -->
             <div class="dao-text-content">
-                <div class="dao-main-title">雪音りう</div>
-                <div class="dao-subtitle">自由な創作エコシステム</div>
-                
                 <div class="dao-description">
                     <p><strong>2024年発祥のクリエイター支援型キャラクターIP</strong></p>
                     <p>ガイドラインの範囲であれば、<span class="highlight-text">ファンアート（二次創作）を無許諾で商用利用可能</span></p>
