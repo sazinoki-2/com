@@ -327,76 +327,117 @@
             margin-top: 10px;
         }
 
-        /* 雪音りうDAOセクション */
-        .dao-content-wrapper {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 30px;
-            align-items: center;
-            margin-top: 50px;
-            min-height: 80vh;
-        }
-
-        .dao-image {
+        /* 雪音りうDAOセクション - フルスクリーン */
+        .dao-fullscreen {
             position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 80vh;
-            max-height: 800px;
+            height: 100vh;
+            overflow: hidden;
+            padding: 0;
         }
 
-        .riu-artwork {
+        .dao-background {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
-            max-width: none;
-            object-fit: contain;
-            border-radius: 25px;
-            filter: drop-shadow(0 0 40px rgba(255, 105, 180, 0.8));
-            transition: all 0.3s ease;
-            position: relative;
+            z-index: 1;
+        }
+
+        .riu-fullscreen-artwork {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            filter: brightness(0.8) contrast(1.2);
+        }
+
+        .fullscreen-glow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, transparent 30%, rgba(255, 105, 180, 0.3) 70%, rgba(64, 224, 208, 0.2) 100%);
+            animation: fullscreenPulse 6s infinite;
+        }
+
+        @keyframes fullscreenPulse {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 0.7; }
+        }
+
+        .dao-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, transparent 60%, rgba(0, 0, 0, 0.7) 100%);
             z-index: 2;
         }
 
-        .riu-artwork:hover {
-            transform: scale(1.02);
-            filter: drop-shadow(0 0 60px rgba(255, 105, 180, 1.0));
-        }
-
-        .image-glow {
+        /* スライドパネル */
+        .dao-info-panel {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 120%;
-            height: 120%;
-            background: radial-gradient(ellipse, rgba(255, 105, 180, 0.4), rgba(64, 224, 208, 0.3), transparent);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 1;
-            animation: pulseGlow 4s infinite;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(180deg, rgba(26, 10, 46, 0.95) 0%, rgba(22, 33, 62, 0.98) 100%);
+            backdrop-filter: blur(20px);
+            border-top: 2px solid rgba(255, 105, 180, 0.5);
+            z-index: 10;
+            transform: translateY(calc(100% - 80px));
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 20px 20px 0 0;
         }
 
-        @keyframes pulseGlow {
-            0%, 100% { 
-                transform: translate(-50%, -50%) scale(1);
-                opacity: 0.6;
-            }
-            50% { 
-                transform: translate(-50%, -50%) scale(1.2);
-                opacity: 0.8;
-            }
+        .dao-info-panel.expanded {
+            transform: translateY(0);
         }
 
-        .dao-content {
-            text-align: left;
-            padding: 30px;
-            background: rgba(255, 255, 255, 0.08);
-            border-radius: 20px;
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            height: fit-content;
-            max-height: 80vh;
+        .panel-handle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            padding: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 20px 20px 0 0;
+        }
+
+        .panel-handle:hover {
+            background: rgba(255, 105, 180, 0.1);
+        }
+
+        .handle-bar {
+            width: 40px;
+            height: 4px;
+            background: linear-gradient(45deg, #ff69b4, #4ecdc4);
+            border-radius: 2px;
+        }
+
+        .panel-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            background: linear-gradient(45deg, #ff69b4, #4ecdc4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+        }
+
+        .panel-content {
+            padding: 0 30px 30px 30px;
+            max-height: 70vh;
             overflow-y: auto;
+        }
+
+        .panel-content h3 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+            color: #4ecdc4;
         }
 
         .dao-description {
@@ -711,28 +752,30 @@
             nav { flex-direction: column; gap: 10px; }
             
             /* 雪音りうDAO モバイル対応 */
-            .dao-content-wrapper {
-                grid-template-columns: 1fr;
-                gap: 20px;
-                min-height: auto;
+            .dao-fullscreen {
+                height: 100vh;
             }
             
-            .dao-image {
-                order: 1;
-                height: 60vh;
-                max-height: 500px;
+            .dao-info-panel {
+                transform: translateY(calc(100% - 60px));
             }
             
-            .dao-content {
-                order: 2;
-                text-align: center;
-                max-height: none;
-                overflow-y: visible;
+            .panel-handle {
+                padding: 15px;
             }
             
-            .riu-artwork {
-                width: 90%;
-                height: 90%;
+            .panel-title {
+                font-size: 1em;
+            }
+            
+            .handle-bar {
+                width: 30px;
+                height: 3px;
+            }
+            
+            .panel-content {
+                padding: 0 20px 20px 20px;
+                max-height: 60vh;
             }
             
             .dao-features {
@@ -740,7 +783,7 @@
             }
             
             .feature-item {
-                max-width: 350px;
+                max-width: 100%;
                 margin: 0 auto;
             }
         }
@@ -816,22 +859,31 @@
         </section>
 
         <!-- 雪音りうDAOセクション -->
-        <section id="dao">
-            <h2>雪音りうDAOについて</h2>
-            <div class="dao-content-wrapper">
-                <div class="dao-image">
-                    <img src="images/yuki-riu.png" alt="雪音りう" class="riu-artwork">
-                    <div class="image-glow"></div>
+        <section id="dao" class="dao-fullscreen">
+            <!-- フルスクリーン背景画像 -->
+            <div class="dao-background">
+                <img src="images/yuki-riu.png" alt="雪音りう" class="riu-fullscreen-artwork">
+                <div class="fullscreen-glow"></div>
+                <div class="dao-overlay"></div>
+            </div>
+            
+            <!-- スライドアップ情報パネル -->
+            <div class="dao-info-panel" id="dao-info-panel">
+                <div class="panel-handle" onclick="toggleDAOPanel()">
+                    <div class="handle-bar"></div>
+                    <span class="panel-title">🎌 雪音りう DAO</span>
+                    <div class="handle-bar"></div>
                 </div>
-                <div class="dao-content">
-                    <h3>🎌 雪音りう - 自由な創作エコシステム</h3>
+                
+                <div class="panel-content">
+                    <h3>雪音りう - 自由な創作エコシステム</h3>
                     <div class="dao-description">
                         <p><strong>2024年発祥のクリエイター支援型キャラクターIP。</strong></p>
                         <p>ガイドラインの範囲であれば、<span class="highlight">ファンアート（二次創作）を無許諾で商用利用可能</span>。</p>
                         <p>電撃的スピードで商品化が実現し、<strong>合成音声ソフト「A.I.VOICE2雪音りう」がリリース</strong>。多くのファンに親しまれている。</p>
                         <p><span class="web3-highlight">WEB3型プロジェクト</span> - NFTコレクション『<strong>雪音りうデジコレ</strong>』を用いたイベント企画が特徴</p>
                     </div>
-                    <br>
+                    
                     <div class="dao-features">
                         <div class="feature-item">
                             <span class="feature-icon">🎨</span>
@@ -862,6 +914,7 @@
                             </div>
                         </div>
                     </div>
+                    
                     <a href="#" class="discord-btn enhanced">
                         <span>📱</span>
                         <span>DISCORD参加</span>
@@ -1051,16 +1104,39 @@
             });
         }
 
+        // DAO パネル制御
+        function toggleDAOPanel() {
+            const panel = document.getElementById('dao-info-panel');
+            panel.classList.toggle('expanded');
+        }
+
+        // DAOセクション自動展開（スクロール時）
+        function checkDAOSection() {
+            const daoSection = document.getElementById('dao');
+            const panel = document.getElementById('dao-info-panel');
+            const rect = daoSection.getBoundingClientRect();
+            
+            // DAOセクションが画面に50%以上表示された時に自動展開
+            if (rect.top < window.innerHeight * 0.5 && rect.bottom > window.innerHeight * 0.5) {
+                panel.classList.add('expanded');
+            } else {
+                panel.classList.remove('expanded');
+            }
+        }
+
         // 初期化
         createParticles();
         setupPortfolioModal();
 
-        // スクロールエフェクト
+        // スクロールエフェクト + DAO自動展開
         window.addEventListener('scroll', () => {
             const scrolled = window.pageYOffset;
             const parallax = document.querySelector('.particles');
             const speed = scrolled * 0.2;
             parallax.style.transform = `translateY(${speed}px)`;
+            
+            // DAOパネル自動展開チェック
+            checkDAOSection();
         });
     </script>
 
