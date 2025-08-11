@@ -127,8 +127,8 @@ class MicroCMSCSVUploader {
 
                 <div class="upload-section">
                     <h4>🎨 Portfolio (リスト型)</h4>
-                    <input type="file" class="file-input" id="portfolio-csv" accept=".csv">
-                    <button class="upload-btn" onclick="csvUploader.uploadCSV('portfolio', 'portfolio-csv')">Upload Portfolio CSV</button>
+                    <input type="file" class="file-input" id="portoforiohukusuu-csv" accept=".csv">
+                    <button class="upload-btn" onclick="csvUploader.uploadCSV('portoforiohukusuu', 'portoforiohukusuu-csv')">Upload Portfolio CSV</button>
                     <small style="color: #4ecdc4; font-size: 10px;">✅ CSVインポート対応</small>
                 </div>
 
@@ -159,7 +159,7 @@ class MicroCMSCSVUploader {
 
                 <div class="status-log" id="upload-status">
 📝 microCMS CSVアップロード機能
-✅ リスト型API: stats, other-items → CSVアップロード対応
+✅ リスト型API: portoforiohukusuu, othetr → CSVアップロード対応
 ❌ オブジェクト型API: profile, dao-section, contact-section → 管理画面で編集
 🔑 APIキー入力後、CSVファイルを選択してアップロード
 📋 CSVテンプレートは csv-templates フォルダにあります
@@ -295,7 +295,7 @@ class MicroCMSCSVUploader {
             this.log(`📊 ${data.length}件のデータを解析しました`);
 
             // リスト型APIのみCSVアップロード対応
-            const listTypeEndpoints = ['portfolio', 'othetr'];
+            const listTypeEndpoints = ['portoforiohukusuu', 'othetr'];
             
             if (!listTypeEndpoints.includes(endpoint)) {
                 this.log(`❌ ${endpoint} はCSVアップロード非対応です。microCMS管理画面で編集してください。`);
