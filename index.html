@@ -709,11 +709,31 @@
             portfolioItems.forEach(item => {
                 item.addEventListener('click', function() {
                     const type = this.getAttribute('data-type');
-                    const text = this.textContent;
+                    const imagesData = this.getAttribute('data-images');
                     
-                    modalText.textContent = text;
-                    modalContent.className = 'modal-content ' + type;
-                    modal.style.display = 'block';
+                    if (imagesData) {
+                        // 画像がある場合は画像を表示
+                        const images = JSON.parse(imagesData);
+                        const mainImage = Array.isArray(images) ? images[0] : images;
+                        
+                        modalContent.innerHTML = `
+                            <img src="${mainImage.url}" alt="ポートフォリオ画像" 
+                                 style="width: 100%; height: 100%; object-fit: contain; border-radius: 15px;">
+                        `;
+                        modalContent.className = 'modal-content ' + type;
+                        modal.style.display = 'block';
+                        
+                        // 複数画像の場合はナビゲーション追加
+                        if (Array.isArray(images) && images.length > 1) {
+                            addImageNavigation(images, modalContent);
+                        }
+                    } else {
+                        // 画像がない場合はテキスト表示
+                        const text = this.textContent;
+                        modalText.textContent = text;
+                        modalContent.className = 'modal-content ' + type;
+                        modal.style.display = 'block';
+                    }
                 });
             });
 
@@ -725,6 +745,46 @@
                 if (event.target === modal) {
                     modal.style.display = 'none';
                 }
+            });
+        }
+
+        // 複数画像ナビゲーション機能
+        function addImageNavigation(images, container) {
+            let currentIndex = 0;
+            
+            // ナビゲーションボタン追加
+            const navHtml = `
+                <div style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); display: flex; gap: 10px; z-index: 2002;">
+                    <button id="prevBtn" style="background: rgba(0,0,0,0.7); color: white; border: none; padding: 10px 15px; border-radius: 50%; cursor: pointer;">‹</button>
+                    <div style="background: rgba(0,0,0,0.7); color: white; padding: 10px 15px; border-radius: 20px;">
+                        <span id="imageCounter">1 / ${images.length}</span>
+                    </div>
+                    <button id="nextBtn" style="background: rgba(0,0,0,0.7); color: white; border: none; padding: 10px 15px; border-radius: 50%; cursor: pointer;">›</button>
+                </div>
+            `;
+            
+            container.insertAdjacentHTML('beforeend', navHtml);
+            
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const counter = document.getElementById('imageCounter');
+            const img = container.querySelector('img');
+            
+            function updateImage() {
+                img.src = images[currentIndex].url;
+                counter.textContent = `${currentIndex + 1} / ${images.length}`;
+            }
+            
+            prevBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                currentIndex = (currentIndex - 1 + images.length) % images.length;
+                updateImage();
+            });
+            
+            nextBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                currentIndex = (currentIndex + 1) % images.length;
+                updateImage();
             });
         }
 
@@ -840,13 +900,29 @@
                     portfolioItem.className = 'portfolio-item';
                     portfolioItem.setAttribute('data-type', index % 2 === 0 ? 'portrait' : 'landscape');
                     
-                    // タイトルと説明を表示
+                    // 画像とタイトルを表示
+                    let imageHtml = '';
+                    if (item.png && item.png.length > 0) {
+                        // 複数画像の場合は最初の画像を表示
+                        const mainImage = Array.isArray(item.png) ? item.png[0] : item.png;
+                        imageHtml = `
+                            <img src="${mainImage.url}" alt="${item.title || 'ポートフォリオ画像'}" 
+                                 style="width: 100%; height: 200px; object-fit: cover; border-radius: 10px; margin-bottom: 10px;">
+                        `;
+                    }
+                    
                     portfolioItem.innerHTML = `
-                        <div style="text-align: center; padding: 20px;">
-                            <h4>${item.title || item.name || 'タイトル未設定'}</h4>
-                            <p style="font-size: 0.8em; opacity: 0.8; margin-top: 10px;">${item.sub || item.description || ''}</p>
+                        <div style="text-align: center; padding: 15px;">
+                            ${imageHtml}
+                            <h4 style="font-size: 1em; margin: 10px 0 5px 0;">${item.title || 'タイトル未設定'}</h4>
+                            <p style="font-size: 0.8em; opacity: 0.8; line-height: 1.3;">${item.sub || item.description || ''}</p>
                         </div>
                     `;
+                    
+                    // 画像がある場合はクリックで大きく表示
+                    if (item.png && item.png.length > 0) {
+                        portfolioItem.setAttribute('data-images', JSON.stringify(item.png));
+                    }
                     
                     portfolioGrid.appendChild(portfolioItem);
                 });
