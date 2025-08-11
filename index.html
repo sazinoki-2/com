@@ -337,6 +337,7 @@
             width: 100%;
             height: auto;
             min-height: 100vh;
+            position: relative;
             display: flex;
             align-items: flex-start;
             justify-content: center;
@@ -363,16 +364,21 @@
             background: transparent;
         }
         
-        .dao-text-content {
-            padding: 0 60px 80px 60px;
-            background: transparent;
+        .dao-text-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 10;
+            padding: 40px 60px;
             text-align: center;
+            background: linear-gradient(transparent 0%, rgba(0, 0, 0, 0.8) 100%);
             opacity: 0;
-            transform: translateY(50px);
+            transform: translateY(30px);
             transition: all 1.0s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
-        .dao-text-content.visible {
+        .dao-text-overlay.visible {
             opacity: 1;
             transform: translateY(0);
         }
@@ -699,8 +705,8 @@
                 margin-bottom: 30px;
             }
             
-            .dao-text-content {
-                padding: 50px 30px;
+            .dao-text-overlay {
+                padding: 30px 20px;
             }
             
             .dao-main-title {
@@ -801,19 +807,19 @@
                 <div class="dao-subtitle">自由な創作エコシステム</div>
             </div>
             
-            <!-- フルスクリーン画像 -->
+            <!-- フルスクリーン画像とオーバーレイテキスト -->
             <div class="dao-image-container">
                 <img src="images/yuki-riu.png" alt="雪音りう" class="riu-fullscreen-artwork">
-            </div>
-            
-            <!-- 画像下のテキスト -->
-            <div class="dao-text-content">
-                <div class="dao-description">
-                    <p><strong>2024年発祥のクリエイター支援型キャラクターIP</strong></p>
-                    <p>ガイドラインの範囲であれば、<span class="highlight-text">ファンアート（二次創作）を無許諾で商用利用可能</span></p>
-                    <p>電撃的スピードで商品化が実現し、<strong>合成音声ソフト「A.I.VOICE2雪音りう」がリリース</strong></p>
-                    <p>多くのファンに親しまれている</p>
-                    <p><span class="web3-text">WEB3型プロジェクト</span> - NFTコレクション『雪音りうデジコレ』を用いたイベント企画が特徴</p>
+                
+                <!-- 画像下部にオーバーレイされるテキスト -->
+                <div class="dao-text-overlay">
+                    <div class="dao-description">
+                        <p><strong>2024年発祥のクリエイター支援型キャラクターIP</strong></p>
+                        <p>ガイドラインの範囲であれば、<span class="highlight-text">ファンアート（二次創作）を無許諾で商用利用可能</span></p>
+                        <p>電撃的スピードで商品化が実現し、<strong>合成音声ソフト「A.I.VOICE2雪音りう」がリリース</strong></p>
+                        <p>多くのファンに親しまれている</p>
+                        <p><span class="web3-text">WEB3型プロジェクト</span> - NFTコレクション『雪音りうデジコレ』を用いたイベント企画が特徴</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -1002,18 +1008,18 @@
         // DAO テキストオーバーレイ制御
         function handleDAOTextOverlay() {
             const daoSection = document.getElementById('dao');
-            const textContent = document.querySelector('.dao-text-content');
+            const textOverlay = document.querySelector('.dao-text-overlay');
             
-            if (!daoSection || !textContent) return;
+            if (!daoSection || !textOverlay) return;
             
-            const rect = textContent.getBoundingClientRect();
+            const rect = daoSection.getBoundingClientRect();
             const windowHeight = window.innerHeight;
             
-            // テキスト部分が画面に70%以上表示された時にアニメーション開始
-            if (rect.top < windowHeight * 0.7) {
-                textContent.classList.add('visible');
+            // DAOセクションが50%以上画面に表示された時にテキストを表示
+            if (rect.top < windowHeight * 0.5 && rect.bottom > windowHeight * 0.5) {
+                textOverlay.classList.add('visible');
             } else {
-                textContent.classList.remove('visible');
+                textOverlay.classList.remove('visible');
             }
         }
 
