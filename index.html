@@ -832,6 +832,11 @@
                 
                 const data = await response.json();
                 console.log('API Response:', data);
+                console.log('API Response Contents:', data.contents);
+                if (data.contents && data.contents.length > 0) {
+                    console.log('First Item Structure:', data.contents[0]);
+                    console.log('Available Fields:', Object.keys(data.contents[0]));
+                }
                 return data;
             } catch (error) {
                 console.error('microCMS fetch error:', error);
