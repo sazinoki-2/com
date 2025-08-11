@@ -328,13 +328,112 @@
         }
 
         /* 雪音りうDAOセクション */
+        .dao-content-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            margin-top: 50px;
+        }
+
+        .dao-image {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .riu-artwork {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 20px;
+            filter: drop-shadow(0 0 30px rgba(255, 105, 180, 0.6));
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 2;
+        }
+
+        .riu-artwork:hover {
+            transform: scale(1.05);
+            filter: drop-shadow(0 0 50px rgba(255, 105, 180, 0.8));
+        }
+
+        .image-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 80%;
+            height: 80%;
+            background: radial-gradient(circle, rgba(255, 105, 180, 0.3), rgba(64, 224, 208, 0.2), transparent);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+            animation: pulseGlow 3s infinite;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { 
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 0.6;
+            }
+            50% { 
+                transform: translate(-50%, -50%) scale(1.2);
+                opacity: 0.8;
+            }
+        }
+
         .dao-content {
-            text-align: center;
-            padding: 50px;
+            text-align: left;
+            padding: 40px;
             background: rgba(255, 255, 255, 0.05);
             border-radius: 20px;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .dao-features {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .feature-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateX(5px);
+        }
+
+        .feature-icon {
+            font-size: 2em;
+            width: 50px;
+            text-align: center;
+        }
+
+        .feature-item div {
+            flex: 1;
+        }
+
+        .feature-item strong {
+            color: #4ecdc4;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .feature-item p {
+            margin: 0;
+            opacity: 0.8;
+            font-size: 0.9em;
         }
 
         .discord-btn {
@@ -352,6 +451,57 @@
         .discord-btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 10px 30px rgba(114, 137, 218, 0.4);
+        }
+
+        .discord-btn.enhanced {
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 30px;
+            background: linear-gradient(45deg, #7289da, #5865f2);
+            border: 2px solid transparent;
+            background-clip: padding-box;
+        }
+
+        .discord-btn.enhanced::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #7289da);
+            padding: 2px;
+            border-radius: inherit;
+            z-index: -1;
+        }
+
+        .discord-btn.enhanced:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(114, 137, 218, 0.6);
+        }
+
+        .discord-btn.enhanced .btn-glow {
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: rotateGlow 3s linear infinite;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .discord-btn.enhanced:hover .btn-glow {
+            opacity: 1;
+        }
+
+        @keyframes rotateGlow {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
         /* ポートフォリオグリッド */
@@ -522,6 +672,34 @@
             .hero-content h1 { font-size: 2.5em; }
             .profile-content { grid-template-columns: 1fr; text-align: center; }
             nav { flex-direction: column; gap: 10px; }
+            
+            /* 雪音りうDAO モバイル対応 */
+            .dao-content-wrapper {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .dao-image {
+                order: 1;
+            }
+            
+            .dao-content {
+                order: 2;
+                text-align: center;
+            }
+            
+            .riu-artwork {
+                max-width: 300px;
+            }
+            
+            .dao-features {
+                align-items: center;
+            }
+            
+            .feature-item {
+                max-width: 300px;
+                margin: 0 auto;
+            }
         }
     </style>
 </head>
@@ -597,14 +775,45 @@
         <!-- 雪音りうDAOセクション -->
         <section id="dao">
             <h2>雪音りうDAOについて</h2>
-            <div class="dao-content">
-                <h3>🎌 雪音りう - 自由な創作エコシステム</h3>
-                <p>SAZINOKIが原作を務める「雪音りう」は、誰もが二次創作で収益化を自由にできる革新的なキャラクターブランドです。</p>
-                <p>クリエイターの経済的自立を支援し、創作活動を通じた新しい価値創造を推進しています。</p>
-                <br>
-                <p><strong>DAO Founder & Original Creator</strong></p>
-                <p>分散型自律組織として、コミュニティ主導での成長を目指しています。</p>
-                <a href="#" class="discord-btn">📱 DISCORD参加</a>
+            <div class="dao-content-wrapper">
+                <div class="dao-image">
+                    <img src="images/yuki-riu.png" alt="雪音りう" class="riu-artwork">
+                    <div class="image-glow"></div>
+                </div>
+                <div class="dao-content">
+                    <h3>🎌 雪音りう - 自由な創作エコシステム</h3>
+                    <p>SAZINOKIが原作を務める「雪音りう」は、誰もが二次創作で収益化を自由にできる革新的なキャラクターブランドです。</p>
+                    <p>クリエイターの経済的自立を支援し、創作活動を通じた新しい価値創造を推進しています。</p>
+                    <br>
+                    <div class="dao-features">
+                        <div class="feature-item">
+                            <span class="feature-icon">🎨</span>
+                            <div>
+                                <strong>自由な二次創作</strong>
+                                <p>収益化OK・商用利用可能</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">🏛️</span>
+                            <div>
+                                <strong>DAO Founder & Original Creator</strong>
+                                <p>分散型自律組織によるコミュニティ運営</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">🚀</span>
+                            <div>
+                                <strong>NFT & Web3</strong>
+                                <p>ブロックチェーン技術で新しい価値創造</p>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#" class="discord-btn enhanced">
+                        <span>📱</span>
+                        <span>DISCORD参加</span>
+                        <div class="btn-glow"></div>
+                    </a>
+                </div>
             </div>
         </section>
 
