@@ -352,7 +352,7 @@
             height: 100%;
             object-fit: contain;
             object-position: center;
-            filter: brightness(1.0) contrast(1.1);
+            filter: none;
             transition: filter 0.8s ease;
         }
 
@@ -378,7 +378,7 @@
         }
 
         .dao-fullscreen.text-visible .riu-fullscreen-artwork {
-            filter: brightness(0.7) contrast(1.3);
+            filter: brightness(0.8);
         }
 
         /* 中央オーバーレイテキスト */
@@ -425,11 +425,9 @@
         }
 
         .dao-description-overlay {
-            background: rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 40px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(5px);
+            padding: 30px;
             line-height: 1.8;
             font-size: 1.1em;
         }
