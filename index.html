@@ -843,8 +843,8 @@
                     // タイトルと説明を表示
                     portfolioItem.innerHTML = `
                         <div style="text-align: center; padding: 20px;">
-                            <h4>${item.title || 'タイトル未設定'}</h4>
-                            <p style="font-size: 0.8em; opacity: 0.8; margin-top: 10px;">${item.description || ''}</p>
+                            <h4>${item.title || item.name || 'タイトル未設定'}</h4>
+                            <p style="font-size: 0.8em; opacity: 0.8; margin-top: 10px;">${item.sub || item.description || ''}</p>
                         </div>
                     `;
                     
