@@ -370,15 +370,26 @@
             left: 0;
             right: 0;
             z-index: 10;
-            padding: 40px 60px;
+            padding: 50px 20px;
             text-align: center;
-            background: linear-gradient(transparent 0%, rgba(0, 0, 0, 0.8) 100%);
+            background: linear-gradient(transparent 0%, rgba(0, 0, 0, 0.85) 100%);
             opacity: 0;
-            transform: translateY(30px);
-            transition: all 1.0s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transform: translateY(50px);
+            transition: all 1.5s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .dao-text-overlay.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .dao-text-overlay .dao-description {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.3s;
+        }
+        
+        .dao-text-overlay.visible .dao-description {
             opacity: 1;
             transform: translateY(0);
         }
@@ -416,13 +427,12 @@
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
             border-radius: 16px;
-            padding: 40px;
+            padding: 50px 40px;
             line-height: 1.8;
-            font-size: 1.1em;
+            font-size: 1.43em;
             margin-top: 30px;
-            max-width: 900px;
-            margin-left: auto;
-            margin-right: auto;
+            width: 100%;
+            max-width: none;
         }
 
         .dao-description-overlay p {
@@ -719,13 +729,13 @@
             }
             
             .dao-description {
-                padding: 30px;
-                font-size: 1em;
+                padding: 30px 20px;
+                font-size: 1.3em;
                 line-height: 1.6;
             }
             
             .dao-description p {
-                margin-bottom: 15px;
+                margin-bottom: 18px;
             }
         }
     </style>
@@ -1009,14 +1019,15 @@
         function handleDAOTextOverlay() {
             const daoSection = document.getElementById('dao');
             const textOverlay = document.querySelector('.dao-text-overlay');
+            const imageContainer = document.querySelector('.dao-image-container');
             
-            if (!daoSection || !textOverlay) return;
+            if (!daoSection || !textOverlay || !imageContainer) return;
             
-            const rect = daoSection.getBoundingClientRect();
+            const rect = imageContainer.getBoundingClientRect();
             const windowHeight = window.innerHeight;
             
-            // DAOセクションが50%以上画面に表示された時にテキストを表示
-            if (rect.top < windowHeight * 0.5 && rect.bottom > windowHeight * 0.5) {
+            // 画像の下部70%が見えた時にふわっとテキストを表示
+            if (rect.bottom - (rect.height * 0.3) < windowHeight) {
                 textOverlay.classList.add('visible');
             } else {
                 textOverlay.classList.remove('visible');
