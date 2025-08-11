@@ -907,13 +907,28 @@
                     
                     // 画像とタイトルを表示
                     let imageHtml = '';
+                    console.log('Portfolio Item:', item); // デバッグ用
+                    console.log('PNG Field:', item.png); // デバッグ用
+                    
                     try {
                         if (item.png) {
-                            // 複数画像の場合は最初の画像を表示
-                            const mainImage = Array.isArray(item.png) ? item.png[0] : item.png;
-                            if (mainImage && mainImage.url) {
+                            let imageUrl = '';
+                            
+                            // microCMSの画像フィールドの形式を確認
+                            if (Array.isArray(item.png) && item.png.length > 0) {
+                                // 配列の場合
+                                imageUrl = item.png[0].url;
+                            } else if (item.png.url) {
+                                // オブジェクトの場合
+                                imageUrl = item.png.url;
+                            } else if (typeof item.png === 'string') {
+                                // 文字列の場合
+                                imageUrl = item.png;
+                            }
+                            
+                            if (imageUrl) {
                                 imageHtml = `
-                                    <img src="${mainImage.url}" alt="${item.title || 'ポートフォリオ画像'}" 
+                                    <img src="${imageUrl}" alt="${item.title || 'ポートフォリオ画像'}" 
                                          style="width: 100%; height: 200px; object-fit: cover; border-radius: 10px; margin-bottom: 10px;"
                                          onerror="this.style.display='none';">
                                 `;
