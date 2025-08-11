@@ -330,10 +330,11 @@
         /* 雪音りうDAOセクション */
         .dao-content-wrapper {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
             align-items: center;
             margin-top: 50px;
+            min-height: 80vh;
         }
 
         .dao-image {
@@ -341,35 +342,38 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            height: 80vh;
+            max-height: 800px;
         }
 
         .riu-artwork {
             width: 100%;
-            max-width: 400px;
-            height: auto;
-            border-radius: 20px;
-            filter: drop-shadow(0 0 30px rgba(255, 105, 180, 0.6));
+            height: 100%;
+            max-width: none;
+            object-fit: contain;
+            border-radius: 25px;
+            filter: drop-shadow(0 0 40px rgba(255, 105, 180, 0.8));
             transition: all 0.3s ease;
             position: relative;
             z-index: 2;
         }
 
         .riu-artwork:hover {
-            transform: scale(1.05);
-            filter: drop-shadow(0 0 50px rgba(255, 105, 180, 0.8));
+            transform: scale(1.02);
+            filter: drop-shadow(0 0 60px rgba(255, 105, 180, 1.0));
         }
 
         .image-glow {
             position: absolute;
             top: 50%;
             left: 50%;
-            width: 80%;
-            height: 80%;
-            background: radial-gradient(circle, rgba(255, 105, 180, 0.3), rgba(64, 224, 208, 0.2), transparent);
+            width: 120%;
+            height: 120%;
+            background: radial-gradient(ellipse, rgba(255, 105, 180, 0.4), rgba(64, 224, 208, 0.3), transparent);
             border-radius: 50%;
             transform: translate(-50%, -50%);
             z-index: 1;
-            animation: pulseGlow 3s infinite;
+            animation: pulseGlow 4s infinite;
         }
 
         @keyframes pulseGlow {
@@ -385,11 +389,14 @@
 
         .dao-content {
             text-align: left;
-            padding: 40px;
-            background: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.08);
             border-radius: 20px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            height: fit-content;
+            max-height: 80vh;
+            overflow-y: auto;
         }
 
         .dao-description {
@@ -706,20 +713,26 @@
             /* 雪音りうDAO モバイル対応 */
             .dao-content-wrapper {
                 grid-template-columns: 1fr;
-                gap: 30px;
+                gap: 20px;
+                min-height: auto;
             }
             
             .dao-image {
                 order: 1;
+                height: 60vh;
+                max-height: 500px;
             }
             
             .dao-content {
                 order: 2;
                 text-align: center;
+                max-height: none;
+                overflow-y: visible;
             }
             
             .riu-artwork {
-                max-width: 300px;
+                width: 90%;
+                height: 90%;
             }
             
             .dao-features {
@@ -727,7 +740,7 @@
             }
             
             .feature-item {
-                max-width: 300px;
+                max-width: 350px;
                 margin: 0 auto;
             }
         }
