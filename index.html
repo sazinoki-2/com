@@ -378,10 +378,7 @@
 
         /* 統計セクション */
         .stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin: 50px 0;
+            display: none;
         }
 
         .stat-item {
@@ -802,7 +799,7 @@
         /* レスポンシブ */
         @media (max-width: 768px) {
             .hero-content h1 { font-size: 2.5em; }
-            .profile-content { \n                flex-direction: column; \n                text-align: center; \n                gap: 40px;\n                padding: 40px;\n            }\n            \n            .profile-image {\n                width: 300px;\n                height: 300px;\n            }\n            \n            .business-grid {\n                grid-template-columns: 1fr;\n                gap: 15px;\n            }\n            \n            .profile-title {\n                font-size: 2.5em;\n            }"
+            .profile-content { \n                flex-direction: column; \n                text-align: center; \n                gap: 30px;\n            }\n            \n            .profile-image {\n                width: 280px;\n                height: 280px;\n                order: 1;\n            }\n            \n            .profile-text {\n                order: 2;\n            }\n            \n            .profile-title {\n                font-size: 2.2em;\n            }\n            \n            .profile-stats {\n                flex-direction: column;\n                gap: 15px;\n                text-align: center;\n            }""
             nav { flex-direction: column; gap: 10px; }
             
             /* 雪音りうDAO モバイル対応 */
@@ -877,32 +874,28 @@
             <div class="profile-content">
                 <div class="profile-text">
                     <div class="profile-title">SAZINOKI</div>
-                    <div class="profile-subtitle">Multi-Entrepreneur & Creator</div>
+                    <div class="profile-subtitle">「WEB3イラストレーター」Co-Founder</div>
                     
-                    <div class="business-grid">
-                        <div class="business-card">
-                            <h4>🏢 マイクロ法人経営</h4>
-                            <p>『さじかふぇ』資本金2000万円</p>
+                    <div class="profile-description">
+                        マイクロ法人『さじかふぇ』経営：資本金2000万円<br>
+                        不動産経営：賃貸住宅を複数所有・経営<br>
+                        WEB制作：自社メディア開設〜WEB制作コーチング経験<br>
+                        WEB3イラストレーター：BtoBプロモーション、商業案件多数、キャラクターデザイン、顧問他<br>
+                        WEB3：暗号資産早期参入（2017年270万円→2025年1400万円運用）
+                    </div>
+                    
+                    <div class="profile-stats">
+                        <div class="profile-stat">
+                            <div class="profile-stat-number">300K+</div>
+                            <div class="profile-stat-label">総フォロワー数</div>
                         </div>
-                        
-                        <div class="business-card">
-                            <h4>🏠 不動産投資</h4>
-                            <p>賃貸住宅複数所有・運営</p>
+                        <div class="profile-stat">
+                            <div class="profile-stat-number">50+</div>
+                            <div class="profile-stat-label">著書多数</div>
                         </div>
-                        
-                        <div class="business-card">
-                            <h4>💻 WEB制作</h4>
-                            <p>メディア運営・コーチング</p>
-                        </div>
-                        
-                        <div class="business-card">
-                            <h4>🎨 WEB3クリエイター</h4>
-                            <p>BtoB案件・キャラデザイン</p>
-                        </div>
-                        
-                        <div class="business-card">
-                            <h4>📈 暗号資産投資</h4>
-                            <p>2017年〜1400万円運用</p>
+                        <div class="profile-stat">
+                            <div class="profile-stat-number">2000万</div>
+                            <div class="profile-stat-label">資本金</div>
                         </div>
                     </div>
                 </div>
