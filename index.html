@@ -1071,114 +1071,102 @@
             line-height: 1.6;
         }
 
-        .contact-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
             margin-top: 60px;
+            flex-wrap: wrap;
         }
 
-        .contact-info {
-            text-align: left;
-        }
-
-        .contact-info h3 {
-            font-size: 1.8em;
-            color: #4ecdc4;
-            margin-bottom: 30px;
-            font-weight: 700;
-        }
-
-        .contact-detail {
+        .contact-link {
             background: rgba(255, 255, 255, 0.05);
-            padding: 25px 30px;
-            border-radius: 15px;
-            margin-bottom: 20px;
+            padding: 30px 40px;
+            border-radius: 20px;
             border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        .contact-detail:hover {
-            background: rgba(255, 255, 255, 0.08);
-            border-color: rgba(255, 255, 255, 0.2);
-            transform: translateX(10px);
-        }
-
-        .contact-detail-label {
-            font-size: 0.9em;
-            color: rgba(255, 255, 255, 0.6);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 8px;
-            font-weight: 600;
-        }
-
-        .contact-detail-value {
-            font-size: 1.2em;
-            color: #ffffff;
-            font-weight: 600;
-        }
-
-        .contact-email {
-            color: #4ecdc4 !important;
             text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .contact-email:hover {
-            color: #ff69b4 !important;
-        }
-
-        .contact-form {
-            text-align: left;
-        }
-
-        .contact-form h3 {
-            font-size: 1.8em;
-            color: #4ecdc4;
-            margin-bottom: 30px;
-            font-weight: 700;
-        }
-
-        .form-group {
-            margin-bottom: 25px;
-        }
-
-        .form-group label {
-            display: block;
-            font-size: 0.9em;
-            color: rgba(255, 255, 255, 0.8);
-            margin-bottom: 8px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 15px 20px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 10px;
             color: white;
-            font-size: 1em;
+            transition: all 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            min-width: 200px;
             backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
 
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: #4ecdc4;
+        .contact-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.6s;
+        }
+
+        .contact-link:hover::before {
+            left: 100%;
+        }
+
+        .contact-link:hover {
+            transform: translateY(-10px);
             background: rgba(255, 255, 255, 0.08);
-            box-shadow: 0 0 20px rgba(78, 205, 196, 0.3);
+            border-color: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
         }
 
-        .form-group textarea {
-            height: 120px;
-            resize: vertical;
+        .contact-icon {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+
+        .contact-link.email .contact-icon {
+            color: #4ecdc4;
+        }
+
+        .contact-link.twitter .contact-icon {
+            color: #1da1f2;
+        }
+
+        .contact-link.discord .contact-icon {
+            color: #5865f2;
+        }
+
+        .contact-link:hover .contact-icon {
+            transform: scale(1.2);
+            filter: brightness(1.2);
+        }
+
+        .contact-platform {
+            font-size: 1.3em;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 5px;
+        }
+
+        .contact-handle {
+            font-size: 1em;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 500;
+        }
+
+        .contact-link.email:hover {
+            border-color: #4ecdc4;
+            box-shadow: 0 20px 40px rgba(78, 205, 196, 0.3);
+        }
+
+        .contact-link.twitter:hover {
+            border-color: #1da1f2;
+            box-shadow: 0 20px 40px rgba(29, 161, 242, 0.3);
+        }
+
+        .contact-link.discord:hover {
+            border-color: #5865f2;
+            box-shadow: 0 20px 40px rgba(88, 101, 242, 0.3);
         }
 
         .contact-btn {
@@ -1229,9 +1217,16 @@
                 font-size: 2.5em;
             }
             
-            .contact-content {
-                grid-template-columns: 1fr;
-                gap: 40px;
+            .contact-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 25px;
+            }
+            
+            .contact-link {
+                min-width: 250px;
+                width: 100%;
+                max-width: 300px;
             }
         }
 
@@ -1572,59 +1567,24 @@
                 <p class="contact-subtitle">ビジネスのご相談、コラボレーション、お仕事のご依頼など、お気軽にお問い合わせください。</p>
             </div>
             
-            <div class="contact-content">
-                <div class="contact-info">
-                    <h3>お問い合わせ情報</h3>
-                    
-                    <div class="contact-detail">
-                        <div class="contact-detail-label">Email</div>
-                        <div class="contact-detail-value">
-                            <a href="mailto:sazinoki@yahoo.co.jp" class="contact-email">sazinoki@yahoo.co.jp</a>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-detail">
-                        <div class="contact-detail-label">Response Time</div>
-                        <div class="contact-detail-value">24時間以内にご返信</div>
-                    </div>
-                    
-                    <div class="contact-detail">
-                        <div class="contact-detail-label">Business Hours</div>
-                        <div class="contact-detail-value">平日 9:00 - 18:00</div>
-                    </div>
-                    
-                    <div class="contact-detail">
-                        <div class="contact-detail-label">Services</div>
-                        <div class="contact-detail-value">イラスト制作 / コンサルティング / 講演</div>
-                    </div>
-                </div>
+            <div class="contact-links">
+                <a href="mailto:sazinoki@yahoo.co.jp" class="contact-link email">
+                    <div class="contact-icon">📧</div>
+                    <div class="contact-platform">Email</div>
+                    <div class="contact-handle">sazinoki@yahoo.co.jp</div>
+                </a>
                 
-                <div class="contact-form">
-                    <h3>お問い合わせフォーム</h3>
-                    <form>
-                        <div class="form-group">
-                            <label for="name">お名前</label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="email">メールアドレス</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="subject">件名</label>
-                            <input type="text" id="subject" name="subject" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="message">メッセージ</label>
-                            <textarea id="message" name="message" required></textarea>
-                        </div>
-                        
-                        <button type="submit" class="contact-btn">Send Message</button>
-                    </form>
-                </div>
+                <a href="https://twitter.com/sazinoki" class="contact-link twitter" target="_blank">
+                    <div class="contact-icon">🐦</div>
+                    <div class="contact-platform">X (Twitter)</div>
+                    <div class="contact-handle">@sazinoki</div>
+                </a>
+                
+                <a href="#" class="contact-link discord">
+                    <div class="contact-icon">💬</div>
+                    <div class="contact-platform">Discord</div>
+                    <div class="contact-handle">sazinoki#0000</div>
+                </a>
             </div>
         </section>
     </div>
