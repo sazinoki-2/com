@@ -959,23 +959,69 @@
         /* その他セクション */
         .other-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 30px;
             margin-top: 50px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .content-item {
             background: rgba(255, 255, 255, 0.05);
-            padding: 30px;
-            border-radius: 15px;
+            padding: 40px 30px;
+            border-radius: 20px;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             text-align: center;
+            aspect-ratio: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .content-item:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .content-item-icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+            display: block;
         }
 
         .content-item h3 {
             color: #4ecdc4;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            font-weight: 700;
+        }
+
+        .content-item p {
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+            font-size: 1em;
+            margin: 0;
+        }
+
+        /* レスポンシブ対応 */
+        @media (max-width: 1024px) {
+            .other-content {
+                grid-template-columns: 1fr;
+                gap: 25px;
+                max-width: 400px;
+            }
+            
+            .content-item {
+                aspect-ratio: auto;
+                padding: 30px 25px;
+            }
         }
 
         /* コンタクトセクション */
@@ -1315,28 +1361,19 @@
             <h2>Other</h2>
             <div class="other-content">
                 <div class="content-item">
-                    <h3>📝 ブログ</h3>
-                    <p>WEB3、クリプト、フリーランス生活について発信中</p>
-                    <div style="margin-top: 15px; opacity: 0.7;">
-                        <div>最新記事: 「暗号資産で人生変わった話」</div>
-                        <div>週刊更新 | 月間PV: 50,000+</div>
-                    </div>
+                    <div class="content-item-icon">📝</div>
+                    <h3>ブログ</h3>
+                    <p>AI時代の生存戦略　年間読書数200冊以上の筆者が人生・哲学・クリプト・テクノロジーをわかりやすく発信。知が人生を変える。</p>
                 </div>
                 <div class="content-item">
-                    <h3>🎙️ 音声配信</h3>
-                    <p>人生コンサル・起業・クリエイター論を音声でお届け</p>
-                    <div style="margin-top: 15px; opacity: 0.7;">
-                        <div>最新回: 「会社員から独立する方法」</div>
-                        <div>毎週更新 | 登録者: 3,000+</div>
-                    </div>
+                    <div class="content-item-icon">🎙️</div>
+                    <h3>音声配信</h3>
+                    <p>ブログの音声版。　運転中・料理中・作業中、自動インプットでまわりと圧倒的に差がつく音声学習タイムを</p>
                 </div>
                 <div class="content-item">
-                    <h3>💡 人生コンサル</h3>
-                    <p>会社辞めて自由になりたいあなたを全力サポート</p>
-                    <div style="margin-top: 15px; opacity: 0.7;">
-                        <div>満足度: ★★★★★ (4.9/5.0)</div>
-                        <div>相談実績: 200+ | 成功率: 89%</div>
-                    </div>
+                    <div class="content-item-icon">💭</div>
+                    <h3>コンサル</h3>
+                    <p>人生の進化は"共感"の歴史　ビジネス提携やコラボ、悩み相談から対談のお誘いまではばひろくどうぞ</p>
                 </div>
             </div>
         </section>
