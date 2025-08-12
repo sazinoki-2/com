@@ -269,17 +269,24 @@
         /* プロフィールセクション */
         .profile-content {
             display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 50px;
+            grid-template-columns: 2fr 1fr;
+            gap: 60px;
             align-items: center;
+            background: linear-gradient(135deg, rgba(26, 10, 46, 0.8), rgba(22, 33, 62, 0.8));
+            border-radius: 30px;
+            padding: 60px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
         }
 
         .profile-image {
-            width: 300px;
-            height: 300px;
-            border-radius: 20px;
+            width: 350px;
+            height: 350px;
+            border-radius: 25px;
             margin: 0 auto;
             overflow: hidden;
+            border: 3px solid;
+            border-image: linear-gradient(45deg, #ff69b4, #4ecdc4, #6a4c93) 1;
+            box-shadow: 0 10px 30px rgba(255, 105, 180, 0.3);
         }
         
         .profile-image img {
@@ -290,30 +297,82 @@
         }
 
         .profile-text {
-            font-size: 1.1em;
+            font-size: 1.2em;
             line-height: 1.8;
-            opacity: 0.9;
+        }
+        
+        .profile-title {
+            font-size: 2.5em;
+            font-weight: bold;
+            background: linear-gradient(45deg, #ff69b4, #4ecdc4, #6a4c93);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientShift 3s ease-in-out infinite;
+            margin-bottom: 10px;
+            text-shadow: 0 0 30px rgba(255, 105, 180, 0.3);
+        }
+        
+        .profile-subtitle {
+            font-size: 1.3em;
+            color: #4ecdc4;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
         .profile-text strong {
-            color: #4ecdc4;
+            background: linear-gradient(45deg, #ff69b4, #4ecdc4);
+            padding: 3px 8px;
+            border-radius: 8px;
+            color: white;
+            font-weight: 600;
+        }
+        
+        .highlight-business {
+            background: linear-gradient(45deg, rgba(255, 105, 180, 0.2), rgba(64, 224, 208, 0.2));
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 10px 0;
+            border-left: 4px solid #4ecdc4;
         }
 
         /* 統計セクション */
         .stats {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
+            gap: 20px;
             margin: 50px 0;
         }
 
         .stat-item {
             text-align: center;
-            padding: 30px;
-            background: rgba(255, 255, 255, 0.05);
+            padding: 25px 20px;
             border-radius: 15px;
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .stat-item:nth-child(1) {
+            background: linear-gradient(135deg, rgba(106, 76, 147, 0.8), rgba(106, 76, 147, 0.6));
+            border-color: #6a4c93;
+        }
+        
+        .stat-item:nth-child(2) {
+            background: linear-gradient(135deg, rgba(64, 224, 208, 0.8), rgba(64, 224, 208, 0.6));
+            border-color: #4ecdc4;
+        }
+        
+        .stat-item:nth-child(3) {
+            background: linear-gradient(135deg, rgba(255, 105, 180, 0.8), rgba(255, 105, 180, 0.6));
+            border-color: #ff69b4;
+        }
+        
+        .stat-item:nth-child(4) {
+            background: linear-gradient(135deg, rgba(52, 152, 219, 0.8), rgba(52, 152, 219, 0.6));
+            border-color: #3498db;
         }
 
         .stat-number {
@@ -777,19 +836,37 @@
         <section id="profile">
             <h2>Profile</h2>
             <div class="profile-content">
+                <div class="profile-text">
+                    <div class="profile-title">SAZINOKI</div>
+                    <div class="profile-subtitle">Multi-Entrepreneur & Creator</div>
+                    
+                    <div class="highlight-business">
+                        <p><strong>マイクロ法人『さじかふぇ』経営</strong></p>
+                        <p>資本金2000万円</p>
+                    </div>
+                    
+                    <div class="highlight-business">
+                        <p><strong>不動産経営</strong></p>
+                        <p>賃貸住宅を複数所有・経営</p>
+                    </div>
+                    
+                    <div class="highlight-business">
+                        <p><strong>WEB制作</strong></p>
+                        <p>自社メディア開設〜WEB制作コーチング経験</p>
+                    </div>
+                    
+                    <div class="highlight-business">
+                        <p><strong>WEB3イラストレーター</strong></p>
+                        <p>BtoBプロモーション、商業案件多数、キャラクターデザイン、顧問他</p>
+                    </div>
+                    
+                    <div class="highlight-business">
+                        <p><strong>WEB3投資</strong></p>
+                        <p>暗号資産早期参入（2017年270万円→2025年1400万円運用）</p>
+                    </div>
+                </div>
                 <div class="profile-image">
                     <img src="images/profile.jpg" alt="SAZINOKI Profile">
-                </div>
-                <div class="profile-text">
-                    <p><strong>マイクロ法人『さじかふぇ』経営</strong>：資本金2000万円</p>
-                    <br>
-                    <p><strong>不動産経営</strong>：賃貸住宅を複数所有・経営</p>
-                    <br>
-                    <p><strong>WEB制作</strong>：自社メディア開設〜WEB制作コーチング経験</p>
-                    <br>
-                    <p><strong>WEB3イラストレーター</strong>：BtoBプロモーション、商業案件多数、キャラクターデザイン、顧問他</p>
-                    <br>
-                    <p><strong>WEB3</strong>：暗号資産早期参入（2017年270万円→2025年1400万円運用）</p>
                 </div>
             </div>
 
