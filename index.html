@@ -1263,6 +1263,70 @@
             border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
+        .cta-container {
+            background: linear-gradient(135deg, rgba(26, 10, 46, 0.8), rgba(22, 33, 62, 0.8));
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 60px 40px;
+            margin: 40px auto;
+            max-width: 800px;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 
+                0 20px 60px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+
+        .cta-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: conic-gradient(from 0deg, transparent 0deg, rgba(255, 105, 180, 0.08) 90deg, transparent 180deg, rgba(64, 224, 208, 0.08) 270deg, transparent 360deg);
+            border-radius: inherit;
+            z-index: -1;
+            animation: rotateGradient 8s linear infinite;
+        }
+
+        .cta-title {
+            font-size: 2.8em;
+            font-weight: 900;
+            background: linear-gradient(135deg, #4ecdc4, #ff69b4, #4ecdc4);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientShift 3s ease-in-out infinite;
+            margin-bottom: 25px;
+            letter-spacing: 2px;
+            line-height: 1.1;
+            text-shadow: 0 0 40px rgba(78, 205, 196, 0.3);
+        }
+
+        .cta-description {
+            font-size: 1.3em;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.8;
+            margin-bottom: 50px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        @keyframes rotateGradient {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
         .portfolio-footer .portfolio-description {
             font-size: 1.2em;
             color: rgba(255, 255, 255, 0.9);
@@ -1276,35 +1340,67 @@
         .portfolio-buttons {
             display: flex;
             justify-content: center;
-            gap: 25px;
+            gap: 30px;
             flex-wrap: wrap;
+            margin-top: 20px;
         }
 
         .portfolio-btn {
             display: inline-flex;
             align-items: center;
-            gap: 12px;
+            gap: 15px;
             color: white;
-            padding: 16px 32px;
-            border-radius: 25px;
+            padding: 20px 40px;
+            border-radius: 16px;
             text-decoration: none;
-            font-size: 1.1em;
+            font-size: 1.2em;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
+            letter-spacing: 1.5px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
             overflow: hidden;
-            min-width: 150px;
+            min-width: 180px;
             justify-content: center;
+            border: 2px solid transparent;
+            backdrop-filter: blur(10px);
+            box-shadow: 
+                0 8px 30px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
         }
 
         .skeb-btn {
-            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 50%, #d63031 100%);
+            border-color: rgba(255, 107, 107, 0.3);
+        }
+
+        .skeb-btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+            border-radius: inherit;
+            z-index: 1;
         }
 
         .custom-btn {
-            background: linear-gradient(45deg, #4ecdc4, #45b7aa);
+            background: linear-gradient(135deg, #4ecdc4 0%, #45b7aa 50%, #00a085 100%);
+            border-color: rgba(78, 205, 196, 0.3);
+        }
+
+        .custom-btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+            border-radius: inherit;
+            z-index: 1;
         }
 
         .portfolio-btn::before {
@@ -1314,8 +1410,9 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            transition: left 0.6s;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.8s ease;
+            z-index: 2;
         }
 
         .portfolio-btn:hover::before {
@@ -1323,27 +1420,57 @@
         }
 
         .portfolio-btn:hover {
-            transform: translateY(-3px);
+            transform: translateY(-6px) scale(1.02);
+            border-color: rgba(255, 255, 255, 0.4);
         }
 
         .skeb-btn:hover {
-            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.4);
+            box-shadow: 
+                0 20px 50px rgba(255, 107, 107, 0.5),
+                0 0 0 1px rgba(255, 107, 107, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            background: linear-gradient(135deg, #ff7979 0%, #fd7979 50%, #e84393 100%);
         }
 
         .custom-btn:hover {
-            box-shadow: 0 10px 30px rgba(78, 205, 196, 0.4);
+            box-shadow: 
+                0 20px 50px rgba(78, 205, 196, 0.5),
+                0 0 0 1px rgba(78, 205, 196, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            background: linear-gradient(135deg, #55efc4 0%, #00b894 50%, #00a085 100%);
         }
 
         .portfolio-btn .btn-arrow {
-            font-size: 1.2em;
-            transition: transform 0.3s ease;
+            font-size: 1.4em;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            z-index: 3;
         }
 
         .portfolio-btn:hover .btn-arrow {
-            transform: translateX(5px);
+            transform: translateX(8px) scale(1.1);
         }
 
+        /* CTA モバイルレスポンシブ */
         @media (max-width: 768px) {
+            .cta-container {
+                padding: 40px 30px;
+                margin: 30px 20px;
+                border-radius: 20px;
+            }
+            
+            .cta-title {
+                font-size: 2.2em;
+                margin-bottom: 20px;
+                letter-spacing: 1px;
+            }
+            
+            .cta-description {
+                font-size: 1.1em;
+                margin-bottom: 40px;
+                line-height: 1.6;
+            }
+            
             .portfolio-buttons {
                 flex-direction: column;
                 align-items: center;
@@ -1351,7 +1478,9 @@
             }
             
             .portfolio-btn {
-                width: 200px;
+                width: 240px;
+                padding: 18px 30px;
+                font-size: 1.1em;
             }
         }
 
@@ -1654,16 +1783,19 @@
             </div>
             
             <div class="portfolio-footer">
-                <p class="portfolio-description">商業案件～個人案件まで包括的に作品を展開。細部までは独特な世界観がパーティクルしている。</p>
-                <div class="portfolio-buttons">
-                    <a href="https://skeb.jp/@sazinoki" target="_blank" class="portfolio-btn skeb-btn">
-                        <span>SKEB</span>
-                        <span class="btn-arrow">→</span>
-                    </a>
-                    <a href="https://forms.gle/yByaxD1soPS2Vmuf7" target="_blank" class="portfolio-btn custom-btn">
-                        <span>個別依頼</span>
-                        <span class="btn-arrow">→</span>
-                    </a>
+                <div class="cta-container">
+                    <h3 class="cta-title">あなたの想像を形にします</h3>
+                    <p class="cta-description">商業案件〜個人案件まで幅広く対応。<br>まずはお気軽にリクエストください。</p>
+                    <div class="portfolio-buttons">
+                        <a href="https://skeb.jp/@sazinoki" target="_blank" class="portfolio-btn skeb-btn">
+                            <span>SKEB</span>
+                            <span class="btn-arrow">→</span>
+                        </a>
+                        <a href="https://forms.gle/yByaxD1soPS2Vmuf7" target="_blank" class="portfolio-btn custom-btn">
+                            <span>個別依頼</span>
+                            <span class="btn-arrow">→</span>
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>
