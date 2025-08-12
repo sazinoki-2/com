@@ -1255,6 +1255,69 @@
             letter-spacing: 1px;
         }
 
+        /* ポートフォリオセクション追加スタイル */
+        .portfolio-intro {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .portfolio-description {
+            font-size: 1.2em;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .portfolio-more-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(45deg, #4ecdc4, #ff69b4);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 1.1em;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .portfolio-more-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.6s;
+        }
+
+        .portfolio-more-btn:hover::before {
+            left: 100%;
+        }
+
+        .portfolio-more-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(78, 205, 196, 0.4);
+        }
+
+        .btn-arrow {
+            font-size: 1.2em;
+            transition: transform 0.3s ease;
+        }
+
+        .portfolio-more-btn:hover .btn-arrow {
+            transform: translateX(5px);
+        }
+
         /* レスポンシブ */
         @media (max-width: 768px) {
             .main-title { 
@@ -1450,8 +1513,8 @@
                         </div>
                         
                         <div class="profile-description">
-                            AI時代のニュースタンダードを構築するイノベーター。WEB3キャラクター「雪音りう」の原作者として、コンテンツエコシステムをプロデュース。ブロックチェーン上に「雪音りうデジコレ」をローンチし、Web3領域でのエコシステムを展開。<br><br>
-                            業界のBtoB案件中心にイラスト～ストラジテックコンサルまで多角的に支援活動を行う。
+                            AI時代のニュースタンダードを構築するイノベーター。WEB3キャラクター「雪音りう」の原作者ならびにDAOファウンダーとしてブロックチェーン上に「雪音りうデジコレ」をビルド<br>
+                            自身のプロジェクトの枠を超えて、業界のBtoB案件中心にイラスト～ストラジテックコンサルまで多角的に支援活動を行う。
                         </div>
                     </div>
                     
@@ -1519,11 +1582,11 @@
                 <!-- 画像下部にオーバーレイされるテキスト -->
                 <div class="dao-text-overlay">
                     <div class="dao-description">
-                        <p><strong>2024年発祥のクリエイター支援型キャラクターIP</strong></p>
-                        <p>ガイドラインの範囲であれば、<span class="highlight-text">ファンアート（二次創作）を無許諾で商用利用可能</span></p>
-                        <p>電撃的スピードで商品化が実現し、<strong>合成音声ソフト「A.I.VOICE2雪音りう」がリリース</strong></p>
+                        <p><strong>2024年発祥のクリエイター支援型キャラクターブランド</strong></p>
+                        <p>ガイドラインの範囲内であれば、<span class="highlight-text">ファンアートで無許諾で商用起用可能。</span></p>
+                        <p>すでに、<strong>合成音声ソフト「A.I.VOICE2雪音りう」が商品化されリース。</strong></p>
                         <p>多くのファンに親しまれている</p>
-                        <p><span class="web3-text">WEB3型プロジェクト</span> - NFTコレクション『雪音りうデジコレ』を用いたイベント企画が特徴</p>
+                        <p><span class="web3-text">WEB3型プロジェクト</span> - NFTコレクション『雪音りうデジコレ』を用いたエコシステムが特徴</p>
                     </div>
                 </div>
             </div>
@@ -1531,7 +1594,14 @@
 
         <!-- ポートフォリオセクション -->
         <section id="portfolio">
-            <h2>イラストポートフォリオ</h2>
+            <h2>ILLUSTRATION</h2>
+            <div class="portfolio-intro">
+                <p class="portfolio-description">商業案件～個人案件まで包括的に作品を展開。細部までは独特な世界観がパーティクルしている。</p>
+                <a href="#" class="portfolio-more-btn">
+                    <span>MORE THE WORLD</span>
+                    <span class="btn-arrow">→</span>
+                </a>
+            </div>
             <div class="portfolio-grid">
                 <div class="portfolio-item" data-type="portrait" data-image="images/1732068815509.avif">
                     <img src="images/1732068815509.avif" alt="キャラクターイラスト" loading="lazy">
