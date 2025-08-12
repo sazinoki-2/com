@@ -1458,6 +1458,13 @@
                     closeModal();
                 }
             });
+
+            // Escキーでモーダルを閉じる
+            window.addEventListener('keydown', function(event) {
+                if (event.key === 'Escape' && modal.style.display === 'block') {
+                    closeModal();
+                }
+            });
         }
 
         // 複数画像ナビゲーション機能
