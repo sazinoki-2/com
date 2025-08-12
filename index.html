@@ -1026,26 +1026,213 @@
 
         /* コンタクトセクション */
         .contact {
+            background: linear-gradient(135deg, rgba(26, 10, 46, 0.9), rgba(22, 33, 62, 0.9));
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            margin: 100px auto;
+            max-width: 1000px;
+            padding: 80px 60px;
             text-align: center;
-            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .contact::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, transparent, rgba(255, 105, 180, 0.1), transparent, rgba(64, 224, 208, 0.1), transparent);
+            animation: rotateGradient 8s linear infinite;
+            z-index: -1;
+        }
+
+        .contact-header {
+            margin-bottom: 50px;
+        }
+
+        .contact h2 {
+            font-size: 3.2em;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #4ecdc4, #ff69b4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 900;
+            letter-spacing: 2px;
+        }
+
+        .contact-subtitle {
+            font-size: 1.3em;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            margin-top: 60px;
+        }
+
+        .contact-info {
+            text-align: left;
+        }
+
+        .contact-info h3 {
+            font-size: 1.8em;
+            color: #4ecdc4;
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+
+        .contact-detail {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 25px 30px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .contact-detail:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateX(10px);
+        }
+
+        .contact-detail-label {
+            font-size: 0.9em;
+            color: rgba(255, 255, 255, 0.6);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .contact-detail-value {
+            font-size: 1.2em;
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .contact-email {
+            color: #4ecdc4 !important;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-email:hover {
+            color: #ff69b4 !important;
+        }
+
+        .contact-form {
+            text-align: left;
+        }
+
+        .contact-form h3 {
+            font-size: 1.8em;
+            color: #4ecdc4;
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.9em;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 8px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            color: white;
+            font-size: 1em;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #4ecdc4;
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 0 20px rgba(78, 205, 196, 0.3);
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
         }
 
         .contact-btn {
             display: inline-block;
-            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            background: linear-gradient(45deg, #4ecdc4, #ff69b4);
             color: white;
-            padding: 20px 40px;
-            border-radius: 30px;
+            padding: 18px 40px;
+            border-radius: 25px;
             text-decoration: none;
-            font-size: 1.2em;
-            font-weight: bold;
-            margin: 20px;
+            font-size: 1.1em;
+            font-weight: 700;
             transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.6s;
+        }
+
+        .contact-btn:hover::before {
+            left: 100%;
         }
 
         .contact-btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(255, 107, 107, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(78, 205, 196, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .contact {
+                margin: 50px 20px;
+                padding: 60px 30px;
+            }
+            
+            .contact h2 {
+                font-size: 2.5em;
+            }
+            
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
         }
 
         /* レスポンシブ */
@@ -1380,10 +1567,65 @@
 
         <!-- コンタクトセクション -->
         <section id="contact" class="contact">
-            <h2>人生コンサル・ご相談お待ちしています</h2>
-            <p>会社員から自由な人生へ。あなたの夢を現実にするお手伝いをします。</p>
-            <a href="#" class="contact-btn">📧 Contact Me</a>
-            <a href="#" class="contact-btn">💬 無料相談予約</a>
+            <div class="contact-header">
+                <h2>Contact</h2>
+                <p class="contact-subtitle">ビジネスのご相談、コラボレーション、お仕事のご依頼など、お気軽にお問い合わせください。</p>
+            </div>
+            
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>お問い合わせ情報</h3>
+                    
+                    <div class="contact-detail">
+                        <div class="contact-detail-label">Email</div>
+                        <div class="contact-detail-value">
+                            <a href="mailto:sazinoki@yahoo.co.jp" class="contact-email">sazinoki@yahoo.co.jp</a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-detail">
+                        <div class="contact-detail-label">Response Time</div>
+                        <div class="contact-detail-value">24時間以内にご返信</div>
+                    </div>
+                    
+                    <div class="contact-detail">
+                        <div class="contact-detail-label">Business Hours</div>
+                        <div class="contact-detail-value">平日 9:00 - 18:00</div>
+                    </div>
+                    
+                    <div class="contact-detail">
+                        <div class="contact-detail-label">Services</div>
+                        <div class="contact-detail-value">イラスト制作 / コンサルティング / 講演</div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <h3>お問い合わせフォーム</h3>
+                    <form>
+                        <div class="form-group">
+                            <label for="name">お名前</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">メールアドレス</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">件名</label>
+                            <input type="text" id="subject" name="subject" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">メッセージ</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="contact-btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
         </section>
     </div>
 
