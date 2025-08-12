@@ -345,6 +345,47 @@
             color: rgba(255, 255, 255, 0.9);
             font-weight: 400;
         }
+
+        .yuki-riu-highlight {
+            background: linear-gradient(135deg, rgba(255, 105, 180, 0.2), rgba(78, 205, 196, 0.2));
+            border: 1px solid rgba(78, 205, 196, 0.4);
+            border-radius: 8px;
+            padding: 3px 8px;
+            font-weight: 600;
+            color: #4ecdc4;
+            text-shadow: 0 0 15px rgba(78, 205, 196, 0.3);
+            position: relative;
+            display: inline-block;
+            backdrop-filter: blur(5px);
+            box-shadow: 
+                0 2px 10px rgba(78, 205, 196, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+
+        .yuki-riu-highlight::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(78, 205, 196, 0.1) 50%, transparent 70%);
+            border-radius: inherit;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .yuki-riu-highlight:hover::before {
+            opacity: 1;
+        }
+
+        .yuki-riu-highlight:hover {
+            color: #55efc4;
+            border-color: rgba(78, 205, 196, 0.6);
+            text-shadow: 0 0 20px rgba(78, 205, 196, 0.5);
+            transform: translateY(-1px);
+            transition: all 0.3s ease;
+        }
         
         .profile-stats {
             display: grid;
@@ -1802,7 +1843,7 @@
                         
                         <div class="profile-description">
                             AI時代のニュースタンダードを構築するイノベーター。<br>
-                            WEB3キャラクター「雪音りう」の原作者ならびにDAOファウンダーとしてブロックチェーン上に「雪音りうデジコレ」をビルド<br>
+                            WEB3キャラクター<span class="yuki-riu-highlight">「雪音りう」</span>の原作者ならびにDAOファウンダーとしてブロックチェーン上に<span class="yuki-riu-highlight">「雪音りうデジコレ」</span>をビルド<br>
                             自身のプロジェクトの枠を超えて、業界のBtoB案件中心にイラスト～ストラジテックコンサルまで多角的に支援活動を行う。
                         </div>
                     </div>
