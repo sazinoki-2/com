@@ -12,7 +12,7 @@
         }
 
         body {
-            background: linear-gradient(135deg, #1a0a2e 0%, #16213e 25%, #0f3460 50%, #533a7d 75%, #6a4c93 100%);
+            background: #000000;
             color: white;
             font-family: 'Arial', sans-serif;
             overflow-x: hidden;
@@ -381,6 +381,59 @@
             color: rgba(255, 255, 255, 0.8);
             letter-spacing: 2px;
             text-align: center;
+        }
+        
+        .profile-role-badges {
+            position: absolute;
+            bottom: -90px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 2px;
+            flex-wrap: wrap;
+            justify-content: center;
+            width: 100%;
+        }
+        
+        .role-badge {
+            background: transparent;
+            border: none;
+            padding: 4px 8px;
+            font-size: 0.9em;
+            color: #ffffff;
+            font-weight: 400;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            white-space: nowrap;
+            position: relative;
+            letter-spacing: 1px;
+        }
+        
+        .role-badge::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: #ffffff;
+            transition: width 0.3s ease;
+        }
+        
+        .role-badge:hover::after {
+            width: 100%;
+        }
+        
+        .role-badge:hover {
+            color: #ffffff;
+            transform: translateY(-1px);
+        }
+        
+        .role-badge:not(:last-child)::before {
+            content: '/';
+            position: absolute;
+            right: -6px;
+            color: rgba(255, 255, 255, 0.4);
         }
 
         .profile-text {
