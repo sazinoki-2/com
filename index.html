@@ -422,44 +422,30 @@
         .profile-stats {
             display: flex;
             gap: 12px;
-            margin-top: 30px;
+            margin-top: 80px;
             flex-wrap: wrap;
             max-width: 100%;
         }
         
         .profile-stat {
-            background: linear-gradient(135deg, #6a4c93, #4ecdc4);
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 12px;
             padding: 10px 14px;
             text-align: center;
             position: relative;
             overflow: hidden;
             transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.2);
             flex: 1;
             min-width: 0;
             max-width: calc(25% - 9px);
         }
         
-        .profile-stat:nth-child(1) {
-            background: linear-gradient(135deg, #6a4c93, #8e44ad);
-        }
-        
-        .profile-stat:nth-child(2) {
-            background: linear-gradient(135deg, #4ecdc4, #2ecc71);
-        }
-        
-        .profile-stat:nth-child(3) {
-            background: linear-gradient(135deg, #ff69b4, #e74c3c);
-        }
-        
-        .profile-stat:nth-child(4) {
-            background: linear-gradient(135deg, #3498db, #9b59b6);
-        }
         
         .profile-stat:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.4);
             transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
         }
         
         .profile-stat-number {
