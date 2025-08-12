@@ -1030,7 +1030,7 @@
             backdrop-filter: blur(20px);
             border-radius: 30px;
             margin: 100px auto;
-            max-width: 1000px;
+            max-width: 1400px;
             padding: 80px 60px;
             text-align: center;
             position: relative;
@@ -1081,7 +1081,7 @@
 
         .contact-link {
             background: rgba(255, 255, 255, 0.05);
-            padding: 30px 40px;
+            padding: 30px 50px;
             border-radius: 20px;
             border: 1px solid rgba(255, 255, 255, 0.1);
             text-decoration: none;
@@ -1091,7 +1091,7 @@
             flex-direction: column;
             align-items: center;
             gap: 15px;
-            min-width: 200px;
+            min-width: 280px;
             backdrop-filter: blur(10px);
             position: relative;
             overflow: hidden;
@@ -1228,6 +1228,29 @@
                 width: 100%;
                 max-width: 300px;
             }
+        }
+
+        /* フッター */
+        .site-footer {
+            background: linear-gradient(135deg, #000000, #1a1a1a);
+            padding: 40px 0;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 100px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-content p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9em;
+            margin: 0;
+            font-weight: 400;
+            letter-spacing: 1px;
         }
 
         /* レスポンシブ */
@@ -1583,11 +1606,18 @@
                 <a href="#" class="contact-link discord">
                     <div class="contact-icon">💬</div>
                     <div class="contact-platform">Discord</div>
-                    <div class="contact-handle">sazinoki#0000</div>
+                    <div class="contact-handle">sakakkosa</div>
                 </a>
             </div>
         </section>
     </div>
+
+    <!-- フッター -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <p>&copy; 2024 sazinoki.com All rights reserved.</p>
+        </div>
+    </footer>
 
     <script>
         // パーティクル生成
