@@ -651,10 +651,11 @@
         }
 
         .dao-logo {
-            max-width: 400px;
+            max-width: 90%;
+            width: 100%;
             height: auto;
-            margin-bottom: 20px;
-            filter: drop-shadow(0 10px 30px rgba(78, 205, 196, 0.3));
+            margin-bottom: 30px;
+            filter: drop-shadow(0 15px 40px rgba(78, 205, 196, 0.4));
             transition: all 0.3s ease;
         }
 
@@ -809,6 +810,19 @@
             padding: 80px 40px;
             text-align: center;
             background: transparent;
+        }
+
+        .dao-cta-message {
+            font-size: 1.6em;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.95);
+            margin-bottom: 30px;
+            letter-spacing: 2px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(135deg, #ff69b4, #4ecdc4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientShift 4s ease-in-out infinite;
         }
 
         .dao-discord-btn {
@@ -1846,7 +1860,7 @@
             <!-- ロゴを画像の上に -->
             <div class="dao-header">
                 <img src="images/logo-yuki-riu.png" alt="雪音りうロゴ" class="dao-logo">
-                <div class="dao-subtitle">23歳のドラゴンパーカーメスガキここに誕生。</div>
+                <div class="dao-subtitle">北国生まれのドラゴンパーカーメスガキ(23)ここに誕生。</div>
             </div>
             
             <!-- フルスクリーン画像とオーバーレイテキスト -->
@@ -1867,11 +1881,11 @@
             
             <!-- DAO CTA ボタンセクション -->
             <div class="dao-cta-section">
+                <div class="dao-cta-message">物語を共に紡ぐ同志求ム</div>
                 <a href="#" class="dao-discord-btn" target="_blank">
                     <div class="discord-icon">🎮</div>
                     <div class="btn-content">
                         <span class="btn-title">雪音りうDAO</span>
-                        <span class="btn-subtitle">一緒に物語を紡ぎましょう</span>
                     </div>
                     <div class="btn-arrow">→</div>
                 </a>
