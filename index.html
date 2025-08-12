@@ -277,13 +277,16 @@
         .profile-image {
             width: 300px;
             height: 300px;
-            background: linear-gradient(45deg, #6a4c93, #4ecdc4);
             border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4em;
             margin: 0 auto;
+            overflow: hidden;
+        }
+        
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
         }
 
         .profile-text {
@@ -774,16 +777,18 @@
         <section id="profile">
             <h2>Profile</h2>
             <div class="profile-content">
-                <div class="profile-image">🎨</div>
+                <div class="profile-image">
+                    <img src="images/profile.jpg" alt="SAZINOKI Profile">
+                </div>
                 <div class="profile-text">
-                    <p>サラリーマンに消耗し30代で国内大手企業在職後、現在は独立しフリーランスとして活動中。</p>
-                    <br>
                     <p><strong>マイクロ法人『さじかふぇ』経営</strong>：資本金2000万円</p>
-                    <p><strong>不動産経営</strong>：東京都内に賃貸住宅を複数所有・経営</p>
-                    <p><strong>イラストレーター</strong>：企業・個人商業案件多数、商業ソフトキービジュアル担当</p>
-                    <p><strong>資金調達実績</strong>：480万円達成</p>
-                    <p><strong>ゲーミング活動</strong>：ポケモンレート戦上位0.3%、スプラトゥーン上位2%</p>
+                    <br>
+                    <p><strong>不動産経営</strong>：賃貸住宅を複数所有・経営</p>
+                    <br>
                     <p><strong>WEB制作</strong>：自社メディア開設〜WEB制作コーチング経験</p>
+                    <br>
+                    <p><strong>WEB3イラストレーター</strong>：BtoBプロモーション、商業案件多数、キャラクターデザイン、顧問他</p>
+                    <br>
                     <p><strong>WEB3</strong>：暗号資産早期参入（2017年270万円→2025年1400万円運用）</p>
                 </div>
             </div>
@@ -792,19 +797,19 @@
             <div class="stats">
                 <div class="stat-item">
                     <div class="stat-number">300+</div>
-                    <div class="stat-label">作品数</div>
+                    <div class="stat-label">Works</div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-number">50+</div>
-                    <div class="stat-label">クライアント数</div>
+                    <div class="stat-label">Clients</div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-number">200+</div>
-                    <div class="stat-label">相談実績</div>
+                    <div class="stat-label">Consultations</div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-number">2000万</div>
-                    <div class="stat-label">資本金</div>
+                    <div class="stat-label">Capital</div>
                 </div>
             </div>
         </section>
