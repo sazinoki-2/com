@@ -386,6 +386,24 @@
             transform: translateY(-1px);
             transition: all 0.3s ease;
         }
+
+        .web3-term {
+            color: #ff69b4;
+            font-weight: 600;
+            text-shadow: 0 0 10px rgba(255, 105, 180, 0.3);
+        }
+
+        .dao-term {
+            color: #4ecdc4;
+            font-weight: 600;
+            text-shadow: 0 0 10px rgba(78, 205, 196, 0.3);
+        }
+
+        .consulting-term {
+            color: #ffd700;
+            font-weight: 600;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+        }
         
         .profile-stats {
             display: grid;
@@ -570,24 +588,20 @@
         .litlink-btn {
             display: inline-flex;
             align-items: center;
-            gap: 12px;
-            padding: 15px 25px;
-            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 50%, #d63031 100%);
-            border-radius: 20px;
-            color: white;
+            gap: 8px;
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            color: rgba(255, 255, 255, 0.8);
             text-decoration: none;
-            font-size: 1em;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            font-size: 0.85em;
+            font-weight: 500;
+            letter-spacing: 0.5px;
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
-            border: 2px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.15);
             backdrop-filter: blur(10px);
-            box-shadow: 
-                0 6px 20px rgba(255, 107, 107, 0.3),
-                inset 0 1px 0 rgba(255, 255, 255, 0.2);
         }
 
         .litlink-btn::before {
@@ -607,16 +621,14 @@
         }
 
         .litlink-btn:hover {
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 
-                0 12px 30px rgba(255, 107, 107, 0.5),
-                0 0 0 1px rgba(255, 255, 255, 0.3),
-                inset 0 1px 0 rgba(255, 255, 255, 0.3);
-            background: linear-gradient(135deg, #ff7979 0%, #fd7979 50%, #e84393 100%);
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.3);
+            color: white;
+            transform: translateY(-1px);
         }
 
         .litlink-icon {
-            font-size: 1.3em;
+            font-size: 1em;
             z-index: 2;
             position: relative;
         }
@@ -624,18 +636,29 @@
         .litlink-text {
             z-index: 2;
             position: relative;
-            font-weight: 700;
+            font-weight: 500;
         }
 
         .litlink-arrow {
-            font-size: 1.2em;
+            font-size: 0.9em;
             transition: transform 0.3s ease;
             z-index: 2;
             position: relative;
         }
 
         .litlink-btn:hover .litlink-arrow {
-            transform: translateX(5px);
+            transform: translateX(3px);
+        }
+
+        .profile-title-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .litlink-container-inline {
+            flex-shrink: 0;
         }
 
         .business-grid {
@@ -1934,14 +1957,23 @@
                     
                     <div class="profile-main-content">
                         <div class="profile-title-section">
-                            <div class="profile-title">LUKKY STAFF</div>
+                            <div class="profile-title-row">
+                                <div class="profile-title">LUKKY STAFF</div>
+                                <div class="litlink-container-inline">
+                                    <a href="https://lit.link/sazinoki" target="_blank" class="litlink-btn">
+                                        <div class="litlink-icon">🔗</div>
+                                        <span class="litlink-text">Lit.link</span>
+                                        <div class="litlink-arrow">→</div>
+                                    </a>
+                                </div>
+                            </div>
                             <div class="profile-subtitle">PRODUCT DESIGNER</div>
                         </div>
                         
                         <div class="profile-description">
                             AI時代のニュースタンダードを構築するイノベーター。<br>
-                            WEB3キャラクター<span class="yuki-riu-highlight">「雪音りう」</span>の原作者ならびにDAOファウンダーとしてブロックチェーン上に<span class="yuki-riu-highlight">「雪音りうデジコレ」</span>をビルド<br>
-                            自身のプロジェクトの枠を超えて、業界のBtoB案件中心にイラスト～ストラジテックコンサルまで多角的に支援活動を行う。
+                            <span class="web3-term">WEB3</span>キャラクター<span class="yuki-riu-highlight">「雪音りう」</span>の原作者ならびに<span class="dao-term">DAOファウンダー</span>としてブロックチェーン上に<span class="yuki-riu-highlight">「雪音りうデジコレ」</span>をビルド<br>
+                            自身のプロジェクトの枠を超えて、業界のBtoB案件中心に<span class="consulting-term">イラスト～ストラジテックコンサル</span>まで多角的に支援活動を行う。
                         </div>
                     </div>
                     
@@ -1969,15 +2001,6 @@
                             <div class="profile-image-stat-number">240+</div>
                             <div class="profile-image-stat-label">Works</div>
                         </div>
-                    </div>
-                    
-                    <!-- Lit.link ボタン -->
-                    <div class="litlink-container">
-                        <a href="https://lit.link/sazinoki" target="_blank" class="litlink-btn">
-                            <div class="litlink-icon">🔗</div>
-                            <span class="litlink-text">Lit.link</span>
-                            <div class="litlink-arrow">→</div>
-                        </a>
                     </div>
                 </div>
             </div>
