@@ -388,69 +388,55 @@
             border-radius: 20px;
         }
         
-        .profile-name {
-            position: absolute;
-            bottom: -35px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 1.2em;
+        .profile-header {
+            margin-bottom: 30px;
+        }
+        
+        .profile-sazinoki {
+            font-size: 1.8em;
             font-weight: 600;
-            color: rgba(255, 255, 255, 0.8);
-            letter-spacing: 2px;
-            text-align: center;
+            color: rgba(255, 255, 255, 0.9);
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+        }
+        
+        .profile-divider {
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(45deg, #4ecdc4, #6a4c93);
+            margin-bottom: 20px;
         }
         
         .profile-role-badges {
             position: absolute;
-            bottom: -90px;
+            bottom: -80px;
             left: 50%;
             transform: translateX(-50%);
-            display: flex;
-            gap: 2px;
-            flex-wrap: wrap;
-            justify-content: center;
-            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px 12px;
+            width: 280px;
         }
         
         .role-badge {
             background: transparent;
-            border: none;
-            padding: 4px 8px;
-            font-size: 0.9em;
-            color: #ffffff;
-            font-weight: 400;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            padding: 8px 12px;
+            font-size: 0.85em;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 500;
             transition: all 0.3s ease;
             cursor: pointer;
+            text-align: center;
             white-space: nowrap;
-            position: relative;
-            letter-spacing: 1px;
-        }
-        
-        .role-badge::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 0;
-            height: 1px;
-            background: #ffffff;
-            transition: width 0.3s ease;
-        }
-        
-        .role-badge:hover::after {
-            width: 100%;
         }
         
         .role-badge:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.4);
             color: #ffffff;
-            transform: translateY(-1px);
-        }
-        
-        .role-badge:not(:last-child)::before {
-            content: '/';
-            position: absolute;
-            right: -6px;
-            color: rgba(255, 255, 255, 0.4);
+            transform: translateY(-2px);
         }
 
         .profile-text {
@@ -1022,12 +1008,14 @@
             }
             
             .profile-role-badges {
-                bottom: -80px;
+                bottom: -70px;
+                width: 250px;
+                gap: 6px 8px;
             }
             
             .role-badge {
-                font-size: 0.8em;
-                padding: 5px 10px;
+                font-size: 0.75em;
+                padding: 6px 8px;
             }
             
             .profile-stats {
@@ -1137,6 +1125,11 @@
         <section id="profile">
             <div class="profile-content">
                 <div class="profile-text">
+                    <div class="profile-header">
+                        <div class="profile-sazinoki">SAZINOKI</div>
+                        <div class="profile-divider"></div>
+                    </div>
+                    
                     <div class="profile-title">LUKKY STAFF</div>
                     <div class="profile-subtitle">PRODUCT DESIGNER</div>
                     
@@ -1168,7 +1161,6 @@
                 </div>
                 <div class="profile-image">
                     <img src="images/profile.jpg" alt="SAZINOKI Profile">
-                    <div class="profile-name">SAZINOKI</div>
                     <div class="profile-role-badges">
                         <div class="role-badge">投資家</div>
                         <div class="role-badge">事業家</div>
