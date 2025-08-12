@@ -831,33 +831,6 @@
             transform: scale(1.05);
         }
 
-        .portfolio-item-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
-            padding: 20px;
-            transform: translateY(100%);
-            transition: transform 0.3s ease;
-        }
-
-        .portfolio-item:hover .portfolio-item-overlay {
-            transform: translateY(0);
-        }
-
-        .portfolio-item-title {
-            color: white;
-            font-size: 1em;
-            font-weight: 600;
-            margin-bottom: 5px;
-        }
-
-        .portfolio-item-description {
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 0.85em;
-            line-height: 1.4;
-        }
 
         /* レスポンシブ対応 */
         @media (max-width: 1200px) {
@@ -1276,47 +1249,23 @@
         <section id="portfolio">
             <h2>イラストポートフォリオ</h2>
             <div class="portfolio-grid">
-                <div class="portfolio-item" data-type="portrait">
+                <div class="portfolio-item" data-type="portrait" data-image="images/1732068815509.avif">
                     <img src="images/1732068815509.avif" alt="キャラクターイラスト" loading="lazy">
-                    <div class="portfolio-item-overlay">
-                        <div class="portfolio-item-title">キャラクターイラスト</div>
-                        <div class="portfolio-item-description">オリジナルキャラクターデザイン</div>
-                    </div>
                 </div>
-                <div class="portfolio-item" data-type="landscape">
+                <div class="portfolio-item" data-type="landscape" data-image="images/a5_cover_ぼいぐら_se3_rgb.clip2_.jpg">
                     <img src="images/a5_cover_ぼいぐら_se3_rgb.clip2_.jpg" alt="ボイスグランプリ表紙" loading="lazy">
-                    <div class="portfolio-item-overlay">
-                        <div class="portfolio-item-title">商業イラスト</div>
-                        <div class="portfolio-item-description">ボイスグランプリ表紙デザイン</div>
-                    </div>
                 </div>
-                <div class="portfolio-item" data-type="portrait">
+                <div class="portfolio-item" data-type="portrait" data-image="images/mogmet.png50-1096x1536.jpg">
                     <img src="images/mogmet.png50-1096x1536.jpg" alt="キャラクターデザイン" loading="lazy">
-                    <div class="portfolio-item-overlay">
-                        <div class="portfolio-item-title">キャラクターデザイン</div>
-                        <div class="portfolio-item-description">ゲーム用キャラクター制作</div>
-                    </div>
                 </div>
-                <div class="portfolio-item" data-type="portrait">
+                <div class="portfolio-item" data-type="portrait" data-image="images/orikyara0424.png">
                     <img src="images/orikyara0424.png" alt="オリジナルキャラクター" loading="lazy">
-                    <div class="portfolio-item-overlay">
-                        <div class="portfolio-item-title">オリジナルキャラクター</div>
-                        <div class="portfolio-item-description">創作キャラクターイラスト</div>
-                    </div>
                 </div>
-                <div class="portfolio-item" data-type="landscape">
+                <div class="portfolio-item" data-type="landscape" data-image="images/hosino.pngt7.png">
                     <img src="images/hosino.pngt7.png" alt="星野キャラクター" loading="lazy">
-                    <div class="portfolio-item-overlay">
-                        <div class="portfolio-item-title">アニメ風イラスト</div>
-                        <div class="portfolio-item-description">アニメ調キャラクターイラスト</div>
-                    </div>
                 </div>
-                <div class="portfolio-item" data-type="portrait">
+                <div class="portfolio-item" data-type="portrait" data-image="images/yuki-riu.png">
                     <img src="images/yuki-riu.png" alt="雪音りう" loading="lazy">
-                    <div class="portfolio-item-overlay">
-                        <div class="portfolio-item-title">雪音りう</div>
-                        <div class="portfolio-item-description">オリジナルキャラクター「雪音りう」</div>
-                    </div>
                 </div>
             </div>
         </section>
@@ -1437,30 +1386,27 @@
             portfolioItems.forEach(item => {
                 item.addEventListener('click', function() {
                     const type = this.getAttribute('data-type');
-                    const imagesData = this.getAttribute('data-images');
+                    const imageUrl = this.getAttribute('data-image');
                     
-                    if (imagesData) {
-                        // 画像がある場合は画像を表示
-                        const images = JSON.parse(imagesData);
-                        const mainImage = Array.isArray(images) ? images[0] : images;
-                        
+                    if (imageUrl) {
+                        // 静的画像を表示
                         modalContent.innerHTML = `
-                            <img src="${mainImage.url}" alt="ポートフォリオ画像" 
+                            <img src="${imageUrl}" alt="ポートフォリオ画像" 
                                  style="width: 100%; height: 100%; object-fit: contain; border-radius: 15px;">
                         `;
                         modalContent.className = 'modal-content ' + type;
                         modal.style.display = 'block';
-                        
-                        // 複数画像の場合はナビゲーション追加
-                        if (Array.isArray(images) && images.length > 1) {
-                            addImageNavigation(images, modalContent);
-                        }
                     } else {
-                        // 画像がない場合はテキスト表示
-                        const text = this.textContent;
-                        modalText.textContent = text;
-                        modalContent.className = 'modal-content ' + type;
-                        modal.style.display = 'block';
+                        // フォールバック
+                        const img = this.querySelector('img');
+                        if (img) {
+                            modalContent.innerHTML = `
+                                <img src="${img.src}" alt="ポートフォリオ画像" 
+                                     style="width: 100%; height: 100%; object-fit: contain; border-radius: 15px;">
+                            `;
+                            modalContent.className = 'modal-content ' + type;
+                            modal.style.display = 'block';
+                        }
                     }
                 });
             });
