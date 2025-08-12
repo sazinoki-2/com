@@ -791,52 +791,98 @@
             100% { transform: rotate(360deg); }
         }
 
-        /* ポートフォリオグリッド */
+        /* ポートフォリオグリッド - Pinterest風 */
         .portfolio-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
+            columns: 4;
+            column-gap: 20px;
             margin-top: 50px;
-            justify-content: flex-start;
+            padding: 0 20px;
         }
 
         .portfolio-item {
-            width: 200px;
-            height: 280px;
-            background: linear-gradient(45deg, #6a4c93, #4ecdc4);
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1em;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            position: relative;
+            break-inside: avoid;
+            margin-bottom: 20px;
+            border-radius: 16px;
             overflow: hidden;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s ease;
             cursor: pointer;
-            flex-shrink: 0;
+            position: relative;
         }
 
         .portfolio-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            transform: translateY(-8px);
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.3),
+                0 0 0 1px rgba(255, 255, 255, 0.2);
         }
 
-        .portfolio-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
+        .portfolio-item img {
             width: 100%;
-            height: 100%;
-            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-            transform: translateX(-100%);
-            transition: transform 0.6s;
+            height: auto;
+            display: block;
+            transition: transform 0.4s ease;
         }
 
-        .portfolio-item:hover::before {
-            transform: translateX(100%);
+        .portfolio-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .portfolio-item-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            padding: 20px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .portfolio-item:hover .portfolio-item-overlay {
+            transform: translateY(0);
+        }
+
+        .portfolio-item-title {
+            color: white;
+            font-size: 1em;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .portfolio-item-description {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.85em;
+            line-height: 1.4;
+        }
+
+        /* レスポンシブ対応 */
+        @media (max-width: 1200px) {
+            .portfolio-grid {
+                columns: 3;
+                column-gap: 15px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .portfolio-grid {
+                columns: 2;
+                column-gap: 10px;
+                padding: 0 10px;
+            }
+            
+            .portfolio-item {
+                margin-bottom: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .portfolio-grid {
+                columns: 1;
+                padding: 0;
+            }
         }
 
         /* モーダル */
@@ -1232,12 +1278,48 @@
         <section id="portfolio">
             <h2>イラストポートフォリオ</h2>
             <div class="portfolio-grid">
-                <div class="portfolio-item" data-type="portrait">キャラクター<br>デザイン #01</div>
-                <div class="portfolio-item" data-type="landscape">商業イラスト #02</div>
-                <div class="portfolio-item" data-type="portrait">アニメ風<br>イラスト #03</div>
-                <div class="portfolio-item" data-type="landscape">ゲームキービジュアル #04</div>
-                <div class="portfolio-item" data-type="portrait">ブランドロゴ #05</div>
-                <div class="portfolio-item" data-type="portrait">コンセプト<br>アート #06</div>
+                <div class="portfolio-item" data-type="portrait">
+                    <img src="images/1732068815509.avif" alt="キャラクターイラスト" loading="lazy">
+                    <div class="portfolio-item-overlay">
+                        <div class="portfolio-item-title">キャラクターイラスト</div>
+                        <div class="portfolio-item-description">オリジナルキャラクターデザイン</div>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-type="landscape">
+                    <img src="images/a5_cover_ぼいぐら_se3_rgb.clip2_.jpg" alt="ボイスグランプリ表紙" loading="lazy">
+                    <div class="portfolio-item-overlay">
+                        <div class="portfolio-item-title">商業イラスト</div>
+                        <div class="portfolio-item-description">ボイスグランプリ表紙デザイン</div>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-type="portrait">
+                    <img src="images/mogmet.png50-1096x1536.jpg" alt="キャラクターデザイン" loading="lazy">
+                    <div class="portfolio-item-overlay">
+                        <div class="portfolio-item-title">キャラクターデザイン</div>
+                        <div class="portfolio-item-description">ゲーム用キャラクター制作</div>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-type="portrait">
+                    <img src="images/orikyara0424.png" alt="オリジナルキャラクター" loading="lazy">
+                    <div class="portfolio-item-overlay">
+                        <div class="portfolio-item-title">オリジナルキャラクター</div>
+                        <div class="portfolio-item-description">創作キャラクターイラスト</div>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-type="landscape">
+                    <img src="images/hosino.pngt7.png" alt="星野キャラクター" loading="lazy">
+                    <div class="portfolio-item-overlay">
+                        <div class="portfolio-item-title">アニメ風イラスト</div>
+                        <div class="portfolio-item-description">アニメ調キャラクターイラスト</div>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-type="portrait">
+                    <img src="images/yuki-riu.png" alt="雪音りう" loading="lazy">
+                    <div class="portfolio-item-overlay">
+                        <div class="portfolio-item-title">雪音りう</div>
+                        <div class="portfolio-item-description">オリジナルキャラクター「雪音りう」</div>
+                    </div>
+                </div>
             </div>
         </section>
 
