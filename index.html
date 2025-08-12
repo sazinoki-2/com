@@ -865,8 +865,24 @@
             top: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
+            background-color: rgba(0, 0, 0, 0.7);
             backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            opacity: 0;
+        }
+
+        .modal-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            filter: blur(20px) brightness(0.3);
+            transform: scale(1.1);
+            z-index: -1;
         }
 
         .modal-content {
@@ -1272,6 +1288,7 @@
 
         <!-- モーダル -->
         <div id="imageModal" class="modal">
+            <div class="modal-background" id="modalBackground"></div>
             <span class="close">&times;</span>
             <div class="modal-content" id="modalContent">
                 <div id="modalText">選択された作品</div>
@@ -1379,6 +1396,7 @@
         function setupPortfolioModal() {
             const modal = document.getElementById('imageModal');
             const modalContent = document.getElementById('modalContent');
+            const modalBackground = document.getElementById('modalBackground');
             const modalText = document.getElementById('modalText');
             const closeBtn = document.querySelector('.close');
             const portfolioItems = document.querySelectorAll('.portfolio-item');
@@ -1389,35 +1407,55 @@
                     const imageUrl = this.getAttribute('data-image');
                     
                     if (imageUrl) {
+                        // 背景にぼかした同じ画像を設定
+                        modalBackground.style.backgroundImage = `url(${imageUrl})`;
+                        
                         // 静的画像を表示
                         modalContent.innerHTML = `
                             <img src="${imageUrl}" alt="ポートフォリオ画像" 
-                                 style="width: 100%; height: 100%; object-fit: contain; border-radius: 15px;">
+                                 style="width: 100%; height: 100%; object-fit: contain; border-radius: 15px; box-shadow: 0 0 50px rgba(0,0,0,0.5);">
                         `;
                         modalContent.className = 'modal-content ' + type;
                         modal.style.display = 'block';
+                        
+                        // フェードインアニメーション
+                        setTimeout(() => {
+                            modal.style.opacity = '1';
+                        }, 10);
                     } else {
                         // フォールバック
                         const img = this.querySelector('img');
                         if (img) {
+                            modalBackground.style.backgroundImage = `url(${img.src})`;
+                            
                             modalContent.innerHTML = `
                                 <img src="${img.src}" alt="ポートフォリオ画像" 
-                                     style="width: 100%; height: 100%; object-fit: contain; border-radius: 15px;">
+                                     style="width: 100%; height: 100%; object-fit: contain; border-radius: 15px; box-shadow: 0 0 50px rgba(0,0,0,0.5);">
                             `;
                             modalContent.className = 'modal-content ' + type;
                             modal.style.display = 'block';
+                            
+                            setTimeout(() => {
+                                modal.style.opacity = '1';
+                            }, 10);
                         }
                     }
                 });
             });
 
-            closeBtn.addEventListener('click', function() {
-                modal.style.display = 'none';
-            });
+            function closeModal() {
+                modal.style.opacity = '0';
+                setTimeout(() => {
+                    modal.style.display = 'none';
+                    modalBackground.style.backgroundImage = '';
+                }, 300);
+            }
+
+            closeBtn.addEventListener('click', closeModal);
 
             window.addEventListener('click', function(event) {
                 if (event.target === modal) {
-                    modal.style.display = 'none';
+                    closeModal();
                 }
             });
         }
