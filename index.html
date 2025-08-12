@@ -106,238 +106,176 @@
             padding: 0 20px;
         }
 
-        /* ヒーローセクション */
-        .hero {
+        /* メインヘッダーセクション */
+        .main-header {
             height: 100vh;
+            position: relative;
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #000000 100%);
+            overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
-            text-align: center;
-            position: relative;
-            background: transparent;
-            overflow: hidden;
         }
-        
-        .hero::before {
-            content: '';
+
+        .sazinoki-animation-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .animated-sazinoki {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: 
-                radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.03) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.05) 0%, transparent 50%),
-                linear-gradient(180deg, transparent 0%, rgba(255, 255, 255, 0.02) 100%);
+            pointer-events: none;
             z-index: 1;
         }
 
-        .hero-content h1 {
-            font-size: 9em;
-            margin-bottom: 20px;
-            background: linear-gradient(45deg, #00ffff, #ff1493);
-            background-size: 200% 200%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .flying-sazinoki {
+            position: absolute;
             font-weight: 900;
-            letter-spacing: 12px;
-            animation: titleEntry 2s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards,
-                       colorShift 3s ease-in-out 2s infinite;
-            opacity: 0;
-            transform: scale(0.3) rotateX(90deg);
-            text-shadow: 0 0 40px rgba(0, 255, 255, 0.5);
+            font-size: 2em;
+            color: rgba(255, 255, 255, 0.1);
+            letter-spacing: 4px;
+            user-select: none;
+            pointer-events: none;
+            animation: flyAcross linear infinite;
         }
 
-        @keyframes cyberpunkGlitch {
-            0% { 
-                transform: translate(0);
-                filter: hue-rotate(0deg) brightness(1.2) contrast(1.3);
+        @keyframes flyAcross {
+            0% {
+                opacity: 0;
+                transform: translateX(-100px) translateY(var(--start-y)) scale(0.5);
             }
-            10% { 
-                transform: translate(-2px, 2px);
-                filter: hue-rotate(10deg) brightness(1.4) contrast(1.5);
-            }
-            20% { 
-                transform: translate(-1px, -1px);
-                filter: hue-rotate(-10deg) brightness(0.9) contrast(1.8);
-            }
-            30% { 
-                transform: translate(1px, 2px);
-                filter: hue-rotate(15deg) brightness(1.6) contrast(1.2);
-            }
-            40% { 
-                transform: translate(1px, -1px);
-                filter: hue-rotate(-5deg) brightness(1.1) contrast(1.7);
-            }
-            50% { 
-                transform: translate(-1px, 2px);
-                filter: hue-rotate(20deg) brightness(1.8) contrast(1.4);
-            }
-            60% { 
-                transform: translate(-1px, 1px);
-                filter: hue-rotate(-15deg) brightness(0.8) contrast(2.0);
-            }
-            70% { 
-                transform: translate(0px, 1px);
-                filter: hue-rotate(25deg) brightness(1.5) contrast(1.1);
-            }
-            80% { 
-                transform: translate(1px, 0px);
-                filter: hue-rotate(-20deg) brightness(1.3) contrast(1.6);
-            }
-            90% { 
-                transform: translate(0px, -1px);
-                filter: hue-rotate(30deg) brightness(1.7) contrast(1.3);
-            }
-            100% { 
-                transform: translate(0);
-                filter: hue-rotate(0deg) brightness(1.2) contrast(1.3);
-            }
-        }
-
-        @keyframes colorWave {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-
-        @keyframes titleEntry {
-            0% { 
-                opacity: 0; 
-                transform: scale(0.3) rotateX(90deg);
-            }
-            50% {
+            5% {
                 opacity: 1;
-                transform: scale(1.1) rotateX(0deg);
             }
-            100% { 
-                opacity: 1; 
-                transform: scale(1) rotateX(0deg);
+            95% {
+                opacity: 1;
             }
+            100% {
+                opacity: 0;
+                transform: translateX(calc(100vw + 100px)) translateY(var(--end-y)) scale(1.5);
+            }
+        }
+
+        .flying-sazinoki:nth-child(odd) {
+            animation-direction: reverse;
+            color: rgba(255, 255, 255, 0.08);
+        }
+
+        .flying-sazinoki:nth-child(3n) {
+            font-size: 1.5em;
+            color: rgba(255, 255, 255, 0.15);
+        }
+
+        .flying-sazinoki:nth-child(5n) {
+            font-size: 3em;
+            color: rgba(255, 255, 255, 0.05);
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            color: white;
+        }
+
+        .main-title {
+            font-size: 12em;
+            font-weight: 900;
+            color: #ffffff;
+            letter-spacing: 20px;
+            margin-bottom: 30px;
+            text-shadow: 
+                0 0 20px rgba(255, 255, 255, 0.3),
+                0 0 40px rgba(255, 255, 255, 0.2),
+                0 0 60px rgba(255, 255, 255, 0.1);
+            animation: titlePulse 3s ease-in-out infinite;
+        }
+
+        .header-tagline {
+            font-size: 2em;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.8);
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            margin-top: 20px;
         }
 
         @keyframes titlePulse {
-            0%, 100% { 
+            0%, 100% {
                 text-shadow: 
-                    0 0 20px rgba(255, 255, 255, 0.8),
-                    0 0 40px rgba(255, 255, 255, 0.6),
-                    0 0 60px rgba(255, 255, 255, 0.4);
+                    0 0 20px rgba(255, 255, 255, 0.3),
+                    0 0 40px rgba(255, 255, 255, 0.2),
+                    0 0 60px rgba(255, 255, 255, 0.1);
             }
-            50% { 
+            50% {
                 text-shadow: 
-                    0 0 30px rgba(255, 255, 255, 1),
-                    0 0 60px rgba(255, 255, 255, 0.8),
-                    0 0 90px rgba(255, 255, 255, 0.6);
-            }
-        }
-
-        .hero-tagline {
-            font-size: 1.8em;
-            margin-bottom: 15px;
-            color: rgba(255, 255, 255, 0.8);
-            font-weight: 300;
-            letter-spacing: 8px;
-            text-transform: uppercase;
-            animation: taglineSlide 1.5s ease-out 0.8s forwards;
-            opacity: 0;
-            transform: translateY(30px);
-        }
-        
-        .hero-subtitle {
-            font-size: 4em;
-            margin-bottom: 60px;
-            background: linear-gradient(45deg, #ffffff, #00ffff);
-            background-size: 200% 200%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-weight: 700;
-            letter-spacing: 6px;
-            animation: subtitleEntry 1.8s ease-out 1.2s forwards,
-                       glowPulse 2s ease-in-out 3s infinite;
-            opacity: 0;
-            transform: scale(0.8);
-            text-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
-        }
-
-        @keyframes subtitleSlide {
-            to { 
-                opacity: 1; 
-                transform: translateY(0);
-            }
-        }
-
-        .status-indicator {
-            display: inline-flex;
-            align-items: center;
-            gap: 15px;
-            background: linear-gradient(45deg, rgba(0, 191, 255, 0.2), rgba(255, 105, 180, 0.2));
-            padding: 15px 25px;
-            border-radius: 25px;
-            margin: 20px 0;
-            border: 2px solid transparent;
-            background-clip: padding-box;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .status-indicator::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            animation: scanline 2s infinite;
-        }
-
-        @keyframes scanline {
-            0% { left: -100%; }
-            100% { left: 100%; }
-        }
-
-        .status-text {
-            font-weight: bold;
-            background: linear-gradient(45deg, #00bfff, #ff69b4);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-family: 'Courier New', monospace;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .status-dot {
-            width: 15px;
-            height: 15px;
-            background: radial-gradient(circle, #00ff00, #00aa00);
-            border-radius: 50%;
-            animation: pulseGlow 1.5s infinite;
-            box-shadow: 0 0 20px #00ff00;
-        }
-
-        @keyframes pulseGlow {
-            0%, 100% { 
-                transform: scale(1);
-                box-shadow: 0 0 20px #00ff00;
-            }
-            50% { 
-                transform: scale(1.3);
-                box-shadow: 0 0 30px #00ff00, 0 0 40px #00ff00;
+                    0 0 30px rgba(255, 255, 255, 0.5),
+                    0 0 60px rgba(255, 255, 255, 0.3),
+                    0 0 90px rgba(255, 255, 255, 0.2);
             }
         }
 
         /* セクション共通スタイル */
         section {
-            padding: 100px 0;
+            padding: 120px 0;
             position: relative;
+            margin: 100px 0;
+            border-radius: 30px;
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        section::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #ff69b4, #4ecdc4, #6a4c93, #ff69b4);
+            background-size: 300% 300%;
+            border-radius: 32px;
+            z-index: -1;
+            animation: gradientBorder 6s ease-in-out infinite;
+            opacity: 0.3;
+        }
+
+        @keyframes gradientBorder {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
         }
 
         section h2 {
-            font-size: 2.5em;
+            font-size: 3em;
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 60px;
             background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            font-weight: 900;
+            letter-spacing: 3px;
+            position: relative;
+        }
+
+        section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(45deg, #ff69b4, #4ecdc4);
+            border-radius: 2px;
         }
 
         /* プロフィールセクション */
@@ -1058,19 +996,26 @@
 
         /* レスポンシブ */
         @media (max-width: 768px) {
-            .hero-content h1 { 
-                font-size: 5em; 
-                letter-spacing: 6px;
+            .main-title { 
+                font-size: 6em; 
+                letter-spacing: 8px;
             }
             
-            .hero-tagline { 
+            .header-tagline { 
                 font-size: 1.2em;
                 letter-spacing: 4px; 
             }
             
-            .hero-subtitle { 
-                font-size: 2.5em;
-                letter-spacing: 3px; 
+            .flying-sazinoki {
+                font-size: 1.2em;
+            }
+            
+            .flying-sazinoki:nth-child(3n) {
+                font-size: 1em;
+            }
+            
+            .flying-sazinoki:nth-child(5n) {
+                font-size: 2em;
             }
             
             .profile-content { 
@@ -1208,19 +1153,18 @@
         <a href="#contact" class="nav-btn">Contact</a>
     </nav>
 
-    <div class="container">
-        <!-- ヒーローセクション -->
-        <section class="hero">
-            <div class="hero-content">
-                <h1>SAZINOKI</h1>
-                <div class="hero-tagline">BEFORE DAY BREAK</div>
-                <div class="hero-subtitle">FRONTLINE</div>
-                <div class="status-indicator">
-                    <div class="status-dot"></div>
-                    <span class="status-text">READY TO CREATE</span>
-                </div>
+    <!-- ヘッダーセクション -->
+    <header class="main-header">
+        <div class="sazinoki-animation-container">
+            <div class="animated-sazinoki" id="animatedTexts"></div>
+            <div class="header-content">
+                <h1 class="main-title">SAZINOKI</h1>
+                <div class="header-tagline">CREATIVE FRONTLINE</div>
             </div>
-        </section>
+        </div>
+    </header>
+
+    <div class="container">
 
         <!-- プロフィールセクション -->
         <section id="profile">
@@ -1401,6 +1345,34 @@
             }
         }
 
+        // SAZINOKIアニメーション生成
+        function createSazinokiAnimation() {
+            const container = document.getElementById('animatedTexts');
+            const textCount = 80; // 大量のテキスト
+
+            for (let i = 0; i < textCount; i++) {
+                const textElement = document.createElement('div');
+                textElement.className = 'flying-sazinoki';
+                textElement.textContent = 'SAZINOKI';
+                
+                // ランダムな開始・終了Y位置
+                const startY = Math.random() * window.innerHeight;
+                const endY = Math.random() * window.innerHeight;
+                
+                textElement.style.setProperty('--start-y', startY + 'px');
+                textElement.style.setProperty('--end-y', endY + 'px');
+                
+                // ランダムなアニメーション持続時間とディレイ
+                const duration = Math.random() * 3 + 2; // 2-5秒
+                const delay = Math.random() * 10; // 0-10秒のディレイ
+                
+                textElement.style.animationDuration = duration + 's';
+                textElement.style.animationDelay = delay + 's';
+                
+                container.appendChild(textElement);
+            }
+        }
+
         // スムーススクロール
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -1526,6 +1498,7 @@
 
         // 初期化
         createParticles();
+        createSazinokiAnimation();
         setupPortfolioModal();
 
         // スクロールエフェクト + DAO オーバーレイ制御
