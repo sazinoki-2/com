@@ -114,23 +114,38 @@
             justify-content: center;
             text-align: center;
             position: relative;
+            background: linear-gradient(135deg, #000000, #1a1a1a, #000000);
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.05) 0%, transparent 50%),
+                linear-gradient(180deg, transparent 0%, rgba(255, 255, 255, 0.02) 100%);
+            z-index: 1;
         }
 
         .hero-content h1 {
-            font-size: 4em;
-            margin-bottom: 20px;
-            background: linear-gradient(45deg, #00bfff, #ff69b4, #87ceeb, #ff1493, #40e0d0, #ff69b4);
-            background-size: 400% 400%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: cyberpunkGlitch 0.15s infinite, colorWave 3s infinite;
-            position: relative;
+            font-size: 8em;
+            margin-bottom: 30px;
+            color: #ffffff;
+            font-weight: 900;
+            letter-spacing: 8px;
             text-shadow: 
-                2px 0 #ff69b4,
-                -2px 0 #00bfff,
-                0 2px #ff1493,
-                0 -2px #40e0d0;
-            filter: brightness(1.2) contrast(1.3);
+                0 0 20px rgba(255, 255, 255, 0.8),
+                0 0 40px rgba(255, 255, 255, 0.6),
+                0 0 60px rgba(255, 255, 255, 0.4);
+            animation: titleEntry 2s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards,
+                       titlePulse 3s ease-in-out 2s infinite;
+            opacity: 0;
+            transform: scale(0.3) rotateX(90deg);
         }
 
         @keyframes cyberpunkGlitch {
@@ -185,10 +200,52 @@
             50% { background-position: 100% 50%; }
         }
 
+        @keyframes titleEntry {
+            0% { 
+                opacity: 0; 
+                transform: scale(0.3) rotateX(90deg);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.1) rotateX(0deg);
+            }
+            100% { 
+                opacity: 1; 
+                transform: scale(1) rotateX(0deg);
+            }
+        }
+
+        @keyframes titlePulse {
+            0%, 100% { 
+                text-shadow: 
+                    0 0 20px rgba(255, 255, 255, 0.8),
+                    0 0 40px rgba(255, 255, 255, 0.6),
+                    0 0 60px rgba(255, 255, 255, 0.4);
+            }
+            50% { 
+                text-shadow: 
+                    0 0 30px rgba(255, 255, 255, 1),
+                    0 0 60px rgba(255, 255, 255, 0.8),
+                    0 0 90px rgba(255, 255, 255, 0.6);
+            }
+        }
+
         .hero-content h2 {
-            font-size: 1.5em;
-            margin-bottom: 30px;
-            opacity: 0.9;
+            font-size: 2.2em;
+            margin-bottom: 40px;
+            color: #cccccc;
+            font-weight: 200;
+            letter-spacing: 3px;
+            animation: subtitleSlide 1.5s ease-out 0.8s forwards;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        @keyframes subtitleSlide {
+            to { 
+                opacity: 1; 
+                transform: translateY(0);
+            }
         }
 
         .status-indicator {
