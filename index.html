@@ -541,59 +541,65 @@
             object-position: center;
         }
         
-        .profile-contact-info {
-            text-align: center;
+        .profile-image-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            width: 100%;
+            margin-top: 30px;
+        }
+        
+        .profile-image-stat {
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 25px;
+            border-radius: 16px;
+            padding: 20px 16px;
+            text-align: center;
             backdrop-filter: blur(20px);
-            width: 100%;
-        }
-        
-        .contact-label {
-            font-size: 0.85em;
-            color: rgba(255, 255, 255, 0.6);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 15px;
-            font-weight: 600;
-        }
-        
-        .contact-info {
-            font-size: 1.1em;
-            color: #4ecdc4;
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-        
-        .contact-social {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 20px;
-        }
-        
-        .social-link {
-            width: 40px;
-            height: 40px;
-            border-radius: 12px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: rgba(255, 255, 255, 0.7);
-            text-decoration: none;
             transition: all 0.3s ease;
-            font-weight: bold;
+            position: relative;
+            overflow: hidden;
         }
         
-        .social-link:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: rgba(255, 255, 255, 0.3);
-            color: #ffffff;
-            transform: translateY(-2px);
+        .profile-image-stat::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, #ff69b4, #4ecdc4);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .profile-image-stat:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+        }
+        
+        .profile-image-stat:hover::before {
+            opacity: 1;
+        }
+        
+        .profile-image-stat-number {
+            font-size: 1.6em;
+            font-weight: 900;
+            background: linear-gradient(45deg, #ff69b4, #4ecdc4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 6px;
+            display: block;
+        }
+        
+        .profile-image-stat-label {
+            font-size: 0.7em;
+            color: rgba(255, 255, 255, 0.7);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            line-height: 1.2;
         }
 
         .business-grid {
@@ -1130,8 +1136,22 @@
                 height: 280px;
             }
             
-            .profile-contact-info {
-                padding: 20px;
+            .profile-image-stats {
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+                margin-top: 25px;
+            }
+            
+            .profile-image-stat {
+                padding: 16px 12px;
+            }
+            
+            .profile-image-stat-number {
+                font-size: 1.4em;
+            }
+            
+            .profile-image-stat-label {
+                font-size: 0.65em;
             }
             
             nav { flex-direction: column; gap: 10px; }
@@ -1209,7 +1229,6 @@
                     <div class="profile-header">
                         <div class="profile-name-section">
                             <div class="profile-sazinoki">SAZINOKI</div>
-                            <div class="profile-divider"></div>
                         </div>
                         <div class="profile-roles">
                             <div class="profile-role">投資家</div>
@@ -1231,24 +1250,6 @@
                         </div>
                     </div>
                     
-                    <div class="profile-stats">
-                        <div class="profile-stat">
-                            <div class="profile-stat-number">25K+</div>
-                            <div class="profile-stat-label">Total Reach</div>
-                        </div>
-                        <div class="profile-stat">
-                            <div class="profile-stat-number">100K+</div>
-                            <div class="profile-stat-label">Article Impact</div>
-                        </div>
-                        <div class="profile-stat">
-                            <div class="profile-stat-number">120+</div>
-                            <div class="profile-stat-label">Audio Episodes</div>
-                        </div>
-                        <div class="profile-stat">
-                            <div class="profile-stat-number">240+</div>
-                            <div class="profile-stat-label">Works</div>
-                        </div>
-                    </div>
                 </div>
                 
                 <div class="profile-image-section">
@@ -1256,13 +1257,22 @@
                         <img src="images/profile.jpg" alt="SAZINOKI Profile">
                     </div>
                     
-                    <div class="profile-contact-info">
-                        <div class="contact-label">Contact</div>
-                        <div class="contact-info">@sazinoki</div>
-                        <div class="contact-social">
-                            <a href="#" class="social-link">X</a>
-                            <a href="#" class="social-link">📧</a>
-                            <a href="#" class="social-link">💬</a>
+                    <div class="profile-image-stats">
+                        <div class="profile-image-stat">
+                            <div class="profile-image-stat-number">25K+</div>
+                            <div class="profile-image-stat-label">Total Reach</div>
+                        </div>
+                        <div class="profile-image-stat">
+                            <div class="profile-image-stat-number">100K+</div>
+                            <div class="profile-image-stat-label">Article Impact</div>
+                        </div>
+                        <div class="profile-image-stat">
+                            <div class="profile-image-stat-number">120+</div>
+                            <div class="profile-image-stat-label">Audio Episodes</div>
+                        </div>
+                        <div class="profile-image-stat">
+                            <div class="profile-image-stat-number">240+</div>
+                            <div class="profile-image-stat-label">Works</div>
                         </div>
                     </div>
                 </div>
