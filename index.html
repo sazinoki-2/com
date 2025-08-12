@@ -1255,29 +1255,37 @@
             letter-spacing: 1px;
         }
 
-        /* ポートフォリオセクション追加スタイル */
-        .portfolio-intro {
+        /* ポートフォリオフッタースタイル */
+        .portfolio-footer {
             text-align: center;
-            margin-bottom: 50px;
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .portfolio-description {
+        .portfolio-footer .portfolio-description {
             font-size: 1.2em;
             color: rgba(255, 255, 255, 0.9);
             line-height: 1.6;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
         }
 
-        .portfolio-more-btn {
+        .portfolio-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .portfolio-btn {
             display: inline-flex;
             align-items: center;
             gap: 12px;
-            background: linear-gradient(45deg, #4ecdc4, #ff69b4);
             color: white;
-            padding: 15px 30px;
+            padding: 16px 32px;
             border-radius: 25px;
             text-decoration: none;
             font-size: 1.1em;
@@ -1287,9 +1295,19 @@
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+            min-width: 150px;
+            justify-content: center;
         }
 
-        .portfolio-more-btn::before {
+        .skeb-btn {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+        }
+
+        .custom-btn {
+            background: linear-gradient(45deg, #4ecdc4, #45b7aa);
+        }
+
+        .portfolio-btn::before {
             content: '';
             position: absolute;
             top: 0;
@@ -1300,22 +1318,41 @@
             transition: left 0.6s;
         }
 
-        .portfolio-more-btn:hover::before {
+        .portfolio-btn:hover::before {
             left: 100%;
         }
 
-        .portfolio-more-btn:hover {
+        .portfolio-btn:hover {
             transform: translateY(-3px);
+        }
+
+        .skeb-btn:hover {
+            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.4);
+        }
+
+        .custom-btn:hover {
             box-shadow: 0 10px 30px rgba(78, 205, 196, 0.4);
         }
 
-        .btn-arrow {
+        .portfolio-btn .btn-arrow {
             font-size: 1.2em;
             transition: transform 0.3s ease;
         }
 
-        .portfolio-more-btn:hover .btn-arrow {
+        .portfolio-btn:hover .btn-arrow {
             transform: translateX(5px);
+        }
+
+        @media (max-width: 768px) {
+            .portfolio-buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+            
+            .portfolio-btn {
+                width: 200px;
+            }
         }
 
         /* レスポンシブ */
@@ -1483,7 +1520,7 @@
             <div class="animated-sazinoki" id="animatedTexts"></div>
             <div class="header-content">
                 <h1 class="main-title">SAZINOKI</h1>
-                <div class="header-tagline">CREATIVE FRONTLINE</div>
+                <div class="header-tagline">BEFORE DAY BREAK FRONTLINE</div>
             </div>
         </div>
     </header>
@@ -1595,13 +1632,6 @@
         <!-- ポートフォリオセクション -->
         <section id="portfolio">
             <h2>ILLUSTRATION</h2>
-            <div class="portfolio-intro">
-                <p class="portfolio-description">商業案件～個人案件まで包括的に作品を展開。細部までは独特な世界観がパーティクルしている。</p>
-                <a href="#" class="portfolio-more-btn">
-                    <span>MORE THE WORLD</span>
-                    <span class="btn-arrow">→</span>
-                </a>
-            </div>
             <div class="portfolio-grid">
                 <div class="portfolio-item" data-type="portrait" data-image="images/1732068815509.avif">
                     <img src="images/1732068815509.avif" alt="キャラクターイラスト" loading="lazy">
@@ -1620,6 +1650,20 @@
                 </div>
                 <div class="portfolio-item" data-type="portrait" data-image="images/yuki-riu.png">
                     <img src="images/yuki-riu.png" alt="雪音りう" loading="lazy">
+                </div>
+            </div>
+            
+            <div class="portfolio-footer">
+                <p class="portfolio-description">商業案件～個人案件まで包括的に作品を展開。細部までは独特な世界観がパーティクルしている。</p>
+                <div class="portfolio-buttons">
+                    <a href="https://skeb.jp/@sazinoki" target="_blank" class="portfolio-btn skeb-btn">
+                        <span>SKEB</span>
+                        <span class="btn-arrow">→</span>
+                    </a>
+                    <a href="https://forms.gle/yByaxD1soPS2Vmuf7" target="_blank" class="portfolio-btn custom-btn">
+                        <span>個別依頼</span>
+                        <span class="btn-arrow">→</span>
+                    </a>
                 </div>
             </div>
         </section>
