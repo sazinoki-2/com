@@ -114,7 +114,7 @@
             justify-content: center;
             text-align: center;
             position: relative;
-            background: linear-gradient(135deg, #000000, #1a1a1a, #000000);
+            background: transparent;
             overflow: hidden;
         }
         
@@ -342,42 +342,196 @@
 
         /* プロフィールセクション */
         .profile-content {
-            display: flex;
-            align-items: center;
+            display: grid;
+            grid-template-columns: 1fr 320px;
             gap: 80px;
-            background: linear-gradient(135deg, rgba(26, 10, 46, 0.9), rgba(22, 33, 62, 0.9));
-            border-radius: 25px;
-            padding: 80px;
+            background: transparent;
+            padding: 120px 60px;
+            position: relative;
+            align-items: start;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .profile-text {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+        
+        .profile-header {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 30px;
+        }
+        
+        .profile-name-section {
+            display: flex;
+            align-items: baseline;
+            gap: 25px;
+            margin-bottom: 20px;
+        }
+        
+        .profile-sazinoki {
+            font-size: 4.5em;
+            font-weight: 900;
+            background: linear-gradient(45deg, #ff69b4, #4ecdc4);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientShift 4s ease-in-out infinite;
+            letter-spacing: 3px;
+            line-height: 1;
+        }
+        
+        .profile-divider {
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(45deg, #4ecdc4, #ff69b4);
+            border-radius: 2px;
+            flex-shrink: 0;
+            margin-top: 15px;
+        }
+        
+        .profile-roles {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 20px;
+        }
+        
+        .profile-role {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 8px 16px;
+            font-size: 0.9em;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 500;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        
+        .profile-role:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.4);
+            transform: translateY(-2px);
+        }
+        
+        .profile-main-content {
+            display: flex;
+            flex-direction: column;
+            gap: 35px;
+        }
+        
+        .profile-title {
+            font-size: 2.8em;
+            font-weight: 900;
+            color: #ffffff;
+            margin-bottom: 8px;
+            line-height: 1.1;
+            letter-spacing: 1px;
+        }
+        
+        .profile-subtitle {
+            font-size: 1.3em;
+            color: #4ecdc4;
+            margin-bottom: 25px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+        
+        .profile-description {
+            font-size: 1.15em;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 400;
+        }
+        
+        .profile-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-top: 50px;
+        }
+        
+        .profile-stat {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 25px 20px;
+            text-align: center;
+            backdrop-filter: blur(20px);
+            transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
         }
         
-        .profile-content::before {
+        .profile-stat::before {
             content: '';
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: conic-gradient(from 0deg, transparent, rgba(255, 105, 180, 0.1), transparent, rgba(64, 224, 208, 0.1), transparent);
-            animation: rotateGradient 8s linear infinite;
-            z-index: -1;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, #ff69b4, #4ecdc4);
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
         
-        @keyframes rotateGradient {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        .profile-stat:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-5px);
+        }
+        
+        .profile-stat:hover::before {
+            opacity: 1;
+        }
+        
+        .profile-stat-number {
+            font-size: 2em;
+            font-weight: 900;
+            background: linear-gradient(45deg, #ff69b4, #4ecdc4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 8px;
+            display: block;
+        }
+        
+        .profile-stat-label {
+            font-size: 0.8em;
+            color: rgba(255, 255, 255, 0.7);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .profile-image-section {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
         }
 
         .profile-image {
-            width: 420px;
-            height: 420px;
-            flex-shrink: 0;
-            order: 2;
-            border-radius: 20px;
-            overflow: visible;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            width: 320px;
+            height: 320px;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 
+                0 25px 60px rgba(0, 0, 0, 0.3),
+                0 0 0 1px rgba(255, 255, 255, 0.1);
             position: relative;
+            transition: all 0.4s ease;
+        }
+        
+        .profile-image:hover {
+            transform: translateY(-10px);
+            box-shadow: 
+                0 35px 80px rgba(0, 0, 0, 0.4),
+                0 0 0 1px rgba(255, 255, 255, 0.2);
         }
         
         .profile-image img {
@@ -385,139 +539,61 @@
             height: 100%;
             object-fit: cover;
             object-position: center;
-            border-radius: 20px;
         }
         
-        .profile-header {
-            margin-bottom: 30px;
-        }
-        
-        .profile-sazinoki {
-            font-size: 1.8em;
-            font-weight: 600;
-            color: rgba(255, 255, 255, 0.9);
-            letter-spacing: 3px;
-            margin-bottom: 15px;
-        }
-        
-        .profile-divider {
-            width: 60px;
-            height: 2px;
-            background: linear-gradient(45deg, #4ecdc4, #6a4c93);
-            margin-bottom: 20px;
-        }
-        
-        .profile-role-badges {
-            position: absolute;
-            bottom: -80px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 8px 12px;
-            width: 280px;
-        }
-        
-        .role-badge {
-            background: transparent;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 8px;
-            padding: 8px 12px;
-            font-size: 0.85em;
-            color: rgba(255, 255, 255, 0.8);
-            font-weight: 500;
-            transition: all 0.3s ease;
-            cursor: pointer;
+        .profile-contact-info {
             text-align: center;
-            white-space: nowrap;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 25px;
+            backdrop-filter: blur(20px);
+            width: 100%;
         }
         
-        .role-badge:hover {
+        .contact-label {
+            font-size: 0.85em;
+            color: rgba(255, 255, 255, 0.6);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .contact-info {
+            font-size: 1.1em;
+            color: #4ecdc4;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .contact-social {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
             background: rgba(255, 255, 255, 0.05);
-            border-color: rgba(255, 255, 255, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+        
+        .social-link:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.3);
             color: #ffffff;
             transform: translateY(-2px);
-        }
-
-        .profile-text {
-            flex: 1;
-            font-size: 1.1em;
-            line-height: 1.6;
-        }
-        
-        .profile-title {
-            font-size: 3.2em;
-            font-weight: 900;
-            background: linear-gradient(45deg, #ff69b4, #4ecdc4, #6a4c93);
-            background-size: 300% 300%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: gradientShift 4s ease-in-out infinite;
-            margin-bottom: 15px;
-            line-height: 1.1;
-            letter-spacing: 2px;
-        }
-        
-        .profile-subtitle {
-            font-size: 1.6em;
-            color: #4ecdc4;
-            margin-bottom: 25px;
-            font-weight: 600;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-        }
-        
-        .profile-description {
-            font-size: 1.2em;
-            line-height: 1.7;
-            color: rgba(255, 255, 255, 0.95);
-            margin-bottom: 35px;
-            font-weight: 400;
-        }
-        
-        .profile-stats {
-            display: flex;
-            gap: 12px;
-            margin-top: 80px;
-            flex-wrap: wrap;
-            max-width: 100%;
-        }
-        
-        .profile-stat {
-            background: transparent;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 12px;
-            padding: 10px 14px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            flex: 1;
-            min-width: 0;
-            max-width: calc(25% - 9px);
-        }
-        
-        
-        .profile-stat:hover {
-            background: rgba(255, 255, 255, 0.05);
-            border-color: rgba(255, 255, 255, 0.4);
-            transform: translateY(-3px);
-        }
-        
-        .profile-stat-number {
-            font-size: 1.4em;
-            font-weight: 900;
-            color: #ffffff;
-            margin-bottom: 2px;
-            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-        }
-        
-        .profile-stat-label {
-            font-size: 0.75em;
-            color: rgba(255, 255, 255, 0.9);
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
         }
 
         .business-grid {
@@ -990,69 +1066,74 @@
                 font-size: 2.5em;
                 letter-spacing: 3px; 
             }
+            
             .profile-content { 
-                flex-direction: column; 
-                text-align: center; 
-                gap: 30px;
+                grid-template-columns: 1fr;
+                gap: 60px;
+                padding: 80px 30px;
+                text-align: center;
             }
             
-            .profile-image {
-                width: 320px;
-                height: 320px;
-                order: 1;
+            .profile-sazinoki {
+                font-size: 3.5em;
             }
             
-            .profile-name {
-                font-size: 1em;
-                bottom: -25px;
+            .profile-name-section {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
             }
             
-            .profile-role-badges {
-                bottom: -70px;
-                width: 250px;
-                gap: 6px 8px;
+            .profile-divider {
+                width: 80px;
+                margin-top: 0;
             }
             
-            .role-badge {
-                font-size: 0.75em;
-                padding: 6px 8px;
-            }
-            
-            .profile-stats {
-                margin-top: 60px;
-            }
-            
-            .profile-text {
-                order: 2;
+            .profile-roles {
+                justify-content: center;
             }
             
             .profile-title {
-                font-size: 2.5em;
+                font-size: 2.2em;
             }
             
             .profile-subtitle {
-                font-size: 1.2em;
+                font-size: 1.1em;
+                letter-spacing: 2px;
+            }
+            
+            .profile-description {
+                font-size: 1.05em;
+                line-height: 1.7;
             }
             
             .profile-stats {
-                justify-content: center;
-                gap: 10px;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+                margin-top: 40px;
             }
             
             .profile-stat {
-                flex: 1;
-                min-width: 0;
-                max-width: calc(25% - 7px);
-                padding: 8px 10px;
+                padding: 20px 15px;
             }
             
             .profile-stat-number {
-                font-size: 1.1em;
+                font-size: 1.6em;
             }
             
             .profile-stat-label {
-                font-size: 0.65em;
+                font-size: 0.75em;
             }
+            
+            .profile-image {
+                width: 280px;
+                height: 280px;
+            }
+            
+            .profile-contact-info {
+                padding: 20px;
+            }
+            
             nav { flex-direction: column; gap: 10px; }
             
             /* 雪音りうDAO モバイル対応 */
@@ -1126,16 +1207,26 @@
             <div class="profile-content">
                 <div class="profile-text">
                     <div class="profile-header">
-                        <div class="profile-sazinoki">SAZINOKI</div>
-                        <div class="profile-divider"></div>
+                        <div class="profile-name-section">
+                            <div class="profile-sazinoki">SAZINOKI</div>
+                            <div class="profile-divider"></div>
+                        </div>
+                        <div class="profile-roles">
+                            <div class="profile-role">投資家</div>
+                            <div class="profile-role">事業家</div>
+                            <div class="profile-role">イラストレーター</div>
+                            <div class="profile-role">コンテンツマーケター</div>
+                        </div>
                     </div>
                     
-                    <div class="profile-title">LUKKY STAFF</div>
-                    <div class="profile-subtitle">PRODUCT DESIGNER</div>
-                    
-                    <div class="profile-description">
-                        <div class="profile-main-text">
-                            AI時代のニュースタンダードを構築するイノベーター。WEB3キャラクター「雪音りう」の原作者として、コンテンツエコシステムをプロデュース。ブロックチェーン上に「雪音りうデジコレ」をローンチし、Web3領域でのエコシステムを展開。<br>
+                    <div class="profile-main-content">
+                        <div class="profile-title-section">
+                            <div class="profile-title">LUKKY STAFF</div>
+                            <div class="profile-subtitle">PRODUCT DESIGNER</div>
+                        </div>
+                        
+                        <div class="profile-description">
+                            AI時代のニュースタンダードを構築するイノベーター。WEB3キャラクター「雪音りう」の原作者として、コンテンツエコシステムをプロデュース。ブロックチェーン上に「雪音りうデジコレ」をローンチし、Web3領域でのエコシステムを展開。<br><br>
                             業界のBtoB案件中心にイラスト～ストラジテックコンサルまで多角的に支援活動を行う。
                         </div>
                     </div>
@@ -1159,13 +1250,20 @@
                         </div>
                     </div>
                 </div>
-                <div class="profile-image">
-                    <img src="images/profile.jpg" alt="SAZINOKI Profile">
-                    <div class="profile-role-badges">
-                        <div class="role-badge">投資家</div>
-                        <div class="role-badge">事業家</div>
-                        <div class="role-badge">イラストレーター</div>
-                        <div class="role-badge">コンテンツマーケター</div>
+                
+                <div class="profile-image-section">
+                    <div class="profile-image">
+                        <img src="images/profile.jpg" alt="SAZINOKI Profile">
+                    </div>
+                    
+                    <div class="profile-contact-info">
+                        <div class="contact-label">Contact</div>
+                        <div class="contact-info">@sazinoki</div>
+                        <div class="contact-social">
+                            <a href="#" class="social-link">X</a>
+                            <a href="#" class="social-link">📧</a>
+                            <a href="#" class="social-link">💬</a>
+                        </div>
                     </div>
                 </div>
             </div>
