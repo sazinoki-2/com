@@ -1754,6 +1754,102 @@
             animation: rotateGradient 8s linear infinite;
         }
 
+        /* 料金ハイライト */
+        .pricing-highlight {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin: 2rem 0 3rem 0;
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(78, 205, 196, 0.15), rgba(255, 105, 180, 0.15));
+            border-radius: 20px;
+            border: 1px solid rgba(78, 205, 196, 0.4);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing-highlight::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .price-item {
+            text-align: center;
+            padding: 1rem 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .price-label {
+            display: block;
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .price-value {
+            display: block;
+            font-size: 2.5rem;
+            font-weight: 900;
+            background: linear-gradient(45deg, #4ECDC4, #FF69B4, #00FFFF);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(78, 205, 196, 0.6);
+            animation: gradientShift 4s ease-in-out infinite;
+            letter-spacing: 2px;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .details-btn {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(0, 255, 255, 0.15)) !important;
+            border-color: rgba(255, 255, 255, 0.4) !important;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .details-btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+            border-radius: inherit;
+            z-index: 1;
+        }
+
+        .details-btn:hover {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.25), rgba(0, 255, 255, 0.25)) !important;
+            border-color: rgba(255, 255, 255, 0.8) !important;
+            box-shadow: 
+                0 20px 50px rgba(255, 255, 255, 0.3),
+                0 0 0 1px rgba(255, 255, 255, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
+            transform: translateY(-2px) scale(1.03);
+        }
+
         .cta-title {
             font-size: 2.8em;
             font-weight: 900;
@@ -2294,7 +2390,20 @@
             
             <div class="portfolio-footer">
                 <div class="cta-container">
-                    <h3 class="cta-title">あなたの想像を形にします</h3>
+                    <h3 class="cta-title">あなたの創造をかたちにします</h3>
+                    
+                    <!-- 料金表示 -->
+                    <div class="pricing-highlight">
+                        <div class="price-item">
+                            <span class="price-label">イラスト</span>
+                            <span class="price-value">9800円～</span>
+                        </div>
+                        <div class="price-item">
+                            <span class="price-label">コンサル</span>
+                            <span class="price-value">5980円～</span>
+                        </div>
+                    </div>
+                    
                     <p class="cta-description">商業案件〜個人案件まで幅広く対応。<br>まずはお気軽にリクエストください。</p>
                     <div class="portfolio-buttons">
                         <a href="https://skeb.jp/@sazinoki" target="_blank" class="portfolio-btn skeb-btn">
@@ -2309,6 +2418,13 @@
                             <div class="btn-content">
                                 <span class="btn-main">個別相談</span>
                                 <span class="btn-price">0JPY（無料）</span>
+                            </div>
+                        </a>
+                        <a href="https://sazinoki-2.github.io/pricelist/" target="_blank" class="portfolio-btn details-btn">
+                            <span class="btn-icon">📋</span>
+                            <div class="btn-content">
+                                <span class="btn-main">くわしくみる</span>
+                                <span class="btn-price">料金・詳細はこちら</span>
                             </div>
                         </a>
                     </div>
