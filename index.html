@@ -34,7 +34,7 @@
         .glow-particle {
             position: absolute;
             border-radius: 50%;
-            animation: slowFloat 25s infinite linear, slowGlow 8s infinite ease-in-out;
+            animation: slowFloat 30s infinite linear, slowGlow 8s infinite ease-in-out;
         }
 
         .glow-particle:nth-child(odd) {
@@ -63,18 +63,18 @@
 
         @keyframes slowFloat {
             0% {
-                transform: translateY(100vh) rotate(0deg);
+                transform: translateY(100vh) translateX(0px) rotate(0deg);
                 opacity: 0;
             }
-            10% {
+            5% {
                 opacity: 1;
             }
-            90% {
+            95% {
                 opacity: 1;
             }
             100% {
-                transform: translateY(-100px) rotate(360deg);
-                opacity: 0;
+                transform: translateY(-20vh) translateX(var(--drift-x, 0px)) rotate(360deg);
+                opacity: 1;
             }
         }
 
@@ -2422,7 +2422,8 @@
                 particle.style.left = Math.random() * 100 + '%';
                 particle.style.top = (Math.random() * 150 + 50) + 'vh'; // より広範囲から開始
                 particle.style.animationDelay = Math.random() * 10 + 's'; // より早く表示
-                particle.style.animationDuration = (Math.random() * 10 + 20) + 's, ' + (Math.random() * 3 + 6) + 's'; // float, glow
+                particle.style.animationDuration = 'infinite'; // 無限ループ
+                particle.style.setProperty('--drift-x', (Math.random() - 0.5) * 200 + 'px'); // ランダムなX方向のドリフト
                 container.appendChild(particle);
             }
 
@@ -2434,7 +2435,8 @@
                     particle.style.left = Math.random() * 100 + '%';
                     particle.style.top = (Math.random() * 30 + 100) + 'vh';
                     particle.style.animationDelay = '0s';
-                    particle.style.animationDuration = (Math.random() * 10 + 20) + 's, ' + (Math.random() * 3 + 6) + 's';
+                    particle.style.animationDuration = 'infinite'; // 無限ループ
+                    particle.style.setProperty('--drift-x', (Math.random() - 0.5) * 200 + 'px'); // ランダムなX方向のドリフト
                     container.appendChild(particle);
                 }
             }, 800); // 0.8秒間隔で追加してぶわあっと効果
