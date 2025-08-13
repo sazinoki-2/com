@@ -1757,8 +1757,9 @@
         /* 料金ハイライト */
         .pricing-highlight {
             display: flex;
-            justify-content: center;
-            gap: 3rem;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
             margin: 2rem 0 3rem 0;
             padding: 2rem;
             background: linear-gradient(135deg, rgba(78, 205, 196, 0.15), rgba(255, 105, 180, 0.15));
@@ -1767,6 +1768,12 @@
             backdrop-filter: blur(10px);
             position: relative;
             overflow: hidden;
+        }
+
+        .pricing-highlight .price-group {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
         }
 
         .pricing-highlight::before {
@@ -1819,6 +1826,18 @@
         @keyframes gradientShift {
             0%, 100% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
+        }
+
+        .pricing-details {
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .details-text {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 400;
+            letter-spacing: 0.5px;
         }
 
         .details-btn {
@@ -2394,13 +2413,18 @@
                     
                     <!-- 料金表示 -->
                     <div class="pricing-highlight">
-                        <div class="price-item">
-                            <span class="price-label">イラスト</span>
-                            <span class="price-value">9800円～</span>
+                        <div class="price-group">
+                            <div class="price-item">
+                                <span class="price-label">ILLUSTRATION</span>
+                                <span class="price-value">9800 JPY</span>
+                            </div>
+                            <div class="price-item">
+                                <span class="price-label">CONSULTING</span>
+                                <span class="price-value">5982 JPY</span>
+                            </div>
                         </div>
-                        <div class="price-item">
-                            <span class="price-label">コンサル</span>
-                            <span class="price-value">5980円～</span>
+                        <div class="pricing-details">
+                            <span class="details-text">料金詳細はこちら</span>
                         </div>
                     </div>
                     
@@ -2423,8 +2447,8 @@
                         <a href="https://sazinoki-2.github.io/pricelist/" target="_blank" class="portfolio-btn details-btn">
                             <span class="btn-icon">📋</span>
                             <div class="btn-content">
-                                <span class="btn-main">くわしくみる</span>
-                                <span class="btn-price">料金・詳細はこちら</span>
+                                <span class="btn-main">VIEW DETAILS</span>
+                                <span class="btn-price">More Information</span>
                             </div>
                         </a>
                     </div>
