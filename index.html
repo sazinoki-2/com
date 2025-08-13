@@ -31,56 +31,33 @@
             overflow: hidden;
         }
 
-        .glow-particle {
+        .light-particle {
             position: absolute;
             border-radius: 50%;
-            animation: slowFloat 30s infinite linear, slowGlow 8s infinite ease-in-out;
+            animation: floatAround infinite ease-in-out;
         }
 
-        .glow-particle:nth-child(odd) {
-            width: 25px;
-            height: 25px;
-            background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.4) 50%, transparent 100%);
-            box-shadow: 0 0 60px rgba(255, 255, 255, 1), 0 0 120px rgba(255, 255, 255, 0.8);
-            animation-duration: 20s, 8s;
-        }
-
-        .glow-particle:nth-child(even) {
-            width: 30px;
-            height: 30px;
-            background: radial-gradient(circle, rgba(78, 205, 196, 1) 0%, rgba(78, 205, 196, 0.4) 50%, transparent 100%);
-            box-shadow: 0 0 70px rgba(78, 205, 196, 1), 0 0 140px rgba(78, 205, 196, 0.8);
-            animation-duration: 22s, 10s;
-        }
-
-        .glow-particle:nth-child(3n) {
-            width: 22px;
-            height: 22px;
-            background: radial-gradient(circle, rgba(255, 105, 180, 1) 0%, rgba(255, 105, 180, 0.4) 50%, transparent 100%);
-            box-shadow: 0 0 65px rgba(255, 105, 180, 1), 0 0 130px rgba(255, 105, 180, 0.8);
-            animation-duration: 25s, 9s;
-        }
-
-        @keyframes slowFloat {
+        @keyframes floatAround {
             0% {
-                transform: translateY(100vh) translateX(0px) rotate(0deg);
-                opacity: 0;
+                transform: translate(0px, 0px);
             }
-            5% {
-                opacity: 1;
+            25% {
+                transform: translate(var(--dx1), var(--dy1));
             }
-            95% {
-                opacity: 1;
+            50% {
+                transform: translate(var(--dx2), var(--dy2));
+            }
+            75% {
+                transform: translate(var(--dx3), var(--dy3));
             }
             100% {
-                transform: translateY(-20vh) translateX(var(--drift-x, 0px)) rotate(360deg);
-                opacity: 1;
+                transform: translate(0px, 0px);
             }
         }
 
-        @keyframes slowGlow {
+        @keyframes glow {
             0%, 100% {
-                opacity: 0.3;
+                opacity: 0.4;
                 transform: scale(0.8);
                 box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
             }
@@ -2411,35 +2388,89 @@
 
     <script>
 
-        // 大きめの光パーティクル生成
-        function createGlowingParticles() {
+        // ふわふわ動く光パーティクル生成
+        function createFloatingLights() {
             const container = document.getElementById('glowingParticles');
-            const particleCount = 300; // ぶわあっと大量に
+            const particleCount = 200;
+            
+            // 既存のパーティクルをクリア
+            container.innerHTML = '';
 
             for (let i = 0; i < particleCount; i++) {
                 const particle = document.createElement('div');
-                particle.className = 'glow-particle';
+                particle.className = 'light-particle';
+                
+                // ランダムな位置
                 particle.style.left = Math.random() * 100 + '%';
-                particle.style.top = (Math.random() * 150 + 50) + 'vh'; // より広範囲から開始
-                particle.style.animationDelay = Math.random() * 10 + 's'; // より早く表示
-                particle.style.animationDuration = 'infinite'; // 無限ループ
-                particle.style.setProperty('--drift-x', (Math.random() - 0.5) * 200 + 'px'); // ランダムなX方向のドリフト
+                particle.style.top = Math.random() * 100 + '%';
+                
+                // ランダムなサイズ（小さめ）
+                const size = Math.random() * 8 + 3; // 3-11px
+                particle.style.width = size + 'px';
+                particle.style.height = size + 'px';
+                
+                // ランダムな色（白、シアン、ピンク）
+                const colors = [
+                    'rgba(255, 255, 255, 0.8)',
+                    'rgba(78, 205, 196, 0.8)', 
+                    'rgba(255, 105, 180, 0.8)'
+                ];
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                particle.style.background = `radial-gradient(circle, ${color} 0%, transparent 70%)`;
+                particle.style.boxShadow = `0 0 ${size * 3}px ${color.replace('0.8', '0.5')}`;
+                
+                // ふわふわ動くためのランダム移動距離
+                const moveRange = 50;
+                particle.style.setProperty('--dx1', (Math.random() - 0.5) * moveRange + 'px');
+                particle.style.setProperty('--dy1', (Math.random() - 0.5) * moveRange + 'px');
+                particle.style.setProperty('--dx2', (Math.random() - 0.5) * moveRange + 'px');
+                particle.style.setProperty('--dy2', (Math.random() - 0.5) * moveRange + 'px');
+                particle.style.setProperty('--dx3', (Math.random() - 0.5) * moveRange + 'px');
+                particle.style.setProperty('--dy3', (Math.random() - 0.5) * moveRange + 'px');
+                
+                // ランダムなアニメーション時間
+                particle.style.animationDuration = (Math.random() * 8 + 5) + 's';
+                particle.style.animationDelay = Math.random() * 5 + 's';
+                
                 container.appendChild(particle);
             }
 
-            // 追加の光パーティクル生成を定期的に行う
+            // 連続生成
             setInterval(() => {
-                if (container.children.length < 500) { // ぶわあっと大量のパーティクルを許可
+                if (container.children.length < 250) {
                     const particle = document.createElement('div');
-                    particle.className = 'glow-particle';
+                    particle.className = 'light-particle';
+                    
                     particle.style.left = Math.random() * 100 + '%';
-                    particle.style.top = (Math.random() * 30 + 100) + 'vh';
+                    particle.style.top = Math.random() * 100 + '%';
+                    
+                    const size = Math.random() * 8 + 3;
+                    particle.style.width = size + 'px';
+                    particle.style.height = size + 'px';
+                    
+                    const colors = [
+                        'rgba(255, 255, 255, 0.8)',
+                        'rgba(78, 205, 196, 0.8)', 
+                        'rgba(255, 105, 180, 0.8)'
+                    ];
+                    const color = colors[Math.floor(Math.random() * colors.length)];
+                    particle.style.background = `radial-gradient(circle, ${color} 0%, transparent 70%)`;
+                    particle.style.boxShadow = `0 0 ${size * 3}px ${color.replace('0.8', '0.5')}`;
+                    
+                    const moveRange = 50;
+                    particle.style.setProperty('--dx1', (Math.random() - 0.5) * moveRange + 'px');
+                    particle.style.setProperty('--dy1', (Math.random() - 0.5) * moveRange + 'px');
+                    particle.style.setProperty('--dx2', (Math.random() - 0.5) * moveRange + 'px');
+                    particle.style.setProperty('--dy2', (Math.random() - 0.5) * moveRange + 'px');
+                    particle.style.setProperty('--dx3', (Math.random() - 0.5) * moveRange + 'px');
+                    particle.style.setProperty('--dy3', (Math.random() - 0.5) * moveRange + 'px');
+                    
+                    particle.style.animationDuration = (Math.random() * 8 + 5) + 's';
                     particle.style.animationDelay = '0s';
-                    particle.style.animationDuration = 'infinite'; // 無限ループ
-                    particle.style.setProperty('--drift-x', (Math.random() - 0.5) * 200 + 'px'); // ランダムなX方向のドリフト
+                    
                     container.appendChild(particle);
                 }
-            }, 200); // 0.2秒間隔で大量追加してぶわあっと効果
+            }, 300);
         }
 
         // SAZINOKIアニメーション生成
@@ -2619,7 +2650,7 @@
         }
 
         // 初期化
-        createGlowingParticles();
+        createFloatingLights();
         createSazinokiAnimation();
         setupPortfolioModal();
 
