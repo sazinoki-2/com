@@ -1831,6 +1831,10 @@
         .pricing-details {
             text-align: center;
             margin-top: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            align-items: center;
         }
 
         .details-text {
@@ -1838,6 +1842,39 @@
             color: rgba(255, 255, 255, 0.6);
             font-weight: 400;
             letter-spacing: 0.5px;
+        }
+
+        .details-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(0, 255, 255, 0.1));
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            color: white;
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .details-link:hover {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(0, 255, 255, 0.2));
+            border-color: rgba(255, 255, 255, 0.6);
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
+        }
+
+        .details-link .btn-icon {
+            font-size: 1rem;
+        }
+
+        .details-link .btn-text {
+            font-size: 0.8rem;
         }
 
         .details-btn {
@@ -2425,6 +2462,10 @@
                         </div>
                         <div class="pricing-details">
                             <span class="details-text">料金詳細はこちら</span>
+                            <a href="https://sazinoki-2.github.io/pricelist/" target="_blank" class="details-link">
+                                <span class="btn-icon">📋</span>
+                                <span class="btn-text">MORE INFORMATION</span>
+                            </a>
                         </div>
                     </div>
                     
@@ -2442,13 +2483,6 @@
                             <div class="btn-content">
                                 <span class="btn-main">個別相談</span>
                                 <span class="btn-price">0JPY（無料）</span>
-                            </div>
-                        </a>
-                        <a href="https://sazinoki-2.github.io/pricelist/" target="_blank" class="portfolio-btn details-btn">
-                            <span class="btn-icon">📋</span>
-                            <div class="btn-content">
-                                <span class="btn-main">VIEW DETAILS</span>
-                                <span class="btn-price">More Information</span>
                             </div>
                         </a>
                     </div>
