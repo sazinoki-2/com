@@ -157,7 +157,7 @@
             justify-content: center;
         }
 
-        /* さじの木アニメーション */
+        /* SAZINOKIアニメーション */
         .sazinoki-animation-container {
             position: absolute;
             top: 0;
@@ -168,30 +168,31 @@
             z-index: 1;
         }
 
-        .floating-sazinoki {
+        .animated-sazinoki {
             position: absolute;
-            color: rgba(255, 255, 255, 0.1);
-            font-size: 16px;
-            font-weight: normal;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             pointer-events: none;
+            z-index: 0;
+        }
+
+        .flying-sazinoki {
+            position: absolute;
+            font-weight: 900;
+            font-size: 2em;
+            color: rgba(255, 255, 255, 0.1);
+            letter-spacing: 4px;
             user-select: none;
-            animation: floatRandomly linear infinite;
+            pointer-events: none;
+            animation: flyAcross linear infinite;
         }
 
-        .floating-sazinoki:nth-child(odd) {
-            color: rgba(255, 255, 255, 0.08);
-            font-size: 14px;
-        }
-
-        .floating-sazinoki:nth-child(3n) {
-            color: rgba(255, 255, 255, 0.12);
-            font-size: 18px;
-        }
-
-        @keyframes floatRandomly {
+        @keyframes flyAcross {
             0% {
-                transform: translate(var(--start-x), var(--start-y)) rotate(0deg);
                 opacity: 0;
+                transform: translateX(-200px) translateY(var(--start-y)) scale(0.5);
             }
             10% {
                 opacity: 1;
@@ -200,9 +201,24 @@
                 opacity: 1;
             }
             100% {
-                transform: translate(var(--end-x), var(--end-y)) rotate(360deg);
                 opacity: 0;
+                transform: translateX(calc(100vw + 200px)) translateY(var(--end-y)) scale(1.5);
             }
+        }
+
+        .flying-sazinoki:nth-child(odd) {
+            animation-direction: reverse;
+            color: rgba(255, 255, 255, 0.08);
+        }
+
+        .flying-sazinoki:nth-child(3n) {
+            font-size: 1.5em;
+            color: rgba(255, 255, 255, 0.15);
+        }
+
+        .flying-sazinoki:nth-child(5n) {
+            font-size: 3em;
+            color: rgba(255, 255, 255, 0.05);
         }
 
         .header-content {
@@ -2137,10 +2153,12 @@
 
     <!-- ヘッダーセクション -->
     <header class="main-header">
-        <div class="sazinoki-animation-container" id="sazinokiContainer"></div>
-        <div class="header-content">
-            <h1 class="main-title">SAZINOKI</h1>
-            <div class="header-tagline">BEFORE DAY BREAK FRONTLINE</div>
+        <div class="sazinoki-animation-container">
+            <div class="animated-sazinoki" id="animatedTexts"></div>
+            <div class="header-content">
+                <h1 class="main-title">SAZINOKI</h1>
+                <div class="header-tagline">BEFORE DAY BREAK FRONTLINE</div>
+            </div>
         </div>
     </header>
 
@@ -2398,7 +2416,7 @@
                 const particle = document.createElement('div');
                 particle.className = 'particle';
                 particle.style.left = Math.random() * 100 + '%';
-                particle.style.top = Math.random() * 100 + 'vh'; // ランダム位置から開始
+                particle.style.top = '100vh'; // 画面下から開始
                 particle.style.animationDelay = Math.random() * 8 + 's';
                 particle.style.animationDuration = (Math.random() * 4 + 6) + 's';
                 container.appendChild(particle);
@@ -2418,29 +2436,25 @@
             }, 3000);
         }
 
-        // sazinokiアニメーション生成
+        // SAZINOKIアニメーション生成
         function createSazinokiAnimation() {
-            const container = document.getElementById('sazinokiContainer');
-            const textCount = 50; // 無数の「sazinoki」
+            const container = document.getElementById('animatedTexts');
+            const textCount = 80; // 大量のテキスト
 
             for (let i = 0; i < textCount; i++) {
                 const textElement = document.createElement('div');
-                textElement.className = 'floating-sazinoki';
-                textElement.textContent = 'sazinoki';
+                textElement.className = 'flying-sazinoki';
+                textElement.textContent = 'SAZINOKI';
                 
-                // ランダムな開始・終了位置
-                const startX = Math.random() * window.innerWidth - 50;
+                // ランダムな開始・終了Y位置
                 const startY = Math.random() * window.innerHeight;
-                const endX = Math.random() * window.innerWidth + 50;
                 const endY = Math.random() * window.innerHeight;
                 
-                textElement.style.setProperty('--start-x', startX + 'px');
                 textElement.style.setProperty('--start-y', startY + 'px');
-                textElement.style.setProperty('--end-x', endX + 'px');
                 textElement.style.setProperty('--end-y', endY + 'px');
                 
                 // ランダムなアニメーション持続時間とディレイ
-                const duration = Math.random() * 8 + 6; // 6-14秒
+                const duration = Math.random() * 3 + 2; // 2-5秒
                 const delay = Math.random() * 10; // 0-10秒のディレイ
                 
                 textElement.style.animationDuration = duration + 's';
@@ -2448,38 +2462,6 @@
                 
                 container.appendChild(textElement);
             }
-
-            // 定期的に新しい「sazinoki」を追加
-            setInterval(() => {
-                if (container.children.length < 80) {
-                    const textElement = document.createElement('div');
-                    textElement.className = 'floating-sazinoki';
-                    textElement.textContent = 'sazinoki';
-                    
-                    const startX = Math.random() * window.innerWidth - 50;
-                    const startY = Math.random() * window.innerHeight;
-                    const endX = Math.random() * window.innerWidth + 50;
-                    const endY = Math.random() * window.innerHeight;
-                    
-                    textElement.style.setProperty('--start-x', startX + 'px');
-                    textElement.style.setProperty('--start-y', startY + 'px');
-                    textElement.style.setProperty('--end-x', endX + 'px');
-                    textElement.style.setProperty('--end-y', endY + 'px');
-                    
-                    const duration = Math.random() * 8 + 6;
-                    textElement.style.animationDuration = duration + 's';
-                    textElement.style.animationDelay = '0s';
-                    
-                    container.appendChild(textElement);
-                    
-                    // 古い要素を削除
-                    setTimeout(() => {
-                        if (textElement.parentNode) {
-                            textElement.parentNode.removeChild(textElement);
-                        }
-                    }, duration * 1000);
-                }
-            }, 2000);
         }
 
         // スムーススクロール
