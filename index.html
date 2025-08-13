@@ -18,76 +18,6 @@
             overflow-x: hidden;
         }
 
-        /* パーティクル背景 */
-        .particles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1;
-            overflow: hidden;
-        }
-
-
-        .particle {
-            position: absolute;
-            border-radius: 50%;
-            animation: float 8s infinite linear, gentleTwinkle 3s infinite ease-in-out;
-        }
-
-        .particle:nth-child(odd) {
-            width: 6px;
-            height: 6px;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.3) 50%, transparent 100%);
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.7), 0 0 30px rgba(255, 255, 255, 0.3);
-            animation-duration: 10s, 4s;
-        }
-
-        .particle:nth-child(even) {
-            width: 8px;
-            height: 8px;
-            background: radial-gradient(circle, rgba(78, 205, 196, 0.8) 0%, rgba(78, 205, 196, 0.3) 50%, transparent 100%);
-            box-shadow: 0 0 20px rgba(78, 205, 196, 0.7), 0 0 40px rgba(78, 205, 196, 0.3);
-            animation-duration: 12s, 5s;
-        }
-
-        .particle:nth-child(3n) {
-            width: 7px;
-            height: 7px;
-            background: radial-gradient(circle, rgba(255, 105, 180, 0.8) 0%, rgba(255, 105, 180, 0.3) 50%, transparent 100%);
-            box-shadow: 0 0 18px rgba(255, 105, 180, 0.7), 0 0 35px rgba(255, 105, 180, 0.3);
-            animation-duration: 9s, 3.5s;
-        }
-
-        @keyframes float {
-            0% {
-                transform: translateY(100vh) rotate(0deg);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-100px) rotate(360deg);
-                opacity: 0;
-            }
-        }
-
-        @keyframes gentleTwinkle {
-            0%, 100% {
-                opacity: 0.2;
-                box-shadow: 0 0 6px rgba(255, 255, 255, 0.2);
-            }
-            50% {
-                opacity: 0.7;
-                box-shadow: 0 0 12px rgba(255, 255, 255, 0.5);
-            }
-        }
 
         /* 大きめの光パーティクル */
         .glowing-particles {
@@ -2209,9 +2139,6 @@
     </style>
 </head>
 <body>
-    <!-- パーティクル背景 -->
-    <div class="particles" id="particles"></div>
-    
     <!-- 大きめの光パーティクル -->
     <div class="glowing-particles" id="glowingParticles"></div>
 
@@ -2483,39 +2410,11 @@
     </footer>
 
     <script>
-        // パーティクル生成
-        function createParticles() {
-            const container = document.getElementById('particles');
-            const particleCount = 150; // パーティクル数をさらに増加
-
-            for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                particle.style.left = Math.random() * 100 + '%';
-                particle.style.top = (Math.random() * 120 + 100) + 'vh'; // 画面下から少し広範囲で開始
-                particle.style.animationDelay = Math.random() * 12 + 's';
-                particle.style.animationDuration = (Math.random() * 6 + 8) + 's'; // より長い持続時間
-                container.appendChild(particle);
-            }
-
-            // 追加のパーティクル生成を定期的に行う
-            setInterval(() => {
-                if (container.children.length < 200) {
-                    const particle = document.createElement('div');
-                    particle.className = 'particle';
-                    particle.style.left = Math.random() * 100 + '%';
-                    particle.style.top = (Math.random() * 20 + 100) + 'vh';
-                    particle.style.animationDelay = '0s';
-                    particle.style.animationDuration = (Math.random() * 6 + 8) + 's';
-                    container.appendChild(particle);
-                }
-            }, 2000);
-        }
 
         // 大きめの光パーティクル生成
         function createGlowingParticles() {
             const container = document.getElementById('glowingParticles');
-            const particleCount = 40; // 数を増やす
+            const particleCount = 120; // 大幅に数を増やす
 
             for (let i = 0; i < particleCount; i++) {
                 const particle = document.createElement('div');
@@ -2529,7 +2428,7 @@
 
             // 追加の光パーティクル生成を定期的に行う
             setInterval(() => {
-                if (container.children.length < 60) {
+                if (container.children.length < 200) { // より多くのパーティクルを許可
                     const particle = document.createElement('div');
                     particle.className = 'glow-particle';
                     particle.style.left = Math.random() * 100 + '%';
@@ -2538,7 +2437,7 @@
                     particle.style.animationDuration = (Math.random() * 10 + 20) + 's, ' + (Math.random() * 3 + 6) + 's';
                     container.appendChild(particle);
                 }
-            }, 3000); // 3秒間隔で追加
+            }, 800); // 0.8秒間隔で追加してぶわあっと効果
         }
 
         // SAZINOKIアニメーション生成
@@ -2718,27 +2617,23 @@
         }
 
         // 初期化
-        createParticles();
         createGlowingParticles();
         createSazinokiAnimation();
         setupPortfolioModal();
 
         // パーティクル表示制御関数
         function handleParticleVisibility() {
-            const particles = document.getElementById('particles');
             const glowingParticles = document.getElementById('glowingParticles');
             const mainHeader = document.querySelector('.main-header');
             
-            if (particles && glowingParticles && mainHeader) {
+            if (glowingParticles && mainHeader) {
                 const headerHeight = mainHeader.offsetHeight;
                 const scrollY = window.pageYOffset;
                 
                 // SAZINOKIセクション（画面高さ分）ではパーティクルを非表示
                 if (scrollY < headerHeight) {
-                    particles.style.opacity = '0';
                     glowingParticles.style.opacity = '0';
                 } else {
-                    particles.style.opacity = '1';
                     glowingParticles.style.opacity = '1';
                 }
             }
