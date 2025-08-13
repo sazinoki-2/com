@@ -110,25 +110,25 @@
         .glow-particle:nth-child(odd) {
             width: 20px;
             height: 20px;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.1) 50%, transparent 100%);
-            box-shadow: 0 0 40px rgba(255, 255, 255, 0.8), 0 0 80px rgba(255, 255, 255, 0.4);
-            animation-duration: 30s, 10s;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.2) 50%, transparent 100%);
+            box-shadow: 0 0 40px rgba(255, 255, 255, 1), 0 0 80px rgba(255, 255, 255, 0.6);
+            animation-duration: 20s, 8s;
         }
 
         .glow-particle:nth-child(even) {
             width: 25px;
             height: 25px;
-            background: radial-gradient(circle, rgba(78, 205, 196, 0.6) 0%, rgba(78, 205, 196, 0.1) 50%, transparent 100%);
-            box-shadow: 0 0 50px rgba(78, 205, 196, 0.8), 0 0 100px rgba(78, 205, 196, 0.4);
-            animation-duration: 28s, 12s;
+            background: radial-gradient(circle, rgba(78, 205, 196, 0.8) 0%, rgba(78, 205, 196, 0.2) 50%, transparent 100%);
+            box-shadow: 0 0 50px rgba(78, 205, 196, 1), 0 0 100px rgba(78, 205, 196, 0.6);
+            animation-duration: 22s, 10s;
         }
 
         .glow-particle:nth-child(3n) {
             width: 18px;
             height: 18px;
-            background: radial-gradient(circle, rgba(255, 105, 180, 0.6) 0%, rgba(255, 105, 180, 0.1) 50%, transparent 100%);
-            box-shadow: 0 0 45px rgba(255, 105, 180, 0.8), 0 0 90px rgba(255, 105, 180, 0.4);
-            animation-duration: 32s, 9s;
+            background: radial-gradient(circle, rgba(255, 105, 180, 0.8) 0%, rgba(255, 105, 180, 0.2) 50%, transparent 100%);
+            box-shadow: 0 0 45px rgba(255, 105, 180, 1), 0 0 90px rgba(255, 105, 180, 0.6);
+            animation-duration: 25s, 9s;
         }
 
         @keyframes slowFloat {
@@ -2515,30 +2515,30 @@
         // 大きめの光パーティクル生成
         function createGlowingParticles() {
             const container = document.getElementById('glowingParticles');
-            const particleCount = 30; // 大きめの光なので少なめ
+            const particleCount = 40; // 数を増やす
 
             for (let i = 0; i < particleCount; i++) {
                 const particle = document.createElement('div');
                 particle.className = 'glow-particle';
                 particle.style.left = Math.random() * 100 + '%';
-                particle.style.top = (Math.random() * 50 + 100) + 'vh'; // 画面下から開始
-                particle.style.animationDelay = Math.random() * 20 + 's';
-                particle.style.animationDuration = (Math.random() * 10 + 25) + 's, ' + (Math.random() * 5 + 8) + 's'; // float, glow
+                particle.style.top = (Math.random() * 150 + 50) + 'vh'; // より広範囲から開始
+                particle.style.animationDelay = Math.random() * 10 + 's'; // より早く表示
+                particle.style.animationDuration = (Math.random() * 10 + 20) + 's, ' + (Math.random() * 3 + 6) + 's'; // float, glow
                 container.appendChild(particle);
             }
 
             // 追加の光パーティクル生成を定期的に行う
             setInterval(() => {
-                if (container.children.length < 50) {
+                if (container.children.length < 60) {
                     const particle = document.createElement('div');
                     particle.className = 'glow-particle';
                     particle.style.left = Math.random() * 100 + '%';
                     particle.style.top = (Math.random() * 30 + 100) + 'vh';
                     particle.style.animationDelay = '0s';
-                    particle.style.animationDuration = (Math.random() * 10 + 25) + 's, ' + (Math.random() * 5 + 8) + 's';
+                    particle.style.animationDuration = (Math.random() * 10 + 20) + 's, ' + (Math.random() * 3 + 6) + 's';
                     container.appendChild(particle);
                 }
-            }, 5000); // 5秒間隔でゆっくり追加
+            }, 3000); // 3秒間隔で追加
         }
 
         // SAZINOKIアニメーション生成
@@ -2754,6 +2754,11 @@
 
         // 初期ロード時にもパーティクル表示を制御
         window.addEventListener('load', () => {
+            handleParticleVisibility();
+        });
+
+        // DOM読み込み完了時にも制御
+        document.addEventListener('DOMContentLoaded', () => {
             handleParticleVisibility();
         });
     </script>
