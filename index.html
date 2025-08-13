@@ -1331,14 +1331,14 @@
         }
 
         .content-item {
-            padding: 50px 30px;
+            padding: 40px 30px;
             border-radius: 24px;
             backdrop-filter: blur(15px);
             text-align: center;
-            aspect-ratio: 0.75;
+            min-height: 450px;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             cursor: pointer;
@@ -1346,6 +1346,19 @@
             color: inherit;
             position: relative;
             overflow: hidden;
+        }
+
+        .content-item-top {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        .content-item-bottom {
+            margin-top: auto;
+            width: 100%;
         }
 
         /* ブログ用デザイン - より水色に */
