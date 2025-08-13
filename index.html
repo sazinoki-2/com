@@ -2343,6 +2343,7 @@
                 const particle = document.createElement('div');
                 particle.className = 'particle';
                 particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = '100vh'; // 画面下から開始
                 particle.style.animationDelay = Math.random() * 8 + 's';
                 particle.style.animationDuration = (Math.random() * 4 + 6) + 's';
                 container.appendChild(particle);
@@ -2502,14 +2503,8 @@
         createParticles();
         setupPortfolioModal();
 
-        // スクロールエフェクト + DAO オーバーレイ制御
+        // DAO オーバーレイ制御
         window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const parallax = document.querySelector('.particles');
-            // スクロール効果を軽減してパーティクルが常に見えるようにする
-            const speed = scrolled * 0.05;
-            parallax.style.transform = `translateY(${speed}px)`;
-            
             // DAO テキストオーバーレイ制御
             handleDAOTextOverlay();
         });
