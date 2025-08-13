@@ -269,6 +269,17 @@
             -webkit-text-fill-color: transparent;
         }
 
+        /* キャッチフレーズスタイル */
+        .content-catchphrase {
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin: 0.5rem 0 1rem 0;
+            text-align: center;
+            letter-spacing: 1px;
+            opacity: 0.9;
+            font-style: italic;
+        }
+
         /* プロフィールセクション */
         .profile-content {
             display: grid;
@@ -1330,6 +1341,10 @@
             color: rgba(255, 255, 255, 0.95);
         }
 
+        .content-item:nth-child(1) .content-catchphrase {
+            color: rgba(255, 255, 255, 0.95);
+        }
+
         /* Podcast用デザイン - 黄緑 */
         .content-item:nth-child(2) {
             background: linear-gradient(135deg, #8bc34a, #689f38);
@@ -1358,6 +1373,10 @@
             color: rgba(255, 255, 255, 0.95);
         }
 
+        .content-item:nth-child(2) .content-catchphrase {
+            color: rgba(255, 255, 255, 0.95);
+        }
+
         /* コンサルティング用デザイン - BlogとPodcastに合わせたデザイン */
         .content-item:nth-child(3) {
             background: linear-gradient(135deg, #ff6b9d, #e91e63);
@@ -1383,6 +1402,10 @@
         }
 
         .content-item:nth-child(3) p {
+            color: rgba(255, 255, 255, 0.95);
+        }
+
+        .content-item:nth-child(3) .content-catchphrase {
             color: rgba(255, 255, 255, 0.95);
         }
 
@@ -2516,18 +2539,21 @@
                 <a href="https://note.com/sazi" target="_blank" class="content-item">
                     <div class="content-item-icon">📝</div>
                     <h3>Blog</h3>
+                    <div class="content-catchphrase">年間読書数200冊+の知見が集結</div>
                     <p>AI時代の生存戦略。年間読書数200冊以上の筆者が人生・哲学・クリプト・テクノロジーをわかりやすく発信。知が人生を変える。</p>
                     <div class="cta-button">Let's Read →</div>
                 </a>
                 <a href="https://open.spotify.com/show/6TGlExPAgTeUKGdtNKv8TD" target="_blank" class="content-item">
                     <div class="content-item-icon">🎙️</div>
                     <h3>Podcast</h3>
+                    <div class="content-catchphrase">自動で思考をアップデート</div>
                     <p>ブログの音声版。運転中・料理中・作業中、自動インプットでまわりと圧倒的に差がつく音声学習タイムを。</p>
                     <div class="cta-button">Let's Listen →</div>
                 </a>
                 <a href="#contact" class="content-item">
                     <div class="content-item-icon">💭</div>
                     <h3>Consulting</h3>
+                    <div class="content-catchphrase">人生の変革はいつだって出会いから</div>
                     <p>人生の進化は"共感"の歴史。ビジネス提携やコラボ、悩み相談から対談のお誘いまで幅広くどうぞ。</p>
                     <div class="cta-button">Get Started →</div>
                 </a>
