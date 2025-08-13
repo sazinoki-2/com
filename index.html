@@ -30,6 +30,7 @@
             overflow: hidden;
         }
 
+
         .particle {
             position: absolute;
             border-radius: 50%;
@@ -2155,10 +2156,10 @@
     <header class="main-header">
         <div class="sazinoki-animation-container">
             <div class="animated-sazinoki" id="animatedTexts"></div>
-            <div class="header-content">
-                <h1 class="main-title">SAZINOKI</h1>
-                <div class="header-tagline">BEFORE DAY BREAK FRONTLINE</div>
-            </div>
+        </div>
+        <div class="header-content">
+            <h1 class="main-title">SAZINOKI</h1>
+            <div class="header-tagline">BEFORE DAY BREAK FRONTLINE</div>
         </div>
     </header>
 
@@ -2410,30 +2411,30 @@
         // パーティクル生成
         function createParticles() {
             const container = document.getElementById('particles');
-            const particleCount = 100; // パーティクル数をさらに増加
+            const particleCount = 150; // パーティクル数をさらに増加
 
             for (let i = 0; i < particleCount; i++) {
                 const particle = document.createElement('div');
                 particle.className = 'particle';
                 particle.style.left = Math.random() * 100 + '%';
-                particle.style.top = '100vh'; // 画面下から開始
-                particle.style.animationDelay = Math.random() * 8 + 's';
-                particle.style.animationDuration = (Math.random() * 4 + 6) + 's';
+                particle.style.top = (Math.random() * 120 + 100) + 'vh'; // 画面下から少し広範囲で開始
+                particle.style.animationDelay = Math.random() * 12 + 's';
+                particle.style.animationDuration = (Math.random() * 6 + 8) + 's'; // より長い持続時間
                 container.appendChild(particle);
             }
 
             // 追加のパーティクル生成を定期的に行う
             setInterval(() => {
-                if (container.children.length < 120) {
+                if (container.children.length < 200) {
                     const particle = document.createElement('div');
                     particle.className = 'particle';
                     particle.style.left = Math.random() * 100 + '%';
-                    particle.style.top = '100vh';
+                    particle.style.top = (Math.random() * 20 + 100) + 'vh';
                     particle.style.animationDelay = '0s';
-                    particle.style.animationDuration = (Math.random() * 4 + 6) + 's';
+                    particle.style.animationDuration = (Math.random() * 6 + 8) + 's';
                     container.appendChild(particle);
                 }
-            }, 3000);
+            }, 2000);
         }
 
         // SAZINOKIアニメーション生成
@@ -2617,10 +2618,35 @@
         createSazinokiAnimation();
         setupPortfolioModal();
 
+        // パーティクル表示制御関数
+        function handleParticleVisibility() {
+            const particles = document.getElementById('particles');
+            const mainHeader = document.querySelector('.main-header');
+            
+            if (particles && mainHeader) {
+                const headerHeight = mainHeader.offsetHeight;
+                const scrollY = window.pageYOffset;
+                
+                // SAZINOKIセクション（画面高さ分）ではパーティクルを非表示
+                if (scrollY < headerHeight) {
+                    particles.style.opacity = '0';
+                } else {
+                    particles.style.opacity = '1';
+                }
+            }
+        }
+
         // DAO オーバーレイ制御
         window.addEventListener('scroll', () => {
             // DAO テキストオーバーレイ制御
             handleDAOTextOverlay();
+            // パーティクル表示制御
+            handleParticleVisibility();
+        });
+
+        // 初期ロード時にもパーティクル表示を制御
+        window.addEventListener('load', () => {
+            handleParticleVisibility();
         });
     </script>
 
