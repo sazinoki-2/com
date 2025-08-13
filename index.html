@@ -38,26 +38,26 @@
         }
 
         .glow-particle:nth-child(odd) {
-            width: 20px;
-            height: 20px;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.2) 50%, transparent 100%);
-            box-shadow: 0 0 40px rgba(255, 255, 255, 1), 0 0 80px rgba(255, 255, 255, 0.6);
+            width: 25px;
+            height: 25px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.4) 50%, transparent 100%);
+            box-shadow: 0 0 60px rgba(255, 255, 255, 1), 0 0 120px rgba(255, 255, 255, 0.8);
             animation-duration: 20s, 8s;
         }
 
         .glow-particle:nth-child(even) {
-            width: 25px;
-            height: 25px;
-            background: radial-gradient(circle, rgba(78, 205, 196, 0.8) 0%, rgba(78, 205, 196, 0.2) 50%, transparent 100%);
-            box-shadow: 0 0 50px rgba(78, 205, 196, 1), 0 0 100px rgba(78, 205, 196, 0.6);
+            width: 30px;
+            height: 30px;
+            background: radial-gradient(circle, rgba(78, 205, 196, 1) 0%, rgba(78, 205, 196, 0.4) 50%, transparent 100%);
+            box-shadow: 0 0 70px rgba(78, 205, 196, 1), 0 0 140px rgba(78, 205, 196, 0.8);
             animation-duration: 22s, 10s;
         }
 
         .glow-particle:nth-child(3n) {
-            width: 18px;
-            height: 18px;
-            background: radial-gradient(circle, rgba(255, 105, 180, 0.8) 0%, rgba(255, 105, 180, 0.2) 50%, transparent 100%);
-            box-shadow: 0 0 45px rgba(255, 105, 180, 1), 0 0 90px rgba(255, 105, 180, 0.6);
+            width: 22px;
+            height: 22px;
+            background: radial-gradient(circle, rgba(255, 105, 180, 1) 0%, rgba(255, 105, 180, 0.4) 50%, transparent 100%);
+            box-shadow: 0 0 65px rgba(255, 105, 180, 1), 0 0 130px rgba(255, 105, 180, 0.8);
             animation-duration: 25s, 9s;
         }
 
@@ -2414,7 +2414,7 @@
         // 大きめの光パーティクル生成
         function createGlowingParticles() {
             const container = document.getElementById('glowingParticles');
-            const particleCount = 120; // 大幅に数を増やす
+            const particleCount = 300; // ぶわあっと大量に
 
             for (let i = 0; i < particleCount; i++) {
                 const particle = document.createElement('div');
@@ -2429,7 +2429,7 @@
 
             // 追加の光パーティクル生成を定期的に行う
             setInterval(() => {
-                if (container.children.length < 200) { // より多くのパーティクルを許可
+                if (container.children.length < 500) { // ぶわあっと大量のパーティクルを許可
                     const particle = document.createElement('div');
                     particle.className = 'glow-particle';
                     particle.style.left = Math.random() * 100 + '%';
@@ -2439,7 +2439,7 @@
                     particle.style.setProperty('--drift-x', (Math.random() - 0.5) * 200 + 'px'); // ランダムなX方向のドリフト
                     container.appendChild(particle);
                 }
-            }, 800); // 0.8秒間隔で追加してぶわあっと効果
+            }, 200); // 0.2秒間隔で大量追加してぶわあっと効果
         }
 
         // SAZINOKIアニメーション生成
