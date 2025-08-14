@@ -2314,10 +2314,24 @@
             
             
             .profile-content { 
-                grid-template-columns: 1fr;
+                display: flex;
+                flex-direction: column;
                 gap: 60px;
                 padding: 80px 30px;
                 text-align: center;
+            }
+            
+            .profile-header {
+                order: 1;
+            }
+            
+            .profile-image-section {
+                order: 2;
+                margin: 30px 0;
+            }
+            
+            .profile-main-content {
+                order: 3;
             }
             
             .profile-sazinoki {
@@ -2392,31 +2406,6 @@
             
             .profile-image-stat-label {
                 font-size: 0.65em;
-            }
-            
-            /* モバイル版でプロフィール画像を コンテンツマーケター と LUKKY STAFF の間に移動 */
-            .profile-content {
-                display: flex;
-                flex-direction: column;
-                gap: 40px;
-            }
-            
-            .profile-header {
-                order: 1;
-            }
-            
-            .profile-image-section {
-                order: 2;
-                margin: 30px 0;
-            }
-            
-            .profile-main-content {
-                order: 3;
-            }
-            
-            .profile-image {
-                width: 250px;
-                height: 250px;
             }
             
             /* 料金表示の切れ防止 */
@@ -2639,7 +2628,7 @@
 
         <!-- ポートフォリオセクション -->
         <section id="portfolio">
-            <h2>SAZINOKI SAZINOKI ILLUSTRATION</h2>
+            <h2>SAZINOKI ILLUSTRATION</h2>
             <div class="portfolio-grid">
                 <div class="portfolio-item" data-type="portrait" data-image="images/1732068815509.avif">
                     <img src="images/1732068815509.avif" alt="キャラクターイラスト" loading="lazy">
