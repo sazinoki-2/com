@@ -2580,7 +2580,7 @@
                         <div class="member-count-badge">🎉 メンバー続々増加中 🎉</div>
                         <div class="member-stats">
                             <span class="stat-number" id="memberCounter">300</span><span class="stat-number">+</span>
-                            <span class="stat-label">Active Members</span>
+                            <span class="stat-label">DAO Members</span>
                         </div>
                     </div>
                     <a href="https://discord.gg/7uQMMwuDEP" class="dao-discord-btn" target="_blank">
@@ -3019,18 +3019,43 @@
         setupPortfolioModal();
         animateMemberCounter();
 
-        // メンバー数カウンターアニメーション
+        // メンバー数カウンターアニメーション（高速スロット風）
         function animateMemberCounter() {
             const counter = document.getElementById('memberCounter');
             if (!counter) return;
             
-            const numbers = [280, 295, 302, 318, 325, 289, 306, 311, 297, 333, 309, 315, 291, 328, 314];
+            const targetNumbers = [280, 295, 302, 318, 325, 289, 306, 311, 297, 333, 309, 315, 291, 328, 314];
             let currentIndex = 0;
             
-            setInterval(() => {
-                currentIndex = (currentIndex + 1) % numbers.length;
-                counter.textContent = numbers[currentIndex];
-            }, 2000); // 2秒ごとに変更
+            // 高速スロット効果
+            function slotEffect() {
+                let spins = 0;
+                const maxSpins = 20; // 高速回転回数
+                
+                const fastInterval = setInterval(() => {
+                    // ランダムな数字を高速表示（ノイズ効果）
+                    const randomNum = Math.floor(Math.random() * 100) + 250;
+                    counter.textContent = randomNum;
+                    counter.style.filter = 'blur(0.5px)';
+                    counter.style.textShadow = '0 0 10px #00ffff, 0 0 20px #00ffff';
+                    
+                    spins++;
+                    if (spins >= maxSpins) {
+                        clearInterval(fastInterval);
+                        // 最終的な数字を表示
+                        counter.textContent = targetNumbers[currentIndex];
+                        counter.style.filter = 'none';
+                        counter.style.textShadow = '0 0 15px #00ffff, 0 0 30px #00ffff';
+                        currentIndex = (currentIndex + 1) % targetNumbers.length;
+                    }
+                }, 50); // 50ms間隔で高速回転
+            }
+            
+            // 最初のスロット実行
+            slotEffect();
+            
+            // 3秒ごとにスロット効果を実行
+            setInterval(slotEffect, 3000);
         }
 
         // パーティクル表示制御関数
