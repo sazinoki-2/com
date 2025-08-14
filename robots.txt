@@ -1,0 +1,19 @@
+User-agent: *
+Allow: /
+
+# サイトマップの場所
+Sitemap: https://official.sazinoki.com/sitemap.xml
+
+# 主要ページへのクロール推奨
+Allow: /index.html
+Allow: /images/
+Allow: /js/
+Allow: /csv-templates/
+
+# 一時ファイルや設定ファイルをブロック
+Disallow: /.git/
+Disallow: /VIBE nazofairu 8.14/
+Disallow: /*.csv$
+
+# クロール頻度の推奨
+Crawl-delay: 1
