@@ -3019,18 +3019,25 @@
         setupPortfolioModal();
         animateMemberCounter();
 
-        // メンバー数カウンターアニメーション（常時高速ループ）
+        // メンバー数カウンターアニメーション（超高速ループ）
         function animateMemberCounter() {
             const counter = document.getElementById('memberCounter');
             if (!counter) return;
             
-            // 常時高速でランダム数字を表示（ノイズ効果）
+            // 百の位用の文字配列
+            const hundreds = ['1', '0', '$'];
+            
+            // 超高速でランダム数字を表示（ノイズ効果）
             setInterval(() => {
-                const randomNum = Math.floor(Math.random() * 100) + 250;
-                counter.textContent = randomNum;
+                // 百の位をランダム選択
+                const hundredChar = hundreds[Math.floor(Math.random() * hundreds.length)];
+                // 十の位と一の位はランダム数字
+                const tensOnes = Math.floor(Math.random() * 100).toString().padStart(2, '0');
+                
+                counter.textContent = hundredChar + tensOnes;
                 counter.style.filter = 'blur(0.5px)';
                 counter.style.textShadow = '0 0 10px #00ffff, 0 0 20px #00ffff';
-            }, 80); // 80ms間隔で常時高速回転
+            }, 30); // 30ms間隔で超高速回転
         }
 
         // パーティクル表示制御関数
