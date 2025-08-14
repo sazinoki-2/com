@@ -1053,12 +1053,67 @@
             background: transparent;
         }
 
-        .dao-cta-message {
-            font-size: 1.6em;
-            font-weight: 700;
-            color: rgba(255, 255, 255, 0.95);
+        .dao-member-status {
+            text-align: center;
             margin-bottom: 30px;
-            letter-spacing: 2px;
+        }
+
+        .member-count-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff6b9d, #4ecdc4, #ff6b9d);
+            background-size: 200% 200%;
+            animation: gradientShift 3s ease-in-out infinite;
+            color: white;
+            font-size: 1.2em;
+            font-weight: 700;
+            padding: 0.8rem 2rem;
+            border-radius: 25px;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 20px rgba(255, 107, 157, 0.4);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .member-count-badge::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .member-stats {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            color: white;
+        }
+
+        .stat-number {
+            font-size: 2em;
+            font-weight: 900;
+            background: linear-gradient(45deg, #4ecdc4, #ff6b9d);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 20px rgba(78, 205, 196, 0.6);
+        }
+
+        .stat-label {
+            font-size: 0.9em;
+            opacity: 0.8;
+            font-weight: 500;
             text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
             background: linear-gradient(135deg, #ff69b4, #4ecdc4);
             -webkit-background-clip: text;
@@ -2493,7 +2548,13 @@
             
             <!-- DAO CTA ボタンセクション -->
             <div class="dao-cta-section">
-                <div class="dao-cta-message">!Let's Join!</div>
+                <div class="dao-member-status">
+                    <div class="member-count-badge">🎉 メンバー続々増加中 🎉</div>
+                    <div class="member-stats">
+                        <span class="stat-number">300+</span>
+                        <span class="stat-label">Active Members</span>
+                    </div>
+                </div>
                 <a href="https://discord.gg/7uQMMwuDEP" class="dao-discord-btn" target="_blank">
                     <div class="discord-icon">🎮</div>
                     <div class="btn-content">
