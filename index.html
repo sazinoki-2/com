@@ -2332,6 +2332,17 @@
             letter-spacing: 0.5px;
         }
 
+        .btn-sale {
+            font-size: 0.8em;
+            color: #00ff88;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+            margin-top: 0.3rem;
+            display: block;
+        }
+
         .portfolio-btn:hover .btn-icon {
             transform: scale(1.1) rotate(5deg);
         }
@@ -2794,6 +2805,25 @@
             border: 2px solid rgba(255, 255, 255, 0.3);
         }
 
+        /* イラスト用セールバッジ */
+        .illustration-sale-badge {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: linear-gradient(135deg, #00bcd4, #4dd0e1);
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 800;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 15px rgba(0, 188, 212, 0.4);
+            z-index: 10;
+            white-space: nowrap;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
         .block-content {
             flex: 1;
             display: flex;
@@ -3083,20 +3113,20 @@
 
             .service-blocks {
                 display: flex !important;
-                flex-direction: row !important;
+                flex-direction: column !important;
                 justify-content: center !important;
-                gap: 0.5rem !important;
+                align-items: center !important;
+                gap: 2rem !important;
                 margin: 2rem auto !important;
-                flex-wrap: nowrap !important;
                 max-width: 95% !important;
-                padding: 0 0.5rem !important;
+                padding: 0 1rem !important;
             }
 
             .service-block {
-                flex: 1 !important;
-                max-width: none !important;
-                min-height: 380px !important;
-                padding: 1rem 0.8rem !important;
+                width: 100% !important;
+                max-width: 400px !important;
+                min-height: 300px !important;
+                padding: 1.5rem !important;
                 margin: 0 !important;
             }
 
@@ -3665,17 +3695,16 @@
                 
                 <div class="portfolio-buttons">
                     <a href="https://sazinoki-2.github.io/pricelist/" target="_blank" class="portfolio-btn skeb-btn pricing-special">
-                        <span class="sale-badge">最大35%SALE</span>
                         <span class="btn-icon">💰</span>
                         <div class="btn-content">
                             <span class="btn-main">イラスト料金表</span>
-                            <span class="btn-price">詳細はこちら</span>
+                            <span class="btn-sale">最大35%SALE</span>
                         </div>
                     </a>
                     <a href="https://forms.gle/95uPPiPgCAbyQFnQ7" target="_blank" class="portfolio-btn illustration-special-btn">
                         <span class="btn-icon">💬</span>
                         <div class="btn-content">
-                            <span class="btn-main">メール相談</span>
+                            <span class="btn-main">チャット相談</span>
                             <span class="btn-price">0JPY（無料）</span>
                         </div>
                     </a>
@@ -3693,7 +3722,7 @@
                     <div class="block-header">
                         <div class="block-icon">🌐</div>
                         <h3 class="block-title">DAO運営</h3>
-                        <div class="sale-badge">55%OFF</div>
+                        <div class="sale-badge">最大35%OFF</div>
                     </div>
                     <div class="block-content">
                         <p class="block-description">WEB3コミュニティを設計×構築</p>
@@ -3718,7 +3747,7 @@
                     <div class="block-header">
                         <div class="block-icon">🤝</div>
                         <h3 class="block-title">コーチング</h3>
-                        <div class="sale-badge">55%OFF</div>
+                        <div class="sale-badge">最大55%OFF</div>
                     </div>
                     <div class="block-content">
                         <p class="block-description">個別指導で確実な自己成長を実現</p>
@@ -3743,7 +3772,7 @@
                     <div class="block-header">
                         <div class="block-icon">💻</div>
                         <h3 class="block-title">WEB制作</h3>
-                        <div class="sale-badge">55%OFF</div>
+                        <div class="sale-badge">45%OFF</div>
                     </div>
                     <div class="block-content">
                         <p class="block-description">弊LPクラスのHPをフルスクラッチ制作</p>
