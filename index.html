@@ -2508,6 +2508,109 @@
             letter-spacing: 0.5px;
         }
 
+        /* SKEB簡単案内 */
+        .skeb-simple {
+            text-align: center;
+            margin: 1rem 0;
+            padding: 0.5rem;
+        }
+
+        .skeb-simple-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.7rem 1.5rem;
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .skeb-simple-btn:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.3);
+            color: white;
+            transform: translateY(-1px);
+        }
+
+        .skeb-simple-btn .btn-icon {
+            font-size: 1rem;
+        }
+
+        .skeb-simple-btn .btn-text {
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .skeb-simple-btn .btn-price {
+            font-size: 0.8rem;
+            opacity: 0.8;
+        }
+
+        /* サブ見出し */
+        .rainbow-subtitle {
+            font-size: 2rem;
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #40e0d0 0%, #00bfff 50%, #ff69b4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: none;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .rainbow-subtitle:hover {
+            transform: scale(1.02) translateY(-1px);
+            filter: brightness(1.2);
+        }
+
+        /* セールバッジ */
+        .sale-badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: linear-gradient(135deg, #ff4444, #ff6666);
+            color: white;
+            font-size: 0.6rem;
+            font-weight: 700;
+            padding: 0.3rem 0.6rem;
+            border-radius: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            z-index: 10;
+            animation: salePulse 2s infinite;
+            box-shadow: 0 2px 8px rgba(255, 68, 68, 0.4);
+        }
+
+        @keyframes salePulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        .pricing-special {
+            position: relative;
+            overflow: visible !important;
+        }
+
+        .pricing-special::before {
+            display: none !important;
+        }
+
         /* CTA モバイルレスポンシブ */
         @media (max-width: 768px) {
             .cta-container {
@@ -2572,6 +2675,31 @@
 
             .session-btn .btn-subtitle {
                 font-size: 0.65em;
+            }
+
+            .skeb-simple-btn {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.8rem;
+            }
+
+            .skeb-simple-btn .btn-price {
+                font-size: 0.75rem;
+            }
+
+            .rainbow-subtitle {
+                font-size: 1.5rem;
+                margin-bottom: 1rem;
+            }
+
+            .rainbow-subtitle:hover {
+                transform: scale(1.01) translateY(-1px);
+            }
+
+            .sale-badge {
+                font-size: 0.55rem;
+                padding: 0.25rem 0.5rem;
+                top: -6px;
+                right: -6px;
             }
             
             .portfolio-btn {
@@ -3057,23 +3185,28 @@
                 </div>
             </div>
 
+            <!-- SKEB簡単案内 -->
+            <div class="skeb-simple">
+                <a href="https://skeb.jp/@sazinoki" target="_blank" class="skeb-simple-btn">
+                    <span class="btn-icon">🎨</span>
+                    <span class="btn-text">SKEB</span>
+                    <span class="btn-price">21,000JPY～</span>
+                </a>
+            </div>
+
             <!-- イラストサービス案内 -->
             <div class="illustration-cta">
+                <h3 class="rainbow-subtitle">あなたの世界をカタチに</h3>
                 <p class="illustration-sales-text">✨ プロクオリティのイラストで、あなたの想いをカタチに ✨<br>
                 お気軽にご相談から始めませんか？まずは料金表をチェック！</p>
                 
                 <div class="portfolio-buttons">
-                    <a href="https://sazinoki-2.github.io/pricelist/" target="_blank" class="portfolio-btn skeb-btn">
+                    <a href="https://sazinoki-2.github.io/pricelist/" target="_blank" class="portfolio-btn skeb-btn pricing-special">
+                        <span class="sale-badge">最大35%SALE</span>
                         <span class="btn-icon">💰</span>
                         <div class="btn-content">
                             <span class="btn-main">イラスト料金表</span>
-                        </div>
-                    </a>
-                    <a href="https://skeb.jp/@sazinoki" target="_blank" class="portfolio-btn consultation-btn">
-                        <span class="btn-icon">🎨</span>
-                        <div class="btn-content">
-                            <span class="btn-main">SKEB</span>
-                            <span class="btn-price">21,000JPY～</span>
+                            <span class="btn-price">詳細はこちら</span>
                         </div>
                     </a>
                     <a href="https://forms.gle/yByaxD1soPS2Vmuf7" target="_blank" class="portfolio-btn illustration-special-btn">
