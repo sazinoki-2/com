@@ -2370,6 +2370,144 @@
             background: linear-gradient(135deg, #a663cc 0%, #d084ff 100%) !important;
         }
 
+        /* SAZINOKI SESSIONセクション */
+        .session-section {
+            text-align: center;
+            padding: 3rem 2rem;
+            margin: 2rem 0;
+            background: transparent;
+            border-radius: 0;
+            border: none;
+            backdrop-filter: none;
+            position: relative;
+            overflow: visible;
+        }
+
+        .session-title {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: white;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            margin-bottom: 2rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            position: relative;
+            z-index: 2;
+        }
+
+        .session-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .session-description {
+            font-size: 1.1rem;
+            color: white;
+            line-height: 1.8;
+            margin-bottom: 2.5rem;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        .session-description strong {
+            color: white;
+            font-weight: 800;
+        }
+
+        .session-description .highlight {
+            color: white;
+            font-weight: 900;
+            font-size: 1.1em;
+        }
+
+        .session-button-container {
+            display: flex;
+            justify-content: center;
+        }
+
+        .session-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            color: white;
+            padding: 20px 40px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(0, 255, 255, 0.15));
+            border: 1.5px solid rgba(255, 255, 255, 0.3);
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1em;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            box-shadow: 
+                0 8px 30px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+
+        .session-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.8s ease;
+            z-index: 2;
+        }
+
+        .session-btn:hover::before {
+            left: 100%;
+        }
+
+        .session-btn:hover {
+            transform: translateY(-2px) scale(1.02);
+            border-color: rgba(255, 255, 255, 0.4);
+            box-shadow: 
+                0 20px 50px rgba(0, 255, 255, 0.3),
+                0 0 0 1px rgba(0, 255, 255, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(0, 255, 255, 0.2));
+        }
+
+        .session-btn .btn-icon {
+            font-size: 1.5em;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            z-index: 3;
+        }
+
+        .session-btn:hover .btn-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .session-btn .btn-content {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 4px;
+            position: relative;
+            z-index: 3;
+        }
+
+        .session-btn .btn-main {
+            font-size: 1em;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .session-btn .btn-subtitle {
+            font-size: 0.75em;
+            opacity: 0.9;
+            font-weight: 500;
+            text-transform: none;
+            letter-spacing: 0.5px;
+        }
+
         /* CTA モバイルレスポンシブ */
         @media (max-width: 768px) {
             .cta-container {
@@ -2404,6 +2542,36 @@
             .illustration-sales-text {
                 font-size: 1rem;
                 margin-bottom: 1.5rem;
+            }
+
+            .session-section {
+                padding: 2.5rem 1rem;
+                margin: 2rem 0;
+            }
+
+            .session-title {
+                font-size: 2rem;
+                letter-spacing: 2px;
+                margin-bottom: 1.5rem;
+            }
+
+            .session-description {
+                font-size: 1rem;
+                margin-bottom: 2rem;
+            }
+
+            .session-btn {
+                width: 240px;
+                padding: 18px 30px;
+                font-size: 1.1em;
+            }
+
+            .session-btn .btn-main {
+                font-size: 0.9em;
+            }
+
+            .session-btn .btn-subtitle {
+                font-size: 0.65em;
             }
             
             .portfolio-btn {
@@ -2915,6 +3083,31 @@
                             <span class="btn-price">0JPY（無料）</span>
                         </div>
                     </a>
+                </div>
+            </div>
+
+            <br><br><br><br><br>
+
+            <!-- SAZINOKI SESSIONセクション -->
+            <h2 class="session-title">SAZINOKISESSION</h2>
+            <div class="session-section">
+                <div class="session-content">
+                    <p class="session-description">
+                        🚀 <strong>月収100万円達成者続出！</strong>さじのきが1対1で徹底指導する個別コンサルティング<br>
+                        💡 SNS戦略・マネタイズ術・ビジネス構築まで、<strong>成功への最短ルート</strong>を完全伝授<br>
+                        ⚡ これまで1000人以上が人生を変えた実績ある手法を、あなただけに特別公開<br>
+                        🎯 <span class="highlight">限定20名のみ</span>！今すぐ行動すれば、3ヶ月後には理想の収入を実現できます
+                    </p>
+                    
+                    <div class="session-button-container">
+                        <a href="https://sazinoki-2.github.io/pricelist/" target="_blank" class="session-btn">
+                            <span class="btn-icon">📊</span>
+                            <div class="btn-content">
+                                <span class="btn-main">プロジェクト参画・コンサル料金表</span>
+                                <span class="btn-subtitle">SUCCESS PLAN</span>
+                            </div>
+                        </a>
+                    </div>
                 </div>
             </div>
             
