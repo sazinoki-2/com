@@ -2110,6 +2110,17 @@
                 max-width: 250px;
                 justify-content: center;
             }
+
+            .service-blocks {
+                flex-direction: column;
+                align-items: center;
+                gap: 2rem;
+            }
+
+            .service-block {
+                width: 95%;
+                max-width: 350px;
+            }
         }
 
         .details-btn {
@@ -2400,6 +2411,70 @@
             z-index: 2;
         }
 
+        /* セッションサブタイトル */
+        .session-subtitle {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: white;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #ff6b35, #f7931e, #ffcc02, #40e0d0, #00bfff, #8a2be2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            line-height: 1.4;
+            letter-spacing: 0.3px;
+            animation: gradientShift 3s ease-in-out infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% {
+                background: linear-gradient(135deg, #ff6b35, #f7931e, #ffcc02, #40e0d0, #00bfff, #8a2be2);
+                -webkit-background-clip: text;
+                background-clip: text;
+            }
+            50% {
+                background: linear-gradient(135deg, #8a2be2, #00bfff, #40e0d0, #ffcc02, #f7931e, #ff6b35);
+                -webkit-background-clip: text;
+                background-clip: text;
+            }
+        }
+
+        /* 蒼ピンクグラデーションハイライト */
+        .orange-highlight {
+            background: linear-gradient(135deg, #4facfe, #00f2fe, #ff6b9d, #c471ed);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+            text-shadow: 0 0 15px rgba(79, 172, 254, 0.5);
+        }
+
+        /* メイン透明枠 */
+        .session-main-frame {
+            border: 2px solid rgba(255, 255, 255, 0.25);
+            border-radius: 30px;
+            padding: 3rem 2.5rem;
+            margin: 3rem 0;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(15px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* セッション枠 */
+        .session-frame {
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 0.8rem 2rem;
+            margin: 0.5rem 0;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
         .session-description {
             font-size: 1.1rem;
             color: white;
@@ -2427,24 +2502,29 @@
         .session-btn {
             display: inline-flex;
             align-items: center;
-            gap: 15px;
+            gap: 20px;
             color: white;
-            padding: 20px 40px;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(0, 255, 255, 0.15));
-            border: 1.5px solid rgba(255, 255, 255, 0.3);
-            border-radius: 30px;
+            padding: 25px 50px;
+            background: linear-gradient(135deg, 
+                rgba(255, 107, 53, 0.25), 
+                rgba(0, 255, 255, 0.25), 
+                rgba(138, 43, 226, 0.25)
+            );
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 35px;
             text-decoration: none;
-            font-weight: 700;
-            font-size: 1.1em;
-            letter-spacing: 1px;
+            font-weight: 800;
+            font-size: 1.2em;
+            letter-spacing: 1.2px;
             text-transform: uppercase;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
             overflow: hidden;
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(20px);
             box-shadow: 
-                0 8px 30px rgba(0, 0, 0, 0.3),
-                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+                0 15px 40px rgba(0, 0, 0, 0.4),
+                0 0 0 1px rgba(255, 255, 255, 0.15),
+                inset 0 2px 0 rgba(255, 255, 255, 0.3);
         }
 
         .session-btn::before {
@@ -2464,13 +2544,17 @@
         }
 
         .session-btn:hover {
-            transform: translateY(-2px) scale(1.02);
-            border-color: rgba(255, 255, 255, 0.4);
+            transform: translateY(-5px) scale(1.05);
+            border-color: rgba(255, 255, 255, 0.5);
             box-shadow: 
-                0 20px 50px rgba(0, 255, 255, 0.3),
-                0 0 0 1px rgba(0, 255, 255, 0.3),
-                inset 0 1px 0 rgba(255, 255, 255, 0.3);
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(0, 255, 255, 0.2));
+                0 25px 60px rgba(0, 255, 255, 0.4),
+                0 0 0 2px rgba(255, 107, 53, 0.4),
+                inset 0 2px 0 rgba(255, 255, 255, 0.5);
+            background: linear-gradient(135deg, 
+                rgba(255, 107, 53, 0.4), 
+                rgba(0, 255, 255, 0.4), 
+                rgba(138, 43, 226, 0.4)
+            );
         }
 
         .session-btn .btn-icon {
@@ -2487,7 +2571,7 @@
         .session-btn .btn-content {
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
+            align-items: center;
             gap: 4px;
             position: relative;
             z-index: 3;
@@ -2611,6 +2695,271 @@
             display: none !important;
         }
 
+        /* サービス解説ブロック */
+        .service-blocks {
+            display: flex !important;
+            flex-direction: row !important;
+            justify-content: center !important;
+            gap: 1.5rem !important;
+            margin: 3rem auto !important;
+            flex-wrap: nowrap !important;
+            align-items: stretch !important;
+            max-width: 98% !important;
+        }
+
+        .service-block {
+            flex: 1 !important;
+            max-width: none !important;
+            min-height: 420px !important;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(0, 255, 255, 0.05));
+            border: 1.5px solid rgba(255, 255, 255, 0.2);
+            border-radius: 25px;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-block::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.8s ease;
+        }
+
+        .service-block:hover::before {
+            left: 100%;
+        }
+
+        .service-block:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: rgba(255, 255, 255, 0.4);
+            box-shadow: 0 20px 50px rgba(0, 255, 255, 0.3);
+        }
+
+        .block-header {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .block-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .service-block:hover .block-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .block-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .block-price {
+            font-size: 1.1rem;
+            color: #40e0d0;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .block-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .block-description {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .block-features {
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-item {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 0.7rem;
+            padding-left: 0.5rem;
+            border-left: 2px solid rgba(0, 255, 255, 0.5);
+        }
+
+        .block-result {
+            background: rgba(0, 255, 255, 0.1);
+            padding: 1rem;
+            border-radius: 15px;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .block-result strong {
+            color: #40e0d0;
+        }
+
+        .block-cta {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, #40e0d0, #00bfff);
+            border-radius: 25px;
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            margin-top: auto;
+        }
+
+        .block-cta:hover {
+            background: linear-gradient(135deg, #5ff5dc, #20d0ff);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(64, 224, 208, 0.4);
+        }
+
+        .cta-arrow {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .block-cta:hover .cta-arrow {
+            transform: translateX(5px);
+        }
+
+        /* 各ブロックの個別色設定 */
+        .dao-block:hover {
+            box-shadow: 0 20px 50px rgba(255, 215, 0, 0.3);
+        }
+
+        .dao-block .block-price {
+            color: #ffd700;
+        }
+
+        .dao-block .block-result {
+            background: rgba(255, 215, 0, 0.1);
+        }
+
+        .dao-block .block-result strong {
+            color: #ffd700;
+        }
+
+        .dao-block .feature-item {
+            border-left-color: rgba(255, 215, 0, 0.5);
+        }
+
+        .consulting-block:hover {
+            box-shadow: 0 20px 50px rgba(255, 105, 180, 0.3);
+        }
+
+        .consulting-block .block-price {
+            color: #ff69b4;
+        }
+
+        .consulting-block .block-result {
+            background: rgba(255, 105, 180, 0.1);
+        }
+
+        .consulting-block .block-result strong {
+            color: #ff69b4;
+        }
+
+        .consulting-block .feature-item {
+            border-left-color: rgba(255, 105, 180, 0.5);
+        }
+
+        .web-block:hover {
+            box-shadow: 0 20px 50px rgba(0, 255, 127, 0.3);
+        }
+
+        .web-block .block-price {
+            color: #00ff7f;
+        }
+
+        .web-block .block-result {
+            background: rgba(0, 255, 127, 0.1);
+        }
+
+        .web-block .block-result strong {
+            color: #00ff7f;
+        }
+
+        .web-block .feature-item {
+            border-left-color: rgba(0, 255, 127, 0.5);
+        }
+
+        /* セッション上部テキスト */
+        .session-header-text {
+            text-align: center;
+            margin-bottom: 0.5rem;
+            padding: 0.5rem 1rem;
+        }
+
+        .session-question-title {
+            font-size: 2.2rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #e0e0e0, #ffffff, #f0f0f0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-align: center;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+            letter-spacing: 1.5px;
+            position: relative;
+        }
+
+
+        .answer-text {
+            font-size: 1.4rem;
+            color: rgba(255, 255, 255, 0.95);
+            margin-bottom: 0;
+            font-weight: 600;
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+            text-align: center;
+            letter-spacing: 0.5px;
+            line-height: 1.6;
+            position: relative;
+        }
+
+        /* セッション内解決策テキスト */
+        .solution-content-standalone {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: white;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .solution-content-standalone strong {
+            font-weight: 800;
+            background: linear-gradient(135deg, #40e0d0, #00bfff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+
         /* CTA モバイルレスポンシブ */
         @media (max-width: 768px) {
             .cta-container {
@@ -2658,15 +3007,30 @@
                 margin-bottom: 1.5rem;
             }
 
+            .session-subtitle {
+                font-size: 1rem;
+                margin-bottom: 1rem;
+                line-height: 1.3;
+                letter-spacing: 0.2px;
+            }
+
+            .session-main-frame {
+                padding: 2rem 1.5rem;
+                margin: 2rem 0;
+                border-radius: 25px;
+            }
+
             .session-description {
                 font-size: 1rem;
                 margin-bottom: 2rem;
             }
 
             .session-btn {
-                width: 240px;
-                padding: 18px 30px;
-                font-size: 1.1em;
+                width: 280px;
+                padding: 20px 35px;
+                font-size: 1em;
+                gap: 15px;
+                border-radius: 30px;
             }
 
             .session-btn .btn-main {
@@ -2701,6 +3065,86 @@
                 top: -6px;
                 right: -6px;
             }
+
+            .service-blocks {
+                display: flex !important;
+                flex-direction: row !important;
+                justify-content: center !important;
+                gap: 0.5rem !important;
+                margin: 2rem 0 !important;
+                flex-wrap: nowrap !important;
+                max-width: 99% !important;
+            }
+
+            .service-block {
+                flex: 1 !important;
+                max-width: none !important;
+                min-height: 380px !important;
+                padding: 1.3rem !important;
+            }
+
+            .block-icon {
+                font-size: 3rem;
+                margin-bottom: 0.8rem;
+            }
+
+            .block-title {
+                font-size: 1.3rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .block-price {
+                font-size: 1rem;
+            }
+
+            .block-description {
+                font-size: 0.9rem;
+                margin-bottom: 1rem;
+            }
+
+            .feature-item {
+                font-size: 0.85rem;
+                margin-bottom: 0.6rem;
+            }
+
+            .block-result {
+                font-size: 0.85rem;
+                padding: 0.8rem;
+                margin-bottom: 1rem;
+            }
+
+            .block-cta {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.9rem;
+            }
+
+            .session-question-title {
+                font-size: 1.6rem;
+                margin-bottom: 0.3rem;
+                letter-spacing: 1px;
+            }
+
+            .answer-text {
+                font-size: 1.2rem;
+                margin-bottom: 0;
+            }
+
+            .session-header-text {
+                margin-bottom: 0.3rem;
+                padding: 0.3rem 0.5rem;
+            }
+
+            .session-frame {
+                padding: 0.5rem 1rem;
+                margin: 0.3rem 0;
+                border-radius: 12px;
+            }
+
+            .solution-content-standalone {
+                font-size: 1rem;
+                margin-bottom: 2rem;
+            }
+
             
             .portfolio-btn {
                 width: 240px;
@@ -3209,7 +3653,7 @@
                             <span class="btn-price">詳細はこちら</span>
                         </div>
                     </a>
-                    <a href="https://forms.gle/yByaxD1soPS2Vmuf7" target="_blank" class="portfolio-btn illustration-special-btn">
+                    <a href="https://forms.gle/95uPPiPgCAbyQFnQ7" target="_blank" class="portfolio-btn illustration-special-btn">
                         <span class="btn-icon">💬</span>
                         <div class="btn-content">
                             <span class="btn-main">メール相談</span>
@@ -3219,28 +3663,111 @@
                 </div>
             </div>
 
-            <br><br><br><br><br>
+            <br><br><br><br><br><br><br>
 
             <!-- SAZINOKI SESSIONセクション -->
-            <h2 class="session-title">SAZINOKISESSION</h2>
-            <div class="session-section">
-                <div class="session-content">
-                    <p class="session-description">
-                        🚀 <strong>月収100万円達成者続出！</strong>さじのきが1対1で徹底指導する個別コンサルティング<br>
-                        💡 SNS戦略・マネタイズ術・ビジネス構築まで、<strong>成功への最短ルート</strong>を完全伝授<br>
-                        ⚡ これまで1000人以上が人生を変えた実績ある手法を、あなただけに特別公開<br>
-                        🎯 <span class="highlight">限定20名のみ</span>！今すぐ行動すれば、3ヶ月後には理想の収入を実現できます
-                    </p>
-                    
-                    <div class="session-button-container">
-                        <a href="https://sazinoki-2.github.io/pricelist/" target="_blank" class="session-btn">
-                            <span class="btn-icon">📊</span>
-                            <div class="btn-content">
-                                <span class="btn-main">プロジェクト参画・コンサル料金表</span>
-                                <span class="btn-subtitle">SUCCESS PLAN</span>
-                            </div>
+            <h2 class="session-title">SAZINOKI SESSION</h2>
+            
+            <!-- サービス解説ブロック -->
+            <div class="service-blocks">
+                <div class="service-block dao-block">
+                    <div class="block-header">
+                        <div class="block-icon">🌐</div>
+                        <h3 class="block-title">DAO運営</h3>
+                        <div class="block-price">SALE！</div>
+                    </div>
+                    <div class="block-content">
+                        <p class="block-description">WEB3コミュニティを設計×構築</p>
+                        <div class="block-features">
+                            <div class="feature-item">✨ トークン設計・発行</div>
+                            <div class="feature-item">🚀 コミュニティ設立</div>
+                            <div class="feature-item">💰 NFT/FT連携</div>
+                            <div class="feature-item">📈 ガバナンス設計</div>
+                        </div>
+                        <div class="block-result">
+                            <strong>実現できること：</strong><br>
+                            NFT連携、WEB3接続型コミュニティ構築、スタートアップ支援
+                        </div>
+                        <a href="https://forms.gle/95uPPiPgCAbyQFnQ7" target="_blank" class="block-cta">
+                            <span>無料相談はこちら</span>
+                            <span class="cta-arrow">→</span>
                         </a>
                     </div>
+                </div>
+
+                <div class="service-block consulting-block">
+                    <div class="block-header">
+                        <div class="block-icon">🤝</div>
+                        <h3 class="block-title">コーチング</h3>
+                        <div class="block-price">SALE！</div>
+                    </div>
+                    <div class="block-content">
+                        <p class="block-description">個別指導で確実な自己成長を実現</p>
+                        <div class="block-features">
+                            <div class="feature-item">📊 人生コーチ</div>
+                            <div class="feature-item">💡 ファイナンシャル戦略</div>
+                            <div class="feature-item">🎯 ビジネス構築</div>
+                            <div class="feature-item">🔥 ゲームコーチング</div>
+                        </div>
+                        <div class="block-result">
+                            <strong>実現できること：</strong><br>
+                            人生～ゲームコーチングまで単発～月次プランでフレキシブルに対応。
+                        </div>
+                        <a href="https://forms.gle/95uPPiPgCAbyQFnQ7" target="_blank" class="block-cta">
+                            <span>無料相談はこちら</span>
+                            <span class="cta-arrow">→</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="service-block web-block">
+                    <div class="block-header">
+                        <div class="block-icon">💻</div>
+                        <h3 class="block-title">WEB制作</h3>
+                        <div class="block-price">SALE！</div>
+                    </div>
+                    <div class="block-content">
+                        <p class="block-description">弊LPクラスのHPをフルスクラッチ制作</p>
+                        <div class="block-features">
+                            <div class="feature-item">🎨 UI/UXデザイン</div>
+                            <div class="feature-item">⚡ LP制作</div>
+                            <div class="feature-item">📱 SEO設定</div>
+                            <div class="feature-item">🔧 保守・運用</div>
+                        </div>
+                        <div class="block-result">
+                            <strong>実現できること：</strong><br>
+                            公式ホームページを持つことであなたの信用力を劇的にUP！
+                        </div>
+                        <a href="https://forms.gle/95uPPiPgCAbyQFnQ7" target="_blank" class="block-cta">
+                            <span>無料相談はこちら</span>
+                            <span class="cta-arrow">→</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="session-section">
+                <div class="session-content">
+            <!-- セッション枠 -->
+            <div class="session-frame">
+                <!-- セッション上部テキスト -->
+                <div class="session-header-text">
+                    <h3 class="session-question-title"> なぜ多くの人が夢で終わるのか？</h3>
+                    <p class="answer-text">それは「<span class="orange-highlight">カタチにする力</span>」が足りないから。</p>
+                </div>
+            </div>
+            <br>
+            <h3 class="session-subtitle">＼ デザイン力×プロダクト設計力×実行力のサイドエフェクト全開放 ／</h3>
+
+            <div class="session-button-container">
+                <a href="https://sazinoki-2.github.io/pricelist/" target="_blank" class="session-btn">
+                    <span class="btn-icon">📊</span>
+                    <div class="btn-content">
+                        <span class="btn-main">プロジェクト参画/コンサル料金表</span>
+                        <span class="btn-subtitle">SUCCESS PLAN</span>
+                    </div>
+                </a>
+            </div>
+
                 </div>
             </div>
             
