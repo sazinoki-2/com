@@ -2325,6 +2325,51 @@
             transform: scale(1.1) rotate(5deg);
         }
 
+        /* イラストCTAセクション */
+        .illustration-cta {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(0, 255, 255, 0.05));
+            border-radius: 20px;
+            margin: 2rem 0;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .illustration-sales-text {
+            font-size: 1.2rem;
+            color: white;
+            margin-bottom: 2rem;
+            font-weight: 600;
+            line-height: 1.8;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .illustration-special-btn {
+            background: linear-gradient(135deg, #9d4edd 0%, #c77dff 100%) !important;
+            border-color: rgba(157, 78, 221, 0.3) !important;
+        }
+
+        .illustration-special-btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+            border-radius: inherit;
+            z-index: 1;
+        }
+
+        .illustration-special-btn:hover {
+            box-shadow: 
+                0 20px 50px rgba(157, 78, 221, 0.5),
+                0 0 0 1px rgba(157, 78, 221, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
+            background: linear-gradient(135deg, #a663cc 0%, #d084ff 100%) !important;
+        }
+
         /* CTA モバイルレスポンシブ */
         @media (max-width: 768px) {
             .cta-container {
@@ -2349,6 +2394,16 @@
                 flex-direction: column;
                 align-items: center;
                 gap: 20px;
+            }
+
+            .illustration-cta {
+                padding: 2rem 1rem;
+                margin: 1.5rem 0;
+            }
+
+            .illustration-sales-text {
+                font-size: 1rem;
+                margin-bottom: 1.5rem;
             }
             
             .portfolio-btn {
@@ -2833,43 +2888,36 @@
                     <img src="images/yuki-riu.png" alt="雪音りう" loading="lazy">
                 </div>
             </div>
-            
-            <div class="portfolio-footer">
-                <div class="cta-container">
-                    <h3 class="cta-title">あなたの世界をカタチにします</h3>
-                    
-                    <!-- サービス紹介 -->
-                    <div class="service-intro">
-                        <p class="service-description">さじのきのイラストサービスだけでなくさじのきはスキル提供やってるセールス</p>
-                        <div class="portfolio-buttons">
-                            <a href="https://sazinoki-2.github.io/pricelist/" target="_blank" class="portfolio-btn skeb-btn">
-                                <span class="btn-icon">🎨</span>
-                                <div class="btn-content">
-                                    <span class="btn-main">イラスト料金表</span>
-                                </div>
-                            </a>
-                            <a href="https://sazinoki-2.github.io/pricelist/" target="_blank" class="portfolio-btn consultation-btn">
-                                <span class="btn-icon">💼</span>
-                                <div class="btn-content">
-                                    <span class="btn-main">コンサル料金表</span>
-                                </div>
-                            </a>
+
+            <!-- イラストサービス案内 -->
+            <div class="illustration-cta">
+                <p class="illustration-sales-text">✨ プロクオリティのイラストで、あなたの想いをカタチに ✨<br>
+                お気軽にご相談から始めませんか？まずは料金表をチェック！</p>
+                
+                <div class="portfolio-buttons">
+                    <a href="https://sazinoki-2.github.io/pricelist/" target="_blank" class="portfolio-btn skeb-btn">
+                        <span class="btn-icon">💰</span>
+                        <div class="btn-content">
+                            <span class="btn-main">イラスト料金表</span>
                         </div>
-                    </div>
-                    
-                    <p class="cta-description">商業案件〜個人案件まで幅広く対応。<br>まずはお気軽にリクエストください。</p>
-                    <div class="pricing-buttons">
-                        <a href="https://skeb.jp/@sazinoki" target="_blank" class="pricing-btn illustration-btn">
-                            <span class="btn-icon">🎨</span>
-                            <span class="btn-text">SKEB</span>
-                        </a>
-                        <a href="https://forms.gle/yByaxD1soPS2Vmuf7" target="_blank" class="pricing-btn consulting-btn">
-                            <span class="btn-icon">💬</span>
-                            <span class="btn-text">メール相談</span>
-                        </a>
-                    </div>
+                    </a>
+                    <a href="https://skeb.jp/@sazinoki" target="_blank" class="portfolio-btn consultation-btn">
+                        <span class="btn-icon">🎨</span>
+                        <div class="btn-content">
+                            <span class="btn-main">SKEB</span>
+                            <span class="btn-price">21,000JPY～</span>
+                        </div>
+                    </a>
+                    <a href="https://forms.gle/yByaxD1soPS2Vmuf7" target="_blank" class="portfolio-btn illustration-special-btn">
+                        <span class="btn-icon">💬</span>
+                        <div class="btn-content">
+                            <span class="btn-main">メール相談</span>
+                            <span class="btn-price">0JPY（無料）</span>
+                        </div>
+                    </a>
                 </div>
             </div>
+            
         </section>
 
         <!-- モーダル -->
